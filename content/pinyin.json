@@ -1,0 +1,183 @@
+{
+  "note": "Pinyin Playground content, in teaching order. 'say' is the audio-cmn recording a tile plays (numbered tone, ü as v): initials are taught with their usual helper vowel (b → bō), and finals that never stand alone with a common syllable (ong → hōng).",
+  "groups": [
+    {
+      "id": "simple-finals",
+      "title": "Simple finals",
+      "rows": [
+        [
+          { "label": "a", "say": "a1" },
+          { "label": "o", "say": "o1" },
+          { "label": "e", "say": "e1" },
+          { "label": "i", "say": "yi1" },
+          { "label": "u", "say": "wu1" },
+          { "label": "ü", "say": "yu1" }
+        ]
+      ]
+    },
+    {
+      "id": "initials",
+      "title": "Initials",
+      "rows": [
+        [
+          { "label": "b", "say": "bo1" },
+          { "label": "p", "say": "po1" },
+          { "label": "m", "say": "mo1" },
+          { "label": "f", "say": "fo2" }
+        ],
+        [
+          { "label": "d", "say": "de2" },
+          { "label": "t", "say": "te4" },
+          { "label": "n", "say": "ne4" },
+          { "label": "l", "say": "le4" }
+        ],
+        [
+          { "label": "g", "say": "ge1" },
+          { "label": "k", "say": "ke1" },
+          { "label": "h", "say": "he1" }
+        ],
+        [
+          { "label": "j", "say": "ji1" },
+          { "label": "q", "say": "qi1" },
+          { "label": "x", "say": "xi1" }
+        ],
+        [
+          { "label": "zh", "say": "zhi1" },
+          { "label": "ch", "say": "chi1" },
+          { "label": "sh", "say": "shi1" },
+          { "label": "r", "say": "ri4" }
+        ],
+        [
+          { "label": "z", "say": "zi1" },
+          { "label": "c", "say": "ci1" },
+          { "label": "s", "say": "si1" }
+        ],
+        [
+          { "label": "y", "say": "yi1" },
+          { "label": "w", "say": "wu1" }
+        ]
+      ]
+    },
+    {
+      "id": "compound-finals",
+      "title": "Compound finals",
+      "rows": [
+        [
+          { "label": "ai", "say": "ai1" },
+          { "label": "ei", "say": "ei1" },
+          { "label": "ui", "say": "wei1" },
+          { "label": "ao", "say": "ao1" },
+          { "label": "ou", "say": "ou1" }
+        ],
+        [
+          { "label": "iu", "say": "you1" },
+          { "label": "ie", "say": "ye1" },
+          { "label": "üe", "say": "yue1" },
+          { "label": "er", "say": "er2" }
+        ]
+      ]
+    },
+    {
+      "id": "nasal-finals",
+      "title": "Nasal finals",
+      "rows": [
+        [
+          { "label": "an", "say": "an1" },
+          { "label": "en", "say": "en1" },
+          { "label": "in", "say": "yin1" },
+          { "label": "un", "say": "wen1" },
+          { "label": "ün", "say": "yun1" }
+        ],
+        [
+          { "label": "ang", "say": "ang1" },
+          { "label": "eng", "say": "eng1" },
+          { "label": "ing", "say": "ying1" },
+          { "label": "ong", "say": "hong1" }
+        ]
+      ]
+    },
+    {
+      "id": "whole-syllables",
+      "title": "Whole syllables",
+      "rows": [
+        [
+          { "label": "zhi", "say": "zhi1" },
+          { "label": "chi", "say": "chi1" },
+          { "label": "shi", "say": "shi1" },
+          { "label": "ri", "say": "ri4" },
+          { "label": "zi", "say": "zi1" },
+          { "label": "ci", "say": "ci1" },
+          { "label": "si", "say": "si1" }
+        ],
+        [
+          { "label": "yi", "say": "yi1" },
+          { "label": "wu", "say": "wu1" },
+          { "label": "yu", "say": "yu1" }
+        ],
+        [
+          { "label": "ye", "say": "ye1" },
+          { "label": "yue", "say": "yue1" },
+          { "label": "yuan", "say": "yuan1" }
+        ],
+        [
+          { "label": "yin", "say": "yin1" },
+          { "label": "yun", "say": "yun1" },
+          { "label": "ying", "say": "ying1" }
+        ]
+      ]
+    }
+  ],
+  "toneExample": "ba",
+  "rules": [
+    {
+      "id": "mark",
+      "title": "Where the tone mark goes",
+      "explain": "On a or e if there is one; on the o in ou; otherwise on the last vowel.",
+      "practice": [
+        { "prompt": "hao3", "choices": ["hǎo", "haǒ"], "answer": "hǎo" },
+        { "prompt": "gou3", "choices": ["gǒu", "goǔ"], "answer": "gǒu" },
+        { "prompt": "liu4", "choices": ["lìu", "liù"], "answer": "liù" }
+      ]
+    },
+    {
+      "id": "u-dots",
+      "title": "ü loses its dots",
+      "explain": "After j, q, x and y, ü is written u but still sounds like ü.",
+      "practice": [
+        { "prompt": "j + ü", "choices": ["ju", "jü"], "answer": "ju", "say": "ju1" },
+        { "prompt": "q + ü", "choices": ["qü", "qu"], "answer": "qu", "say": "qu4" },
+        { "prompt": "y + ü", "choices": ["yu", "yü"], "answer": "yu", "say": "yu2" }
+      ]
+    },
+    {
+      "id": "third-third",
+      "title": "Two 3rd tones in a row",
+      "explain": "The first one becomes a 2nd tone. 你好 is written nǐ hǎo but said ní hǎo.",
+      "practice": [
+        { "prompt": "你好 nǐ hǎo", "choices": ["ní hǎo", "nǐ hǎo"], "answer": "ní hǎo", "say": "ni2 hao3" },
+        { "prompt": "很好 hěn hǎo", "choices": ["hěn hǎo", "hén hǎo"], "answer": "hén hǎo", "say": "hen2 hao3" },
+        { "prompt": "水果 shuǐguǒ", "choices": ["shuíguǒ", "shuǐguǒ"], "answer": "shuíguǒ", "say": "shui2 guo3" }
+      ]
+    },
+    {
+      "id": "bu",
+      "title": "不 bù before a 4th tone",
+      "explain": "不 bù becomes bú before a 4th tone.",
+      "practice": [
+        { "prompt": "不是", "choices": ["bù shì", "bú shì"], "answer": "bú shì", "say": "bu2 shi4" },
+        { "prompt": "不要", "choices": ["bú yào", "bù yào"], "answer": "bú yào", "say": "bu2 yao4" },
+        { "prompt": "不好", "choices": ["bú hǎo", "bù hǎo"], "answer": "bù hǎo", "say": "bu4 hao3" }
+      ]
+    },
+    {
+      "id": "yi",
+      "title": "一 yī changes too",
+      "explain": "一 yī becomes yí before a 4th tone and yì before the other tones.",
+      "practice": [
+        { "prompt": "一个", "choices": ["yí gè", "yì gè"], "answer": "yí gè", "say": "yi2 ge4" },
+        { "prompt": "一天", "choices": ["yí tiān", "yì tiān"], "answer": "yì tiān", "say": "yi4 tian1" },
+        { "prompt": "一起", "choices": ["yì qǐ", "yí qǐ"], "answer": "yì qǐ", "say": "yi4 qi3" }
+      ]
+    }
+  ]
+}

@@ -1,9 +1,12 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import CharacterScreen from './screens/character/CharacterScreen';
 import Home from './screens/Home';
 import PictureCardScreen from './screens/PictureCardScreen';
 import SectionScreen from './screens/SectionScreen';
 import { SECTIONS, type SectionId } from './sections';
+
+// The playground carries pinyin-pro, so it loads only when opened.
+const PinyinScreen = lazy(() => import('./screens/pinyin/PinyinScreen'));
 
 interface Route {
   section: SectionId | null;
@@ -42,6 +45,13 @@ export default function App() {
         onBack={() => go('roots')}
         onOpen={(c) => go('roots', c)}
       />
+    );
+  }
+  if (route.section === 'pinyin') {
+    return (
+      <Suspense fallback={null}>
+        <PinyinScreen page={route.char} onHome={() => go(null)} onPage={(p) => go('pinyin', p ?? undefined)} />
+      </Suspense>
     );
   }
   if (route.section === 'pictures' && route.char) {

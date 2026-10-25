@@ -49,6 +49,18 @@ generated from its parts or etymology, and is listed in
 `content/generated/picture-queue.json` until someone draws and approves its
 picture.
 
+`npm run audio` downloads the audio-cmn syllable recordings (24 kbps, about
+7 MB for 1,679 syllables) into `public/audio/syllables/` and lists them in
+`public/data/syllables.json`. They are committed, so the app works offline.
+The pinyin chart is built from that list, so every cell is a real syllable
+with sound. Most neutral-tone recordings don't exist in audio-cmn; the tone
+lessons use ba (bā bá bǎ bà ba), which has all five.
+
+`content/pinyin.json` holds the Pinyin Playground: the sound groups, what each
+tile plays, and the five rules with their practice items. Tests check that
+every sound has a recording and that the tone-mark and 一/不 answers agree
+with pinyin-pro.
+
 Stages 6 (sound helpers) and 7 (words) are drafted in the content file with
 `"ready": false`; flip the flag when they're filled in.
 
@@ -59,14 +71,16 @@ Stages 6 (sound helpers) and 7 (words) are drafted in the content file with
 | [Make Me a Hanzi](https://github.com/skishore/makemeahanzi) `dictionary.txt`, pinned commit | Decomposition, etymology, stroke-to-part map, definitions | LGPL-3.0 or later (copy in `public/data/licenses/LGPL.txt`) |
 | [hanzi-writer-data](https://github.com/chanind/hanzi-writer-data) | Stroke paths and medians | Arphic Public License (copy in `public/data/licenses/ARPHICPL.TXT`) |
 | [cjklib](https://github.com/cburgmer/cjklib) `strokeorder.csv` | Cross-check for stroke names (not shipped) | LGPL-3.0 or later |
+| [audio-cmn](https://github.com/hugolpz/audio-cmn) syllables, pinned commit | Native recordings of every syllable; speaker Chen Wang | CC BY-SA, credit required |
+| [pinyin-pro](https://github.com/zh-lx/pinyin-pro) | Tone-mark conversion, 一/不 tone changes | MIT |
 | [HanziJS](https://github.com/nieldlr/hanzi) | Character frequency rank, at build time only | MIT |
 | [Hanzi Writer](https://github.com/chanind/hanzi-writer) | Stroke animation; tracing later | MIT |
 | [Framer Motion](https://github.com/motiondivision/motion) | The put-together animation | MIT |
 
 Before any app-store release, re-check each license against how the app is
 distributed. In particular, the Arphic license and the LGPL both require the
-license text to ship with the data, and audio-cmn (planned) is CC BY-SA and
-needs credit to its speakers.
+license text to ship with the data, and audio-cmn is CC BY-SA and needs
+credit to its speaker, Chen Wang, on the credits screen.
 
 ## Milestones
 
@@ -77,7 +91,9 @@ needs credit to its speakers.
    Build-a-Character game come with the practice and game layer.
 3. **Picture cards** and the morph animation for the 20 starter mnemonics.
    *Done.*
-4. Pinyin Playground.
+4. **Pinyin Playground**: sounds, tones with shapes and hand motions, the
+   five rules with practice, and the five games (chart, build a syllable,
+   which tone, tone painter, type it). *Done.*
 5. Speak Mandarin.
 6. Practice and game layer: FSRS scheduling, daily adventure, mascot,
    mini-games, garden, parent area.
