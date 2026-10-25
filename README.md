@@ -34,6 +34,12 @@ dataset, a compound uses a part not yet taught, or the pinyin doesn't match
 the dictionary. The generated files are committed, so the app builds without
 network access. The app never loads a raw dataset.
 
+`content/stroke-names.json` names every stroke (横, 竖, 撇折…) in writing
+order, following the standard school stroke order. The build checks the count
+against the stroke data, and a test checks that each simple stroke points the
+way its name says. 艸 is not yet named. The list needs a review by a Chinese
+teacher before release.
+
 Stages 6 (sound helpers) and 7 (words) are drafted in the content file with
 `"ready": false`; flip the flag when they're filled in.
 
@@ -43,8 +49,10 @@ Stages 6 (sound helpers) and 7 (words) are drafted in the content file with
 |---|---|---|
 | [Make Me a Hanzi](https://github.com/skishore/makemeahanzi) `dictionary.txt`, pinned commit | Decomposition, etymology, stroke-to-part map, definitions | LGPL-3.0 or later (copy in `public/data/licenses/LGPL.txt`) |
 | [hanzi-writer-data](https://github.com/chanind/hanzi-writer-data) | Stroke paths and medians | Arphic Public License (copy in `public/data/licenses/ARPHICPL.TXT`) |
+| [cjklib](https://github.com/cburgmer/cjklib) `strokeorder.csv` | Cross-check for stroke names (not shipped) | LGPL-3.0 or later |
 | [HanziJS](https://github.com/nieldlr/hanzi) | Character frequency rank, at build time only | MIT |
-| [Hanzi Writer](https://github.com/chanind/hanzi-writer) | Stroke animation and tracing (next milestone) | MIT |
+| [Hanzi Writer](https://github.com/chanind/hanzi-writer) | Stroke animation; tracing later | MIT |
+| [Framer Motion](https://github.com/motiondivision/motion) | The put-together animation | MIT |
 
 Before any app-store release, re-check each license against how the app is
 distributed. In particular, the Arphic license and the LGPL both require the
@@ -55,8 +63,9 @@ needs credit to its speakers.
 
 1. **Data pipeline** for the 20 stage-1 roots, the stage-3 side forms and the
    stage 4–5 characters, with tests. *Done.*
-2. Character Roots detail screen: watch, stroke by stroke, take apart, put
-   together, family.
+2. **Character Roots detail screen**: watch, stroke by stroke, take apart, put
+   together, family, for every seed character. *Done.* Tracing and the
+   Build-a-Character game come with the practice and game layer.
 3. Picture cards and morph animation for the 20 starter mnemonics.
 4. Pinyin Playground.
 5. Speak Mandarin.

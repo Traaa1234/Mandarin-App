@@ -1,9 +1,16 @@
-import { useEffect, useState } from 'react';
-import type { DataIndex } from '../data/types';
+import { useIndex } from '../data/useData';
 import { toneClass } from '../lib/tones';
 import { SECTIONS, type SectionId } from '../sections';
 
-export default function SectionScreen({ id, onHome }: { id: SectionId; onHome: () => void }) {
+export default function SectionScreen({
+  id,
+  onHome,
+  onOpenChar,
+}: {
+  id: SectionId;
+  onHome: () => void;
+  onOpenChar: (char: string) => void;
+}) {
   const section = SECTIONS.find((s) => s.id === id)!;
 
   return (
@@ -18,44 +25,56 @@ export default function SectionScreen({ id, onHome }: { id: SectionId; onHome: (
           ←
         </button>
         <span className={`${section.color} block size-16 rounded-2xl p-2`}>{section.icon}</span>
-        <h1 className="han text-3xl font-bold">{section.han}</h1>
+        <h1 className="han text-3xl font-bold">
+          <span className="block text-base font-normal">{section.pinyin}</span>
+          {section.han}
+        </h1>
       </header>
-      {id === 'roots' ? <RootTiles /> : <ComingSoon />}
+      {id === 'roots' ? <StageTiles onOpen={onOpenChar} /> : <ComingSoon />}
     </main>
   );
 }
 
-// The stage-1 picture roots, straight from the generated data. The detail
-// screen for each character comes in the next milestone.
-function RootTiles() {
-  const [index, setIndex] = useState<DataIndex | null>(null);
-
-  useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}data/index.json`)
-      .then((r) => r.json() as Promise<DataIndex>)
-      .then(setIndex)
-      .catch(() => setIndex(null));
-  }, []);
-
+// Every built character, grouped by stage. The stage map with unlocking comes
+// with the game layer; for now every stage is open.
+function StageTiles({ onOpen }: { onOpen: (char: string) => void }) {
+  const index = useIndex();
   if (!index) return null;
-  const roots = index.stages.find((s) => s.id === 1)?.chars ?? [];
 
   return (
-    <ul className="grid grid-cols-3 gap-3 sm:grid-cols-5">
-      {roots.map((c) => {
-        const entry = index.chars[c];
-        return (
-          <li
-            key={c}
-            className="flex aspect-square flex-col items-center justify-center rounded-2xl bg-white shadow-sm"
-          >
-            <span className={`text-base ${toneClass(entry.pinyin)}`}>{entry.pinyin}</span>
-            <span className="han text-5xl leading-tight">{c}</span>
-            <span className="text-xs text-ink/50">{entry.gloss}</span>
-          </li>
-        );
-      })}
-    </ul>
+    <div className="flex flex-col gap-8">
+      {index.stages
+        .filter((s) => s.chars.length)
+        .map((stage) => (
+          <section key={stage.id} aria-label={stage.island}>
+            <h2 className="mb-3 flex items-center gap-3 text-lg font-bold">
+              <span className="flex size-10 items-center justify-center rounded-full bg-[#ffe8a3]">
+                {stage.id}
+              </span>
+              {stage.island}
+            </h2>
+            <ul className="grid grid-cols-3 gap-3 sm:grid-cols-5">
+              {stage.chars.map((c) => {
+                const entry = index.chars[c];
+                return (
+                  <li key={c}>
+                    <button
+                      type="button"
+                      onClick={() => onOpen(c)}
+                      aria-label={`${c}, ${entry.gloss}`}
+                      className="flex aspect-square w-full flex-col items-center justify-center rounded-2xl bg-white shadow-sm active:scale-95"
+                    >
+                      <span className={`text-base ${toneClass(entry.pinyin)}`}>{entry.pinyin}</span>
+                      <span className="han text-5xl leading-tight">{c}</span>
+                      <span className="text-xs text-ink/50">{entry.gloss}</span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        ))}
+    </div>
   );
 }
 

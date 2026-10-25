@@ -12,6 +12,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "framer-motion": "^14.6.0",
     "hanzi-writer": "^3.7.3",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"

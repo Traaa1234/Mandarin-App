@@ -34,6 +34,8 @@ export interface CharData {
   // For each stroke, the path into the decomposition tree of the part it belongs to,
   // or null when the source does not say.
   matches: (number[] | null)[];
+  // Name of each stroke in writing order (横, 竖, 撇折…), or null when not yet checked.
+  strokeNames: string[] | null;
   frequencyRank: number | null;
   strokes: string[];
   medians: number[][][];

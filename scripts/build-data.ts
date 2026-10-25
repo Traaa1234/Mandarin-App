@@ -11,7 +11,7 @@ import { createRequire } from 'node:module';
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync, copyFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { leaves, stripTones } from './lib/ids.ts';
+import { leaves, stripTones } from '../src/lib/ids.ts';
 import { charFile } from '../src/data/types.ts';
 import type { CharData, DataIndex, Etymology, Role } from '../src/data/types.ts';
 
@@ -77,6 +77,9 @@ async function main() {
   const content = JSON.parse(readFileSync(join(ROOT, 'content', 'stages.json'), 'utf8')) as {
     stages: ContentStage[];
   };
+  const strokeNames = JSON.parse(
+    readFileSync(join(ROOT, 'content', 'stroke-names.json'), 'utf8'),
+  ).names as Record<string, string | null>;
   const dict = loadDictionary(await cached('dictionary.txt'));
   const lgpl = await cached('LGPL');
   const strokeDir = dirname(require.resolve('hanzi-writer-data/package.json'));
@@ -147,6 +150,13 @@ async function main() {
         );
       }
 
+      // Every character needs an entry in stroke-names.json; null means "not checked yet".
+      const names = strokeNames[c] === undefined ? undefined : strokeNames[c]?.split(' ') ?? null;
+      if (names === undefined) errors.push(`${where}: missing from content/stroke-names.json`);
+      else if (names && names.length !== strokeData.strokes.length) {
+        errors.push(`${where}: ${names.length} stroke names but ${strokeData.strokes.length} strokes`);
+      }
+
       const data: CharData = {
         character: c,
         pinyin: item.pinyin,
@@ -161,6 +171,7 @@ async function main() {
         ...(entry.etymology ? { etymology: entry.etymology } : {}),
         radical: entry.radical,
         matches: entry.matches,
+        strokeNames: names ?? null,
         frequencyRank: frequencyRank(c),
         strokes: strokeData.strokes,
         medians: strokeData.medians,

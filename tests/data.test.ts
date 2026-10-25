@@ -73,6 +73,27 @@ describe('generated data', () => {
     expect(byChar.get('好')!.matches).toEqual([[0], [0], [0], [1], [1], [1]]);
   });
 
+  it('names every stroke, and each simple stroke points the way its name says', () => {
+    // Make Me a Hanzi's y axis points up. 点 and compound strokes are not checked.
+    const fits: Record<string, (dx: number, dy: number) => boolean> = {
+      横: (dx, dy) => dx > 0 && Math.abs(dy) < 0.35 * dx,
+      竖: (dx, dy) => dy < 0 && Math.abs(dx) < 0.5 * -dy,
+      提: (dx, dy) => dx > 0 && dy > -0.1 * dx,
+      撇: (dx, dy) => dx < 0 && dy < 0,
+      捺: (dx, dy) => dx > 0 && dy < 0,
+    };
+    for (const d of chars) {
+      if (d.character === '艸') continue; // not yet checked, see content/stroke-names.json
+      expect(d.strokeNames, d.character).toHaveLength(d.strokes.length);
+      d.strokeNames!.forEach((name, i) => {
+        const median = d.medians[i];
+        const [x0, y0] = median[0];
+        const [x1, y1] = median[median.length - 1];
+        expect(fits[name]?.(x1 - x0, y1 - y0) ?? true, `${d.character} stroke ${i + 1} ${name}`).toBe(true);
+      });
+    }
+  });
+
   it('uses tone-marked pinyin for every item', () => {
     for (const d of chars) {
       expect(d.pinyin, d.character).toMatch(/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/);

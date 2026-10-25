@@ -48,3 +48,33 @@ export function stripTones(pinyin: string): string {
     .normalize('NFC')
     .toLowerCase();
 }
+
+export interface Leaf {
+  char: string;
+  // Position in the decomposition tree: ⿱木⿰木木 has leaves at [0], [1, 0] and [1, 1].
+  path: number[];
+}
+
+// Every known component with its tree path, left to right.
+export function leafPaths(ids: string): Leaf[] {
+  const out: Leaf[] = [];
+  const walk = (node: IdsNode, path: number[]) => {
+    if (typeof node === 'string') {
+      if (node !== UNKNOWN) out.push({ char: node, path });
+    } else node.parts.forEach((part, i) => walk(part, [...path, i]));
+  };
+  walk(parseIds(ids), []);
+  return out;
+}
+
+// For each stroke, the index of the leaf it belongs to, from Make Me a Hanzi's
+// `matches` field, or -1 when the source does not say. A match that stops at an
+// inner node of the tree goes to the first leaf below it.
+export function strokeLeaves(matches: (number[] | null)[], leafList: Leaf[]): number[] {
+  return matches.map((match) => {
+    if (!match) return -1;
+    return leafList.findIndex(
+      (leaf) => match.length <= leaf.path.length && match.every((step, i) => leaf.path[i] === step),
+    );
+  });
+}
