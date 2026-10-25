@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  /* Tone colors, used everywhere on pinyin and characters. */
+  --color-tone-1: #e0393e;
+  --color-tone-2: #2f9e44;
+  --color-tone-3: #1c7ed6;
+  --color-tone-4: #8e44ad;
+  --color-tone-5: #868e96;
+
+  --color-paper: #fdf6e3;
+  --color-ink: #2b2b2b;
+  --font-han: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+html,
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+.han {
+  font-family: var(--font-han);
+}

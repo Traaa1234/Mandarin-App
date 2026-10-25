@@ -1,0 +1,567 @@
+{
+ "stages": [
+  {
+   "id": 1,
+   "key": "picture-roots",
+   "title": "Picture roots",
+   "island": "Picture Meadow",
+   "ready": true,
+   "chars": [
+    "人",
+    "口",
+    "日",
+    "月",
+    "山",
+    "水",
+    "火",
+    "木",
+    "女",
+    "子",
+    "大",
+    "小",
+    "目",
+    "手",
+    "心",
+    "田",
+    "土",
+    "雨",
+    "马",
+    "鱼"
+   ]
+  },
+  {
+   "id": 2,
+   "key": "stroke-basics",
+   "title": "Stroke basics",
+   "island": "Stroke Valley",
+   "ready": true,
+   "chars": []
+  },
+  {
+   "id": 3,
+   "key": "root-costumes",
+   "title": "Root costumes",
+   "island": "Costume Castle",
+   "ready": true,
+   "chars": [
+    "亻",
+    "氵",
+    "忄",
+    "扌",
+    "言",
+    "讠",
+    "灬",
+    "艸",
+    "艹"
+   ]
+  },
+  {
+   "id": 4,
+   "key": "doubles-and-triples",
+   "title": "Doubles and triples",
+   "island": "Twin Forest",
+   "ready": true,
+   "chars": [
+    "林",
+    "森",
+    "从",
+    "众",
+    "炎",
+    "晶",
+    "品"
+   ]
+  },
+  {
+   "id": 5,
+   "key": "meaning-combos",
+   "title": "Meaning combos",
+   "island": "Combo Kitchen",
+   "ready": true,
+   "chars": [
+    "力",
+    "鸟",
+    "不",
+    "正",
+    "宀",
+    "明",
+    "好",
+    "休",
+    "男",
+    "鸣",
+    "尖",
+    "歪",
+    "安"
+   ]
+  },
+  {
+   "id": 6,
+   "key": "sound-helpers",
+   "title": "Sound helpers",
+   "island": "Sound Harbor",
+   "ready": false,
+   "chars": []
+  },
+  {
+   "id": 7,
+   "key": "words",
+   "title": "Words",
+   "island": "Word Village",
+   "ready": false,
+   "chars": []
+  }
+ ],
+ "chars": {
+  "人": {
+   "stage": 1,
+   "order": 0,
+   "role": "root",
+   "pinyin": "rén",
+   "gloss": "person",
+   "frequencyRank": 7
+  },
+  "口": {
+   "stage": 1,
+   "order": 1,
+   "role": "root",
+   "pinyin": "kǒu",
+   "gloss": "mouth",
+   "frequencyRank": 212
+  },
+  "日": {
+   "stage": 1,
+   "order": 2,
+   "role": "root",
+   "pinyin": "rì",
+   "gloss": "sun, day",
+   "frequencyRank": 101
+  },
+  "月": {
+   "stage": 1,
+   "order": 3,
+   "role": "root",
+   "pinyin": "yuè",
+   "gloss": "moon, month",
+   "frequencyRank": 169
+  },
+  "山": {
+   "stage": 1,
+   "order": 4,
+   "role": "root",
+   "pinyin": "shān",
+   "gloss": "mountain",
+   "frequencyRank": 259
+  },
+  "水": {
+   "stage": 1,
+   "order": 5,
+   "role": "root",
+   "pinyin": "shuǐ",
+   "gloss": "water",
+   "frequencyRank": 202
+  },
+  "火": {
+   "stage": 1,
+   "order": 6,
+   "role": "root",
+   "pinyin": "huǒ",
+   "gloss": "fire",
+   "frequencyRank": 433
+  },
+  "木": {
+   "stage": 1,
+   "order": 7,
+   "role": "root",
+   "pinyin": "mù",
+   "gloss": "tree",
+   "frequencyRank": 693
+  },
+  "女": {
+   "stage": 1,
+   "order": 8,
+   "role": "root",
+   "pinyin": "nǚ",
+   "gloss": "woman",
+   "frequencyRank": 224
+  },
+  "子": {
+   "stage": 1,
+   "order": 9,
+   "role": "root",
+   "pinyin": "zǐ",
+   "gloss": "child",
+   "frequencyRank": 37
+  },
+  "大": {
+   "stage": 1,
+   "order": 10,
+   "role": "root",
+   "pinyin": "dà",
+   "gloss": "big",
+   "frequencyRank": 17
+  },
+  "小": {
+   "stage": 1,
+   "order": 11,
+   "role": "root",
+   "pinyin": "xiǎo",
+   "gloss": "small",
+   "frequencyRank": 83
+  },
+  "目": {
+   "stage": 1,
+   "order": 12,
+   "role": "root",
+   "pinyin": "mù",
+   "gloss": "eye",
+   "frequencyRank": 239
+  },
+  "手": {
+   "stage": 1,
+   "order": 13,
+   "role": "root",
+   "pinyin": "shǒu",
+   "gloss": "hand",
+   "frequencyRank": 143
+  },
+  "心": {
+   "stage": 1,
+   "order": 14,
+   "role": "root",
+   "pinyin": "xīn",
+   "gloss": "heart",
+   "frequencyRank": 90
+  },
+  "田": {
+   "stage": 1,
+   "order": 15,
+   "role": "root",
+   "pinyin": "tián",
+   "gloss": "field",
+   "frequencyRank": 776
+  },
+  "土": {
+   "stage": 1,
+   "order": 16,
+   "role": "root",
+   "pinyin": "tǔ",
+   "gloss": "earth, soil",
+   "frequencyRank": 515
+  },
+  "雨": {
+   "stage": 1,
+   "order": 17,
+   "role": "root",
+   "pinyin": "yǔ",
+   "gloss": "rain",
+   "frequencyRank": 926
+  },
+  "马": {
+   "stage": 1,
+   "order": 18,
+   "role": "root",
+   "pinyin": "mǎ",
+   "gloss": "horse",
+   "frequencyRank": 276
+  },
+  "鱼": {
+   "stage": 1,
+   "order": 19,
+   "role": "root",
+   "pinyin": "yú",
+   "gloss": "fish",
+   "frequencyRank": 850
+  },
+  "亻": {
+   "stage": 3,
+   "order": 20,
+   "role": "costume",
+   "pinyin": "rén",
+   "gloss": "person (side form)",
+   "frequencyRank": null
+  },
+  "氵": {
+   "stage": 3,
+   "order": 21,
+   "role": "costume",
+   "pinyin": "shuǐ",
+   "gloss": "water (side form)",
+   "frequencyRank": null
+  },
+  "忄": {
+   "stage": 3,
+   "order": 22,
+   "role": "costume",
+   "pinyin": "xīn",
+   "gloss": "heart (side form)",
+   "frequencyRank": null
+  },
+  "扌": {
+   "stage": 3,
+   "order": 23,
+   "role": "costume",
+   "pinyin": "shǒu",
+   "gloss": "hand (side form)",
+   "frequencyRank": null
+  },
+  "言": {
+   "stage": 3,
+   "order": 24,
+   "role": "helper",
+   "pinyin": "yán",
+   "gloss": "words, speech",
+   "frequencyRank": 355
+  },
+  "讠": {
+   "stage": 3,
+   "order": 25,
+   "role": "costume",
+   "pinyin": "yán",
+   "gloss": "words (side form)",
+   "frequencyRank": null
+  },
+  "灬": {
+   "stage": 3,
+   "order": 26,
+   "role": "costume",
+   "pinyin": "huǒ",
+   "gloss": "fire (bottom form)",
+   "frequencyRank": null
+  },
+  "艸": {
+   "stage": 3,
+   "order": 27,
+   "role": "helper",
+   "pinyin": "cǎo",
+   "gloss": "grass",
+   "frequencyRank": 8867
+  },
+  "艹": {
+   "stage": 3,
+   "order": 28,
+   "role": "costume",
+   "pinyin": "cǎo",
+   "gloss": "grass (top form)",
+   "frequencyRank": null
+  },
+  "林": {
+   "stage": 4,
+   "order": 29,
+   "role": "compound",
+   "pinyin": "lín",
+   "gloss": "woods",
+   "frequencyRank": 364
+  },
+  "森": {
+   "stage": 4,
+   "order": 30,
+   "role": "compound",
+   "pinyin": "sēn",
+   "gloss": "forest",
+   "frequencyRank": 1027
+  },
+  "从": {
+   "stage": 4,
+   "order": 31,
+   "role": "compound",
+   "pinyin": "cóng",
+   "gloss": "follow",
+   "frequencyRank": 98
+  },
+  "众": {
+   "stage": 4,
+   "order": 32,
+   "role": "compound",
+   "pinyin": "zhòng",
+   "gloss": "crowd",
+   "frequencyRank": 510
+  },
+  "炎": {
+   "stage": 4,
+   "order": 33,
+   "role": "compound",
+   "pinyin": "yán",
+   "gloss": "blazing",
+   "frequencyRank": 1322
+  },
+  "晶": {
+   "stage": 4,
+   "order": 34,
+   "role": "compound",
+   "pinyin": "jīng",
+   "gloss": "sparkling",
+   "frequencyRank": 1723
+  },
+  "品": {
+   "stage": 4,
+   "order": 35,
+   "role": "compound",
+   "pinyin": "pǐn",
+   "gloss": "goods",
+   "frequencyRank": 308
+  },
+  "力": {
+   "stage": 5,
+   "order": 36,
+   "role": "helper",
+   "pinyin": "lì",
+   "gloss": "strength",
+   "frequencyRank": 106
+  },
+  "鸟": {
+   "stage": 5,
+   "order": 37,
+   "role": "helper",
+   "pinyin": "niǎo",
+   "gloss": "bird",
+   "frequencyRank": 1261
+  },
+  "不": {
+   "stage": 5,
+   "order": 38,
+   "role": "helper",
+   "pinyin": "bù",
+   "gloss": "not",
+   "frequencyRank": 4
+  },
+  "正": {
+   "stage": 5,
+   "order": 39,
+   "role": "helper",
+   "pinyin": "zhèng",
+   "gloss": "straight",
+   "frequencyRank": 129
+  },
+  "宀": {
+   "stage": 5,
+   "order": 40,
+   "role": "helper",
+   "pinyin": "mián",
+   "gloss": "roof",
+   "frequencyRank": null
+  },
+  "明": {
+   "stage": 5,
+   "order": 41,
+   "role": "compound",
+   "pinyin": "míng",
+   "gloss": "bright",
+   "frequencyRank": 121
+  },
+  "好": {
+   "stage": 5,
+   "order": 42,
+   "role": "compound",
+   "pinyin": "hǎo",
+   "gloss": "good",
+   "frequencyRank": 82
+  },
+  "休": {
+   "stage": 5,
+   "order": 43,
+   "role": "compound",
+   "pinyin": "xiū",
+   "gloss": "rest",
+   "frequencyRank": 1080
+  },
+  "男": {
+   "stage": 5,
+   "order": 44,
+   "role": "compound",
+   "pinyin": "nán",
+   "gloss": "man",
+   "frequencyRank": 602
+  },
+  "鸣": {
+   "stage": 5,
+   "order": 45,
+   "role": "compound",
+   "pinyin": "míng",
+   "gloss": "birdsong",
+   "frequencyRank": 1678
+  },
+  "尖": {
+   "stage": 5,
+   "order": 46,
+   "role": "compound",
+   "pinyin": "jiān",
+   "gloss": "pointy",
+   "frequencyRank": 1319
+  },
+  "歪": {
+   "stage": 5,
+   "order": 47,
+   "role": "compound",
+   "pinyin": "wāi",
+   "gloss": "crooked",
+   "frequencyRank": 2234
+  },
+  "安": {
+   "stage": 5,
+   "order": 48,
+   "role": "compound",
+   "pinyin": "ān",
+   "gloss": "peaceful",
+   "frequencyRank": 232
+  }
+ },
+ "families": {
+  "木": [
+   "林",
+   "森",
+   "休"
+  ],
+  "人": [
+   "从",
+   "众",
+   "休"
+  ],
+  "火": [
+   "炎"
+  ],
+  "日": [
+   "晶",
+   "明"
+  ],
+  "口": [
+   "品",
+   "鸣"
+  ],
+  "月": [
+   "明"
+  ],
+  "女": [
+   "好",
+   "安"
+  ],
+  "子": [
+   "好"
+  ],
+  "亻": [
+   "休"
+  ],
+  "田": [
+   "男"
+  ],
+  "力": [
+   "男"
+  ],
+  "鸟": [
+   "鸣"
+  ],
+  "小": [
+   "尖"
+  ],
+  "大": [
+   "尖"
+  ],
+  "不": [
+   "歪"
+  ],
+  "正": [
+   "歪"
+  ],
+  "宀": [
+   "安"
+  ]
+ }
+}
