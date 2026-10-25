@@ -1,0 +1,105 @@
+{
+  "note": "Picture cards. 'story' is the memory line; 'picture' describes what public/mnemonics/<codepoint>.svg shows. A picture is shown to children only when 'approved' is true: a parent or designer sets it after looking at the card. Characters without an entry get a generated line and are queued in content/generated/picture-queue.json.",
+  "cards": {
+    "人": {
+      "picture": "A person walking, two legs apart",
+      "story": "Two legs walking — that’s a person.",
+      "approved": true
+    },
+    "口": {
+      "picture": "A wide-open square mouth",
+      "story": "Say ahh — your mouth is a box.",
+      "approved": true
+    },
+    "日": {
+      "picture": "A sun in a window, one line across the middle",
+      "story": "The sun peeks through the window.",
+      "approved": true
+    },
+    "月": {
+      "picture": "A crescent moon with two cloud stripes",
+      "story": "The moon wears two stripes.",
+      "approved": true
+    },
+    "山": {
+      "picture": "Three peaks, the middle one tallest",
+      "story": "Three mountain tops, the big one in the middle.",
+      "approved": true
+    },
+    "水": {
+      "picture": "A waterfall splashing to both sides",
+      "story": "Water splashes left and right.",
+      "approved": true
+    },
+    "火": {
+      "picture": "A campfire with two sparks flying",
+      "story": "A campfire throwing two sparks.",
+      "approved": true
+    },
+    "木": {
+      "picture": "A tree with branches up and roots down",
+      "story": "Branches up, roots down — a tree.",
+      "approved": true
+    },
+    "林": {
+      "picture": "Two trees side by side",
+      "story": "Two trees make a little wood.",
+      "approved": true
+    },
+    "森": {
+      "picture": "Three trees stacked like a pyramid",
+      "story": "Three trees make a big forest.",
+      "approved": true
+    },
+    "女": {
+      "picture": "A woman kneeling with arms crossed",
+      "story": "A lady sits with crossed arms.",
+      "approved": true
+    },
+    "子": {
+      "picture": "A baby wrapped in a blanket, arms out",
+      "story": "A baby in a blanket waves hello.",
+      "approved": true
+    },
+    "好": {
+      "picture": "Mom hugging her baby",
+      "story": "Mom with her child — that’s good!",
+      "approved": true
+    },
+    "明": {
+      "picture": "Sun and moon side by side, glowing",
+      "story": "Sun plus moon — so bright!",
+      "approved": true
+    },
+    "休": {
+      "picture": "A person leaning on a tree",
+      "story": "A person rests against a tree.",
+      "approved": true
+    },
+    "目": {
+      "picture": "An eye turned upright, pupil lines inside",
+      "story": "An eye standing up tall.",
+      "approved": true
+    },
+    "雨": {
+      "picture": "A cloud with four raindrops under it",
+      "story": "Four drops fall from the cloud.",
+      "approved": true
+    },
+    "田": {
+      "picture": "A rice field cut into four squares",
+      "story": "Four squares of rice field.",
+      "approved": true
+    },
+    "马": {
+      "picture": "A horse galloping, mane flying",
+      "story": "A horse runs with its mane flying.",
+      "approved": true
+    },
+    "鱼": {
+      "picture": "A fish swimming down, tail at the bottom",
+      "story": "Head on top, tail below — a fish.",
+      "approved": true
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-112 -112 1248 1248">
+<defs><clipPath id="card-68ee"><rect x="-112" y="-112" width="1248" height="1248" rx="140"/></clipPath></defs>
+<g clip-path="url(#card-68ee)">
+<rect x="-112" y="-112" width="1248" height="1248" rx="140" fill="#dff1ff"/>
+<circle cx="285" cy="470" r="170" fill="#8ccf7e"/><circle cx="660" cy="450" r="180" fill="#8ccf7e"/>
+<circle cx="480" cy="90" r="150" fill="#5fae58"/>
+<path d="M-112 900 Q512 860 1136 900 V1136 H-112Z" fill="#5fae58"/>
+</g>
+</svg>

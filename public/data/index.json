@@ -117,7 +117,8 @@
    "role": "root",
    "pinyin": "rén",
    "gloss": "person",
-   "frequencyRank": 7
+   "frequencyRank": 7,
+   "picture": "mnemonics/4eba.svg"
   },
   "口": {
    "stage": 1,
@@ -125,7 +126,8 @@
    "role": "root",
    "pinyin": "kǒu",
    "gloss": "mouth",
-   "frequencyRank": 212
+   "frequencyRank": 212,
+   "picture": "mnemonics/53e3.svg"
   },
   "日": {
    "stage": 1,
@@ -133,7 +135,8 @@
    "role": "root",
    "pinyin": "rì",
    "gloss": "sun, day",
-   "frequencyRank": 101
+   "frequencyRank": 101,
+   "picture": "mnemonics/65e5.svg"
   },
   "月": {
    "stage": 1,
@@ -141,7 +144,8 @@
    "role": "root",
    "pinyin": "yuè",
    "gloss": "moon, month",
-   "frequencyRank": 169
+   "frequencyRank": 169,
+   "picture": "mnemonics/6708.svg"
   },
   "山": {
    "stage": 1,
@@ -149,7 +153,8 @@
    "role": "root",
    "pinyin": "shān",
    "gloss": "mountain",
-   "frequencyRank": 259
+   "frequencyRank": 259,
+   "picture": "mnemonics/5c71.svg"
   },
   "水": {
    "stage": 1,
@@ -157,7 +162,8 @@
    "role": "root",
    "pinyin": "shuǐ",
    "gloss": "water",
-   "frequencyRank": 202
+   "frequencyRank": 202,
+   "picture": "mnemonics/6c34.svg"
   },
   "火": {
    "stage": 1,
@@ -165,7 +171,8 @@
    "role": "root",
    "pinyin": "huǒ",
    "gloss": "fire",
-   "frequencyRank": 433
+   "frequencyRank": 433,
+   "picture": "mnemonics/706b.svg"
   },
   "木": {
    "stage": 1,
@@ -173,7 +180,8 @@
    "role": "root",
    "pinyin": "mù",
    "gloss": "tree",
-   "frequencyRank": 693
+   "frequencyRank": 693,
+   "picture": "mnemonics/6728.svg"
   },
   "女": {
    "stage": 1,
@@ -181,7 +189,8 @@
    "role": "root",
    "pinyin": "nǚ",
    "gloss": "woman",
-   "frequencyRank": 224
+   "frequencyRank": 224,
+   "picture": "mnemonics/5973.svg"
   },
   "子": {
    "stage": 1,
@@ -189,7 +198,8 @@
    "role": "root",
    "pinyin": "zǐ",
    "gloss": "child",
-   "frequencyRank": 37
+   "frequencyRank": 37,
+   "picture": "mnemonics/5b50.svg"
   },
   "大": {
    "stage": 1,
@@ -197,7 +207,8 @@
    "role": "root",
    "pinyin": "dà",
    "gloss": "big",
-   "frequencyRank": 17
+   "frequencyRank": 17,
+   "picture": null
   },
   "小": {
    "stage": 1,
@@ -205,7 +216,8 @@
    "role": "root",
    "pinyin": "xiǎo",
    "gloss": "small",
-   "frequencyRank": 83
+   "frequencyRank": 83,
+   "picture": null
   },
   "目": {
    "stage": 1,
@@ -213,7 +225,8 @@
    "role": "root",
    "pinyin": "mù",
    "gloss": "eye",
-   "frequencyRank": 239
+   "frequencyRank": 239,
+   "picture": "mnemonics/76ee.svg"
   },
   "手": {
    "stage": 1,
@@ -221,7 +234,8 @@
    "role": "root",
    "pinyin": "shǒu",
    "gloss": "hand",
-   "frequencyRank": 143
+   "frequencyRank": 143,
+   "picture": null
   },
   "心": {
    "stage": 1,
@@ -229,7 +243,8 @@
    "role": "root",
    "pinyin": "xīn",
    "gloss": "heart",
-   "frequencyRank": 90
+   "frequencyRank": 90,
+   "picture": null
   },
   "田": {
    "stage": 1,
@@ -237,7 +252,8 @@
    "role": "root",
    "pinyin": "tián",
    "gloss": "field",
-   "frequencyRank": 776
+   "frequencyRank": 776,
+   "picture": "mnemonics/7530.svg"
   },
   "土": {
    "stage": 1,
@@ -245,7 +261,8 @@
    "role": "root",
    "pinyin": "tǔ",
    "gloss": "earth, soil",
-   "frequencyRank": 515
+   "frequencyRank": 515,
+   "picture": null
   },
   "雨": {
    "stage": 1,
@@ -253,7 +270,8 @@
    "role": "root",
    "pinyin": "yǔ",
    "gloss": "rain",
-   "frequencyRank": 926
+   "frequencyRank": 926,
+   "picture": "mnemonics/96e8.svg"
   },
   "马": {
    "stage": 1,
@@ -261,7 +279,8 @@
    "role": "root",
    "pinyin": "mǎ",
    "gloss": "horse",
-   "frequencyRank": 276
+   "frequencyRank": 276,
+   "picture": "mnemonics/9a6c.svg"
   },
   "鱼": {
    "stage": 1,
@@ -269,7 +288,8 @@
    "role": "root",
    "pinyin": "yú",
    "gloss": "fish",
-   "frequencyRank": 850
+   "frequencyRank": 850,
+   "picture": "mnemonics/9c7c.svg"
   },
   "亻": {
    "stage": 3,
@@ -277,7 +297,8 @@
    "role": "costume",
    "pinyin": "rén",
    "gloss": "person (side form)",
-   "frequencyRank": null
+   "frequencyRank": null,
+   "picture": null
   },
   "氵": {
    "stage": 3,
@@ -285,7 +306,8 @@
    "role": "costume",
    "pinyin": "shuǐ",
    "gloss": "water (side form)",
-   "frequencyRank": null
+   "frequencyRank": null,
+   "picture": null
   },
   "忄": {
    "stage": 3,
@@ -293,7 +315,8 @@
    "role": "costume",
    "pinyin": "xīn",
    "gloss": "heart (side form)",
-   "frequencyRank": null
+   "frequencyRank": null,
+   "picture": null
   },
   "扌": {
    "stage": 3,
@@ -301,7 +324,8 @@
    "role": "costume",
    "pinyin": "shǒu",
    "gloss": "hand (side form)",
-   "frequencyRank": null
+   "frequencyRank": null,
+   "picture": null
   },
   "言": {
    "stage": 3,
@@ -309,7 +333,8 @@
    "role": "helper",
    "pinyin": "yán",
    "gloss": "words, speech",
-   "frequencyRank": 355
+   "frequencyRank": 355,
+   "picture": null
   },
   "讠": {
    "stage": 3,
@@ -317,7 +342,8 @@
    "role": "costume",
    "pinyin": "yán",
    "gloss": "words (side form)",
-   "frequencyRank": null
+   "frequencyRank": null,
+   "picture": null
   },
   "灬": {
    "stage": 3,
@@ -325,7 +351,8 @@
    "role": "costume",
    "pinyin": "huǒ",
    "gloss": "fire (bottom form)",
-   "frequencyRank": null
+   "frequencyRank": null,
+   "picture": null
   },
   "艸": {
    "stage": 3,
@@ -333,7 +360,8 @@
    "role": "helper",
    "pinyin": "cǎo",
    "gloss": "grass",
-   "frequencyRank": 8867
+   "frequencyRank": 8867,
+   "picture": null
   },
   "艹": {
    "stage": 3,
@@ -341,7 +369,8 @@
    "role": "costume",
    "pinyin": "cǎo",
    "gloss": "grass (top form)",
-   "frequencyRank": null
+   "frequencyRank": null,
+   "picture": null
   },
   "林": {
    "stage": 4,
@@ -349,7 +378,8 @@
    "role": "compound",
    "pinyin": "lín",
    "gloss": "woods",
-   "frequencyRank": 364
+   "frequencyRank": 364,
+   "picture": "mnemonics/6797.svg"
   },
   "森": {
    "stage": 4,
@@ -357,7 +387,8 @@
    "role": "compound",
    "pinyin": "sēn",
    "gloss": "forest",
-   "frequencyRank": 1027
+   "frequencyRank": 1027,
+   "picture": "mnemonics/68ee.svg"
   },
   "从": {
    "stage": 4,
@@ -365,7 +396,8 @@
    "role": "compound",
    "pinyin": "cóng",
    "gloss": "follow",
-   "frequencyRank": 98
+   "frequencyRank": 98,
+   "picture": null
   },
   "众": {
    "stage": 4,
@@ -373,7 +405,8 @@
    "role": "compound",
    "pinyin": "zhòng",
    "gloss": "crowd",
-   "frequencyRank": 510
+   "frequencyRank": 510,
+   "picture": null
   },
   "炎": {
    "stage": 4,
@@ -381,7 +414,8 @@
    "role": "compound",
    "pinyin": "yán",
    "gloss": "blazing",
-   "frequencyRank": 1322
+   "frequencyRank": 1322,
+   "picture": null
   },
   "晶": {
    "stage": 4,
@@ -389,7 +423,8 @@
    "role": "compound",
    "pinyin": "jīng",
    "gloss": "sparkling",
-   "frequencyRank": 1723
+   "frequencyRank": 1723,
+   "picture": null
   },
   "品": {
    "stage": 4,
@@ -397,7 +432,8 @@
    "role": "compound",
    "pinyin": "pǐn",
    "gloss": "goods",
-   "frequencyRank": 308
+   "frequencyRank": 308,
+   "picture": null
   },
   "力": {
    "stage": 5,
@@ -405,7 +441,8 @@
    "role": "helper",
    "pinyin": "lì",
    "gloss": "strength",
-   "frequencyRank": 106
+   "frequencyRank": 106,
+   "picture": null
   },
   "鸟": {
    "stage": 5,
@@ -413,7 +450,8 @@
    "role": "helper",
    "pinyin": "niǎo",
    "gloss": "bird",
-   "frequencyRank": 1261
+   "frequencyRank": 1261,
+   "picture": null
   },
   "不": {
    "stage": 5,
@@ -421,7 +459,8 @@
    "role": "helper",
    "pinyin": "bù",
    "gloss": "not",
-   "frequencyRank": 4
+   "frequencyRank": 4,
+   "picture": null
   },
   "正": {
    "stage": 5,
@@ -429,7 +468,8 @@
    "role": "helper",
    "pinyin": "zhèng",
    "gloss": "straight",
-   "frequencyRank": 129
+   "frequencyRank": 129,
+   "picture": null
   },
   "宀": {
    "stage": 5,
@@ -437,7 +477,8 @@
    "role": "helper",
    "pinyin": "mián",
    "gloss": "roof",
-   "frequencyRank": null
+   "frequencyRank": null,
+   "picture": null
   },
   "明": {
    "stage": 5,
@@ -445,7 +486,8 @@
    "role": "compound",
    "pinyin": "míng",
    "gloss": "bright",
-   "frequencyRank": 121
+   "frequencyRank": 121,
+   "picture": "mnemonics/660e.svg"
   },
   "好": {
    "stage": 5,
@@ -453,7 +495,8 @@
    "role": "compound",
    "pinyin": "hǎo",
    "gloss": "good",
-   "frequencyRank": 82
+   "frequencyRank": 82,
+   "picture": "mnemonics/597d.svg"
   },
   "休": {
    "stage": 5,
@@ -461,7 +504,8 @@
    "role": "compound",
    "pinyin": "xiū",
    "gloss": "rest",
-   "frequencyRank": 1080
+   "frequencyRank": 1080,
+   "picture": "mnemonics/4f11.svg"
   },
   "男": {
    "stage": 5,
@@ -469,7 +513,8 @@
    "role": "compound",
    "pinyin": "nán",
    "gloss": "man",
-   "frequencyRank": 602
+   "frequencyRank": 602,
+   "picture": null
   },
   "鸣": {
    "stage": 5,
@@ -477,7 +522,8 @@
    "role": "compound",
    "pinyin": "míng",
    "gloss": "birdsong",
-   "frequencyRank": 1678
+   "frequencyRank": 1678,
+   "picture": null
   },
   "尖": {
    "stage": 5,
@@ -485,7 +531,8 @@
    "role": "compound",
    "pinyin": "jiān",
    "gloss": "pointy",
-   "frequencyRank": 1319
+   "frequencyRank": 1319,
+   "picture": null
   },
   "歪": {
    "stage": 5,
@@ -493,7 +540,8 @@
    "role": "compound",
    "pinyin": "wāi",
    "gloss": "crooked",
-   "frequencyRank": 2234
+   "frequencyRank": 2234,
+   "picture": null
   },
   "安": {
    "stage": 5,
@@ -501,7 +549,8 @@
    "role": "compound",
    "pinyin": "ān",
    "gloss": "peaceful",
-   "frequencyRank": 232
+   "frequencyRank": 232,
+   "picture": null
   }
  },
  "families": {

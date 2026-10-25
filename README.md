@@ -40,6 +40,15 @@ against the stroke data, and a test checks that each simple stroke points the
 way its name says. 艸 is not yet named. The list needs a review by a Chinese
 teacher before release.
 
+`content/mnemonics.json` holds the picture cards: the memory line for each
+starter character and whether its picture is approved. The pictures are
+original flat SVGs in `public/mnemonics/`, drawn in the character's own
+coordinates so the real strokes sit exactly on them. A picture reaches a child
+only when `approved` is true. Every other character gets a memory line
+generated from its parts or etymology, and is listed in
+`content/generated/picture-queue.json` until someone draws and approves its
+picture.
+
 Stages 6 (sound helpers) and 7 (words) are drafted in the content file with
 `"ready": false`; flip the flag when they're filled in.
 
@@ -66,7 +75,8 @@ needs credit to its speakers.
 2. **Character Roots detail screen**: watch, stroke by stroke, take apart, put
    together, family, for every seed character. *Done.* Tracing and the
    Build-a-Character game come with the practice and game layer.
-3. Picture cards and morph animation for the 20 starter mnemonics.
+3. **Picture cards** and the morph animation for the 20 starter mnemonics.
+   *Done.*
 4. Pinyin Playground.
 5. Speak Mandarin.
 6. Practice and game layer: FSRS scheduling, daily adventure, mascot,

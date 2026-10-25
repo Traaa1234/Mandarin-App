@@ -15,6 +15,15 @@ export interface Etymology {
   phonetic?: string;
 }
 
+// The picture card. Pictures appear only once a parent or designer has approved them.
+export interface Mnemonic {
+  story: string;
+  // Path under public/, e.g. mnemonics/597d.svg, or null while no approved picture exists.
+  picture: string | null;
+  // True when the story was generated from the etymology and parts, not written by hand.
+  generated: boolean;
+}
+
 // One file per character: public/data/chars/<codepoint>.json.
 // strokes, medians and radStrokes are Hanzi Writer's format, so the file can be
 // returned as-is from a charDataLoader.
@@ -37,6 +46,7 @@ export interface CharData {
   // Name of each stroke in writing order (横, 竖, 撇折…), or null when not yet checked.
   strokeNames: string[] | null;
   frequencyRank: number | null;
+  mnemonic: Mnemonic;
   strokes: string[];
   medians: number[][][];
   radStrokes?: number[];
@@ -58,6 +68,7 @@ export interface IndexEntry {
   pinyin: string;
   gloss: string;
   frequencyRank: number | null;
+  picture: string | null;
 }
 
 // public/data/index.json
@@ -68,5 +79,7 @@ export interface DataIndex {
   families: Record<string, string[]>;
 }
 
-export const charFile = (char: string) =>
-  `${char.codePointAt(0)!.toString(16)}.json`;
+const codepoint = (char: string) => char.codePointAt(0)!.toString(16);
+
+export const charFile = (char: string) => `${codepoint(char)}.json`;
+export const pictureFile = (char: string) => `mnemonics/${codepoint(char)}.svg`;

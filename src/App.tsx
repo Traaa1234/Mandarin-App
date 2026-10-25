@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import CharacterScreen from './screens/character/CharacterScreen';
 import Home from './screens/Home';
+import PictureCardScreen from './screens/PictureCardScreen';
 import SectionScreen from './screens/SectionScreen';
 import { SECTIONS, type SectionId } from './sections';
 
@@ -43,8 +44,20 @@ export default function App() {
       />
     );
   }
+  if (route.section === 'pictures' && route.char) {
+    return (
+      <PictureCardScreen
+        key={route.char}
+        char={route.char}
+        onBack={() => go('pictures')}
+        onOpen={(c) => go('pictures', c)}
+        onRoots={(c) => go('roots', c)}
+      />
+    );
+  }
   if (route.section) {
-    return <SectionScreen id={route.section} onHome={() => go(null)} onOpenChar={(c) => go('roots', c)} />;
+    const section = route.section;
+    return <SectionScreen id={section} onHome={() => go(null)} onOpenChar={(c) => go(section, c)} />;
   }
   return <Home onOpen={go} />;
 }

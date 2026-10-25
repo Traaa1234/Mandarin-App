@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-112 -112 1248 1248">
+<defs><clipPath id="card-53e3"><rect x="-112" y="-112" width="1248" height="1248" rx="140"/></clipPath></defs>
+<g clip-path="url(#card-53e3)">
+<rect x="-112" y="-112" width="1248" height="1248" rx="140" fill="#fff4d6"/>
+<circle cx="494" cy="470" r="520" fill="#f6c9a0"/>
+<circle cx="350" cy="150" r="48" fill="#3b2a1e"/><circle cx="640" cy="150" r="48" fill="#3b2a1e"/>
+<circle cx="365" cy="135" r="14" fill="#fff"/><circle cx="655" cy="135" r="14" fill="#fff"/>
+<circle cx="150" cy="430" r="70" fill="#ff8fa3" opacity=".6"/><circle cx="840" cy="430" r="70" fill="#ff8fa3" opacity=".6"/>
+<rect x="255" y="315" width="480" height="410" rx="70" fill="#b3263e"/>
+<ellipse cx="500" cy="640" rx="170" ry="70" fill="#ff8fa3"/>
+</g>
+</svg>

@@ -1,4 +1,6 @@
-import { useIndex } from '../data/useData';
+import MnemonicCard from '../components/MnemonicCard';
+import { useChar, useIndex } from '../data/useData';
+import { pictureChars } from './PictureCardScreen';
 import { toneClass } from '../lib/tones';
 import { SECTIONS, type SectionId } from '../sections';
 
@@ -30,7 +32,13 @@ export default function SectionScreen({
           {section.han}
         </h1>
       </header>
-      {id === 'roots' ? <StageTiles onOpen={onOpenChar} /> : <ComingSoon />}
+      {id === 'roots' ? (
+        <StageTiles onOpen={onOpenChar} />
+      ) : id === 'pictures' ? (
+        <PictureTiles onOpen={onOpenChar} />
+      ) : (
+        <ComingSoon />
+      )}
     </main>
   );
 }
@@ -76,6 +84,39 @@ function StageTiles({ onOpen }: { onOpen: (char: string) => void }) {
         ))}
     </div>
   );
+}
+
+// The picture cards, each tile showing its picture with the character on it.
+function PictureTiles({ onOpen }: { onOpen: (char: string) => void }) {
+  const index = useIndex();
+  if (!index) return null;
+
+  return (
+    <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+      {pictureChars(index).map((c) => {
+        const entry = index.chars[c];
+        return (
+          <li key={c}>
+            <button
+              type="button"
+              onClick={() => onOpen(c)}
+              aria-label={`${c}, ${entry.gloss}`}
+              className="flex w-full flex-col items-center gap-1 rounded-2xl bg-white p-2 shadow-sm active:scale-95"
+            >
+              <PictureThumb char={c} />
+              <span className={`text-base ${toneClass(entry.pinyin)}`}>{entry.pinyin}</span>
+              <span className="han -mt-1 text-4xl">{c}</span>
+            </button>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
+function PictureThumb({ char }: { char: string }) {
+  const data = useChar(char);
+  return <div className="aspect-square w-full">{data && <MnemonicCard data={data} still />}</div>;
 }
 
 function ComingSoon() {

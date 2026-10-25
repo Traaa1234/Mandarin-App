@@ -4,7 +4,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { charFile } from '../src/data/types';
+import { charFile, pictureFile } from '../src/data/types';
 import type { CharData, DataIndex } from '../src/data/types';
 
 const ROOT = join(import.meta.dirname, '..');
@@ -97,6 +97,33 @@ describe('generated data', () => {
   it('uses tone-marked pinyin for every item', () => {
     for (const d of chars) {
       expect(d.pinyin, d.character).toMatch(/[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/);
+    }
+  });
+
+  it('gives every character a memory line, and the 20 starter cards a picture', () => {
+    for (const d of chars) expect(d.mnemonic.story, d.character).not.toBe('');
+    const starters = [...'人口日月山水火木林森女子好明休目雨田马鱼'];
+    for (const c of starters) {
+      const d = byChar.get(c)!;
+      expect(d.mnemonic.generated, c).toBe(false);
+      expect(d.mnemonic.picture, c).toBe(pictureFile(c));
+      expect(index.chars[c].picture).toBe(pictureFile(c));
+    }
+    // 好's line is hand-written; 安's is generated from its parts.
+    expect(byChar.get('安')!.mnemonic).toEqual({
+      story: '宀 roof + 女 woman = 安 peaceful.',
+      picture: null,
+      generated: true,
+    });
+  });
+
+  it('draws each picture in the card frame, clipped to its rounded corners', () => {
+    for (const file of readdirSync(join(ROOT, 'public', 'mnemonics'))) {
+      const svg = readFileSync(join(ROOT, 'public', 'mnemonics', file), 'utf8');
+      expect(svg, file).toContain('viewBox="-112 -112 1248 1248"');
+      expect(svg, file).toContain(`clip-path="url(#card-${file.replace('.svg', '')})"`);
+      // Original drawings only: no embedded photos or linked images.
+      expect(svg, file).not.toMatch(/<image|href=/);
     }
   });
 

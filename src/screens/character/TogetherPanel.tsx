@@ -2,6 +2,7 @@ import HanziWriter from 'hanzi-writer';
 import { motion } from 'framer-motion';
 import { Fragment, useState } from 'react';
 import BigButton from '../../components/BigButton';
+import MnemonicCard from '../../components/MnemonicCard';
 import StrokeSvg from '../../components/StrokeSvg';
 import TianGrid from '../../components/TianGrid';
 import { useBoxSize } from '../../components/useBoxSize';
@@ -137,8 +138,7 @@ export default function TogetherPanel({
   );
 }
 
-// Roots and costumes have no parts to join. A pictograph shows where it came from;
-// the picture itself arrives with the Picture Cards milestone.
+// Roots and costumes have no parts to join. A root shows the picture it came from.
 function RootCard({
   data,
   index,
@@ -152,7 +152,11 @@ function RootCard({
 }) {
   return (
     <div className="flex flex-col items-center gap-4 text-center">
-      <StrokeSvg strokes={data.strokes} colors={data.strokes.map(() => INK)} size={size} />
+      {data.mnemonic.picture ? (
+        <MnemonicCard data={data} size={size} />
+      ) : (
+        <StrokeSvg strokes={data.strokes} colors={data.strokes.map(() => INK)} size={size} />
+      )}
       {data.role === 'costume' && data.costumeOf && (
         <div className="flex items-center gap-3 text-3xl">
           <PartChip char={data.costumeOf} index={index} onOpen={onOpen} />
@@ -160,7 +164,7 @@ function RootCard({
           <PartChip char={data.character} index={index} onOpen={onOpen} />
         </div>
       )}
-      {data.etymology?.hint && <p className="max-w-sm text-sm text-ink/50">{data.etymology.hint}</p>}
+      <p className="max-w-sm text-sm text-ink/50">{data.mnemonic.story}</p>
     </div>
   );
 }

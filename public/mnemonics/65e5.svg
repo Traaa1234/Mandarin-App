@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-112 -112 1248 1248">
+<defs><clipPath id="card-65e5"><rect x="-112" y="-112" width="1248" height="1248" rx="140"/></clipPath></defs>
+<g clip-path="url(#card-65e5)">
+<rect x="-112" y="-112" width="1248" height="1248" rx="140" fill="#ffe3c2"/>
+<path d="M150 230 Q210 520 140 860 L250 860 L250 200Z" fill="#ff8fa3"/>
+<path d="M860 230 Q800 520 870 860 L730 860 L730 200Z" fill="#ff8fa3"/>
+<rect x="300" y="215" width="390" height="630" rx="20" fill="#dff1ff"/>
+<g stroke="#ffb703" stroke-width="22" stroke-linecap="round">
+<line x1="495" y1="300" x2="495" y2="250"/><line x1="380" y1="360" x2="345" y2="330"/><line x1="610" y1="360" x2="645" y2="330"/>
+<line x1="350" y1="640" x2="320" y2="680"/><line x1="640" y1="640" x2="670" y2="680"/></g>
+<circle cx="495" cy="490" r="150" fill="#ffd43b"/>
+<rect x="250" y="850" width="490" height="40" rx="20" fill="#b07a4f"/>
+</g>
+</svg>

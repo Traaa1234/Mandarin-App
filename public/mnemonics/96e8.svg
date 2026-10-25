@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-112 -112 1248 1248">
+<defs><clipPath id="card-96e8"><rect x="-112" y="-112" width="1248" height="1248" rx="140"/></clipPath></defs>
+<g clip-path="url(#card-96e8)">
+<rect x="-112" y="-112" width="1248" height="1248" rx="140" fill="#e7f5ff"/>
+<g fill="#adb5bd"><circle cx="300" cy="230" r="160"/><circle cx="520" cy="160" r="210"/><circle cx="740" cy="240" r="170"/><rect x="180" y="230" width="680" height="170" rx="85"/></g>
+<g fill="#4dabf7"><path d="M360 470 Q300 560 360 590 Q420 560 360 470Z"/><path d="M355 600 Q295 690 355 720 Q415 690 355 600Z"/>
+<path d="M645 435 Q585 525 645 555 Q705 525 645 435Z"/><path d="M640 575 Q580 665 640 695 Q700 665 640 575Z"/></g>
+<g stroke="#a5d8ff" stroke-width="10" stroke-linecap="round"><line x1="120" y1="900" x2="90" y2="980"/><line x1="900" y1="880" x2="870" y2="960"/><line x1="500" y1="930" x2="470" y2="1010"/></g>
+</g>
+</svg>
