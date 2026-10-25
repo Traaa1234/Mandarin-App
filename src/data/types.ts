@@ -83,3 +83,32 @@ const codepoint = (char: string) => char.codePointAt(0)!.toString(16);
 
 export const charFile = (char: string) => `${codepoint(char)}.json`;
 export const pictureFile = (char: string) => `mnemonics/${codepoint(char)}.svg`;
+
+// public/data/phrases.json, written by scripts/build-phrases.ts.
+export interface PhraseSyllable {
+  char: string;
+  // As written (nǐ), and the recording and tone as spoken (ni2, 2).
+  written: string;
+  key: string;
+  tone: number;
+  spokenTone: number;
+}
+
+export interface Phrase {
+  id: string;
+  chars: string;
+  english: string;
+  icon: string;
+  syllables: PhraseSyllable[];
+  audio: string;
+  // generated: a dropped-in recording; otherwise joined from audio-cmn word and/or syllable recordings.
+  source: 'generated' | 'words' | 'mixed' | 'syllables';
+  // A neutral tone had no recording and borrowed a nearby tone.
+  approximate: boolean;
+  // Start and end of each syllable in the audio, in seconds; null for generated audio.
+  times: [number, number][] | null;
+}
+
+export interface PhraseData {
+  scenes: { id: string; title: string; icon: string; phrases: Phrase[] }[];
+}

@@ -10,7 +10,8 @@
     "data": "tsx scripts/build-data.ts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "audio": "tsx scripts/fetch-audio.ts"
+    "audio": "tsx scripts/fetch-audio.ts",
+    "phrases": "tsx scripts/build-phrases.ts"
   },
   "dependencies": {
     "framer-motion": "^14.6.0",

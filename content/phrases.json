@@ -1,0 +1,64 @@
+{
+  "note": "Speak Mandarin phrases. 'words' splits the characters into words (punctuation and … left out); 'pinyin' is the written form, one syllable per character. Audio is built by scripts/build-phrases.ts. To use a better recording, put content/phrase-audio/<id>.mp3 in place and rebuild. 'icon' is an interim illustration until scene pictures are drawn.",
+  "scenes": [
+    {
+      "id": "meeting",
+      "title": "Meeting a friend",
+      "icon": "👋",
+      "phrases": [
+        { "id": "ni-hao", "chars": "你好！", "words": ["你好"], "pinyin": "nǐ hǎo", "english": "Hello!", "icon": "👋" },
+        { "id": "name-question", "chars": "你叫什么名字？", "words": ["你", "叫", "什么", "名字"], "pinyin": "nǐ jiào shénme míngzi", "english": "What's your name?", "icon": "❓" },
+        { "id": "my-name", "chars": "我叫…", "words": ["我", "叫"], "pinyin": "wǒ jiào", "english": "My name is…", "icon": "🙋" },
+        { "id": "six", "chars": "我六岁。", "words": ["我", "六", "岁"], "pinyin": "wǒ liù suì", "english": "I am six.", "icon": "🎂" },
+        { "id": "goodbye", "chars": "再见！", "words": ["再见"], "pinyin": "zàijiàn", "english": "Goodbye!", "icon": "🖐️" }
+      ]
+    },
+    {
+      "id": "polite",
+      "title": "Being polite",
+      "icon": "🙏",
+      "phrases": [
+        { "id": "thanks", "chars": "谢谢！", "words": ["谢谢"], "pinyin": "xièxie", "english": "Thank you!", "icon": "🙏" },
+        { "id": "welcome", "chars": "不客气。", "words": ["不", "客气"], "pinyin": "bú kèqi", "english": "You're welcome.", "icon": "😊" },
+        { "id": "sorry", "chars": "对不起。", "words": ["对不起"], "pinyin": "duìbuqǐ", "english": "Sorry.", "icon": "😔" },
+        { "id": "its-ok", "chars": "没关系。", "words": ["没关系"], "pinyin": "méi guānxi", "english": "That's okay.", "icon": "🤗" }
+      ]
+    },
+    {
+      "id": "table",
+      "title": "At the table",
+      "icon": "🍚",
+      "phrases": [
+        { "id": "hungry", "chars": "我饿了。", "words": ["我", "饿", "了"], "pinyin": "wǒ è le", "english": "I'm hungry.", "icon": "🍚" },
+        { "id": "water", "chars": "我要喝水。", "words": ["我", "要", "喝", "水"], "pinyin": "wǒ yào hē shuǐ", "english": "I want water.", "icon": "💧" },
+        { "id": "yummy", "chars": "好吃！", "words": ["好吃"], "pinyin": "hǎochī", "english": "Yummy!", "icon": "😋" }
+      ]
+    },
+    {
+      "id": "family",
+      "title": "Family",
+      "icon": "👪",
+      "phrases": [
+        { "id": "mom-dad", "chars": "妈妈，爸爸", "words": ["妈妈", "爸爸"], "pinyin": "māma bàba", "english": "Mom, Dad", "icon": "👪" },
+        { "id": "love-you", "chars": "我爱你。", "words": ["我", "爱", "你"], "pinyin": "wǒ ài nǐ", "english": "I love you.", "icon": "❤️" }
+      ]
+    },
+    {
+      "id": "curious",
+      "title": "Curious",
+      "icon": "🔍",
+      "phrases": [
+        { "id": "what-is-this", "chars": "这是什么？", "words": ["这", "是", "什么"], "pinyin": "zhè shì shénme", "english": "What is this?", "icon": "🔍" }
+      ]
+    },
+    {
+      "id": "day-night",
+      "title": "Morning and night",
+      "icon": "🌙",
+      "phrases": [
+        { "id": "good-morning", "chars": "早上好！", "words": ["早上", "好"], "pinyin": "zǎoshang hǎo", "english": "Good morning!", "icon": "🌅" },
+        { "id": "good-night", "chars": "晚安！", "words": ["晚安"], "pinyin": "wǎn'ān", "english": "Good night!", "icon": "🌙" }
+      ]
+    }
+  ]
+}

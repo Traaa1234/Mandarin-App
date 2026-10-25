@@ -61,6 +61,22 @@ tile plays, and the five rules with their practice items. Tests check that
 every sound has a recording and that the tone-mark and 一/不 answers agree
 with pinyin-pro.
 
+`npm run phrases` (needs ffmpeg) builds one audio file per Speak Mandarin
+phrase from `content/phrases.json`. A word of two or more characters uses
+audio-cmn's word recording when the phrase keeps its tones; everything else is
+joined from syllable recordings with the tones as spoken (你好 → ní + hǎo).
+Two phrases borrow a tone because audio-cmn has no neutral-tone recording for
+了 and 上 (我饿了, 早上好); they are marked `approximate`. To replace any
+phrase with a better recording, for example from a neural voice, save it as
+`content/phrase-audio/<id>.mp3` and run `npm run phrases` again.
+
+Record and compare runs entirely on the device: the microphone recording is
+decoded into memory, its pitch is tracked with YIN every 10 ms, and each
+syllable's contour is compared with the model voice's. Nothing is stored or
+uploaded, and the microphone is released when recording stops. Browser speech
+recognition is not used; it can send audio to a server, so it waits for the
+parent gate.
+
 Stages 6 (sound helpers) and 7 (words) are drafted in the content file with
 `"ready": false`; flip the flag when they're filled in.
 
@@ -72,6 +88,7 @@ Stages 6 (sound helpers) and 7 (words) are drafted in the content file with
 | [hanzi-writer-data](https://github.com/chanind/hanzi-writer-data) | Stroke paths and medians | Arphic Public License (copy in `public/data/licenses/ARPHICPL.TXT`) |
 | [cjklib](https://github.com/cburgmer/cjklib) `strokeorder.csv` | Cross-check for stroke names (not shipped) | LGPL-3.0 or later |
 | [audio-cmn](https://github.com/hugolpz/audio-cmn) syllables, pinned commit | Native recordings of every syllable; speaker Chen Wang | CC BY-SA, credit required |
+| [audio-cmn](https://github.com/hugolpz/audio-cmn) HSK words, pinned commit | Word recordings inside phrases; speaker Yue Tan | CC BY-SA, credit required |
 | [pinyin-pro](https://github.com/zh-lx/pinyin-pro) | Tone-mark conversion, 一/不 tone changes | MIT |
 | [HanziJS](https://github.com/nieldlr/hanzi) | Character frequency rank, at build time only | MIT |
 | [Hanzi Writer](https://github.com/chanind/hanzi-writer) | Stroke animation; tracing later | MIT |
@@ -80,7 +97,7 @@ Stages 6 (sound helpers) and 7 (words) are drafted in the content file with
 Before any app-store release, re-check each license against how the app is
 distributed. In particular, the Arphic license and the LGPL both require the
 license text to ship with the data, and audio-cmn is CC BY-SA and needs
-credit to its speaker, Chen Wang, on the credits screen.
+credit to its speakers, Chen Wang and Yue Tan, on the credits screen.
 
 ## Milestones
 
@@ -94,7 +111,9 @@ credit to its speaker, Chen Wang, on the credits screen.
 4. **Pinyin Playground**: sounds, tones with shapes and hand motions, the
    five rules with practice, and the five games (chart, build a syllable,
    which tone, tone painter, type it). *Done.*
-5. Speak Mandarin.
+5. **Speak Mandarin**: six scenes, 17 phrases with ruby pinyin, slow
+   playback, and on-device record-and-compare. *Done.* Phrase pictures are
+   emoji for now.
 6. Practice and game layer: FSRS scheduling, daily adventure, mascot,
    mini-games, garden, parent area.
 7. Offline PWA mode, credits screen, accessibility pass.

@@ -1,5 +1,6 @@
 import MnemonicCard from '../components/MnemonicCard';
 import { useChar, useIndex } from '../data/useData';
+import { usePhrases } from '../data/usePhrases';
 import { pictureChars } from './PictureCardScreen';
 import { toneClass } from '../lib/tones';
 import { SECTIONS, type SectionId } from '../sections';
@@ -36,6 +37,8 @@ export default function SectionScreen({
         <StageTiles onOpen={onOpenChar} />
       ) : id === 'pictures' ? (
         <PictureTiles onOpen={onOpenChar} />
+      ) : id === 'speak' ? (
+        <SceneTiles onOpen={onOpenChar} />
       ) : (
         <ComingSoon />
       )}
@@ -110,6 +113,32 @@ function PictureTiles({ onOpen }: { onOpen: (char: string) => void }) {
           </li>
         );
       })}
+    </ul>
+  );
+}
+
+// The phrase scenes; a scene opens on its first phrase.
+function SceneTiles({ onOpen }: { onOpen: (phraseId: string) => void }) {
+  const data = usePhrases();
+  if (!data) return null;
+  return (
+    <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+      {data.scenes.map((scene) => (
+        <li key={scene.id}>
+          <button
+            type="button"
+            onClick={() => onOpen(scene.phrases[0].id)}
+            aria-label={scene.title}
+            className="flex min-h-36 w-full flex-col items-center justify-center gap-2 rounded-3xl bg-white p-3 shadow-md active:scale-95"
+          >
+            <span className="text-6xl" aria-hidden="true">
+              {scene.icon}
+            </span>
+            <span className="han text-2xl">{scene.phrases[0].chars}</span>
+            <span className="text-xs text-ink/50">{scene.title}</span>
+          </button>
+        </li>
+      ))}
     </ul>
   );
 }

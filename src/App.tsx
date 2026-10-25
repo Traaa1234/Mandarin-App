@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useState } from 'react';
 import CharacterScreen from './screens/character/CharacterScreen';
 import Home from './screens/Home';
 import PictureCardScreen from './screens/PictureCardScreen';
+import PhraseScreen from './screens/speak/PhraseScreen';
 import SectionScreen from './screens/SectionScreen';
 import { SECTIONS, type SectionId } from './sections';
 
@@ -52,6 +53,17 @@ export default function App() {
       <Suspense fallback={null}>
         <PinyinScreen page={route.char} onHome={() => go(null)} onPage={(p) => go('pinyin', p ?? undefined)} />
       </Suspense>
+    );
+  }
+  if (route.section === 'speak' && route.char) {
+    return (
+      <PhraseScreen
+        key={route.char}
+        id={route.char}
+        onBack={() => go('speak')}
+        onOpen={(id) => go('speak', id)}
+        onChar={(c) => go('roots', c)}
+      />
     );
   }
   if (route.section === 'pictures' && route.char) {

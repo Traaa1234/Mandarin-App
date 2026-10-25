@@ -29,10 +29,10 @@ let current: HTMLAudioElement | null = null;
 // Bumped to cancel a running sequence when something new plays.
 let sequence = 0;
 
-function playOne(key: string, rate: number): Promise<void> {
+function playPath(path: string, rate: number): Promise<void> {
   return new Promise((resolve) => {
     current?.pause();
-    const audio = new Audio(`${base}audio/syllables/${key}.mp3`);
+    const audio = new Audio(`${base}${path}`);
     audio.playbackRate = rate;
     current = audio;
     audio.onended = () => resolve();
@@ -46,9 +46,16 @@ export async function playKeys(keys: string[], { rate = 1, gap = 120 } = {}) {
   const id = ++sequence;
   for (const key of keys) {
     if (id !== sequence) return;
-    await playOne(key, rate);
+    await playPath(`audio/syllables/${key}.mp3`, rate);
     if (gap) await new Promise((r) => setTimeout(r, gap));
   }
 }
 
 export const playKey = (key: string, rate = 1) => playKeys([key], { rate, gap: 0 });
+
+// Play a bundled file such as audio/phrases/ni-hao.mp3. A rate below 1 slows it
+// down without lowering the pitch (browsers keep pitch by default).
+export function playFile(path: string, rate = 1): Promise<void> {
+  ++sequence;
+  return playPath(path, rate);
+}
