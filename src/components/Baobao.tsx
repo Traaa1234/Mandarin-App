@@ -1,11 +1,14 @@
 import { motion, type TargetAndTransition } from 'framer-motion';
 import type { ReactNode } from 'react';
+import { useProfile } from '../practice/ProfileContext';
 
 export type Mood = 'happy' | 'cheer' | 'wobble' | 'sleep';
 
 // Bǎobao, the app's own mascot: a small panda gardener in a straw hat with a
 // sprout on top and a green apron. Original artwork, drawn here as SVG.
-export default function Baobao({ mood = 'happy', size = 140 }: { mood?: Mood; size?: number }) {
+export default function Baobao({ mood = 'happy', size = 140, outfit }: { mood?: Mood; size?: number; outfit?: string | null }) {
+  const profile = useProfile();
+  const wearing = outfit === undefined ? profile.outfit : outfit;
   const motionFor: Record<Mood, TargetAndTransition> = {
     happy: { y: [0, -4, 0], transition: { duration: 2.4, repeat: Infinity } },
     cheer: { y: [0, -18, 0, -10, 0], transition: { duration: 0.9 } },
@@ -66,6 +69,30 @@ export default function Baobao({ mood = 'happy', size = 140 }: { mood?: Mood; si
       <rect x="71" y="32" width="58" height="8" fill="#5fae58" />
       <path d="M100 12 V0" stroke="#5fae58" strokeWidth="3" />
       <path d="M100 4 Q88 -6 82 4 Q92 8 100 4 Z M100 4 Q112 -6 118 4 Q108 8 100 4 Z" fill="#8ccf7e" />
+      {/* Outfits bought with seeds */}
+      {wearing === 'scarf' && (
+        <>
+          <path d="M62 136 Q100 152 138 136 L136 148 Q100 162 64 148 Z" fill="#e03131" />
+          <path d="M118 148 L126 178 L114 176 L110 150 Z" fill="#c92a2a" />
+        </>
+      )}
+      {wearing === 'bow' && (
+        <path d="M140 30 L124 20 L124 40 Z M140 30 L156 20 L156 40 Z M136 30 a4 4 0 1 0 8 0 a4 4 0 1 0 -8 0" fill="#f06595" />
+      )}
+      {wearing === 'glasses' && (
+        <g fill="#212529">
+          <circle cx="79" cy="88" r="15" />
+          <circle cx="121" cy="88" r="15" />
+          <rect x="92" y="85" width="16" height="4" />
+        </g>
+      )}
+      {wearing === 'flowers' && (
+        <g>
+          {[46, 70, 130, 154].map((x, i) => (
+            <circle key={x} cx={x} cy={40} r="7" fill={['#ff8fa3', '#ffd43b', '#da77f2', '#74c0fc'][i]} stroke="#fff" strokeWidth="2" />
+          ))}
+        </g>
+      )}
       {asleep && (
         <text x="150" y="40" fontSize="22" fill="#868e96">
           z z
@@ -79,9 +106,9 @@ export default function Baobao({ mood = 'happy', size = 140 }: { mood?: Mood; si
 export function Speech({ han, pinyin, english, children }: { han: string; pinyin: string; english?: string; children?: ReactNode }) {
   return (
     <div className="relative rounded-3xl bg-white px-5 py-3 text-center shadow-md" aria-live="polite">
-      <p className="text-base">{pinyin}</p>
+      <p className="py text-base">{pinyin}</p>
       <p className="han text-3xl font-bold">{han}</p>
-      {english && <p className="text-sm text-ink/50">{english}</p>}
+      {english && <p className="en text-sm text-ink/50">{english}</p>}
       {children}
     </div>
   );

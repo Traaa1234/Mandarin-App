@@ -18,11 +18,14 @@ export default function WriteCard({
   char,
   index,
   leniency = 1.5,
+  outline = true,
   onDone,
 }: {
   char: string;
   index: DataIndex;
   leniency?: number;
+  // Off for the harder version: trace from memory.
+  outline?: boolean;
   onDone: (o: Outcome) => void;
 }) {
   const size = useBoxSize(320);
@@ -41,7 +44,7 @@ export default function WriteCard({
       padding: size * 0.06,
       charDataLoader,
       showCharacter: false,
-      showOutline: true,
+      showOutline: outline,
       strokeColor: INK,
       outlineColor: OUTLINE,
       drawingWidth: 20,
@@ -62,12 +65,12 @@ export default function WriteCard({
       writer.cancelQuiz();
       while (svg.childNodes.length > keep) svg.removeChild(svg.lastChild!);
     };
-  }, [char, size, leniency]);
+  }, [char, size, leniency, outline]);
 
   return (
     <div className="flex flex-col items-center gap-4">
       <button type="button" onClick={() => playKey(syllableKey(entry.pinyin))} aria-label="Listen" className="flex items-center gap-2 text-3xl">
-        <span className={toneClass(entry.pinyin)}>{entry.pinyin}</span> 🔊
+        <span className={'py ' + toneClass(entry.pinyin)}>{entry.pinyin}</span> 🔊
       </button>
       <svg ref={svgRef} width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="touch-none" role="img" aria-label={`Write ${char}`}>
         <TianGrid size={size} />

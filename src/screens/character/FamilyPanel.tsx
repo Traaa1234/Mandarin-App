@@ -40,9 +40,9 @@ export default function FamilyPanel({
               aria-label={`${c}, ${entry.gloss}`}
               className="flex w-full flex-col items-center rounded-2xl bg-white p-3 shadow-sm active:scale-95"
             >
-              <span className={`text-base ${toneClass(entry.pinyin)}`}>{entry.pinyin}</span>
+              <span className={`text-base py ${toneClass(entry.pinyin)}`}>{entry.pinyin}</span>
               <span className="han text-6xl leading-tight">{c}</span>
-              <span className="text-xs text-ink/50">{entry.gloss}</span>
+              <span className="en text-xs text-ink/50">{entry.gloss}</span>
             </button>
             <div className="absolute top-1 right-1">
               <SpeakButton text={c} size="sm" />

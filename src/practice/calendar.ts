@@ -1,6 +1,7 @@
-import { localDate } from './store';
-
 const DAY = 86400000;
+
+export const localDate = (d: Date) =>
+  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 
 // Monday of the week containing `d`, as YYYY-MM-DD: the id of that week.
 export function weekId(d: Date): string {

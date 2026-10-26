@@ -1,64 +1,105 @@
+import { useEffect, useState } from 'react';
 import Baobao from '../components/Baobao';
+import { activeFestival, type Festival } from '../practice/festivals';
 import { useProfile } from '../practice/ProfileContext';
+import { store } from '../practice/store';
+import { sunshineStreak, weekSuns, WEEKLY_GOAL } from '../practice/streak';
 import { SECTIONS, type SectionId } from '../sections';
 
-export default function Home({ onOpen }: { onOpen: (id: SectionId | 'today' | 'garden' | 'map' | 'games') => void }) {
+export type HomeTarget = SectionId | 'today' | 'garden' | 'map' | 'games' | 'album' | 'shop' | 'parents' | 'festival';
+
+const SHORTCUTS: { id: HomeTarget; icon: string; label: string }[] = [
+  { id: 'garden', icon: '🌷', label: 'My garden' },
+  { id: 'games', icon: '🎮', label: 'Games' },
+  { id: 'map', icon: '🗺️', label: 'Map' },
+  { id: 'album', icon: '📒', label: 'Album' },
+  { id: 'shop', icon: '🏪', label: 'Shop' },
+];
+
+export default function Home({ onOpen }: { onOpen: (id: HomeTarget) => void }) {
   const { current, choose } = useProfile();
+  const [sun, setSun] = useState<{ streak: number; week: boolean[] } | null>(null);
+  const festival: Festival | null = activeFestival(new Date());
+
+  useEffect(() => {
+    if (!current) {
+      setSun(null);
+      return;
+    }
+    store.practisedDays(current.id!).then((days) => setSun({ streak: sunshineStreak(days, new Date()), week: weekSuns(days, new Date()) }));
+  }, [current]);
+
   return (
     <main className="mx-auto flex min-h-dvh max-w-3xl flex-col px-4 py-6">
-      {current && (
-        <button
-          type="button"
-          onClick={() => choose(null)}
-          aria-label={`Playing as ${current.animal}. Change player`}
-          className="ml-auto flex size-16 items-center justify-center rounded-full bg-white text-4xl shadow-md active:scale-95"
-        >
-          {current.animal}
-        </button>
-      )}
-      <h1 className="han mb-6 text-center text-4xl font-bold">
-        <span className="block text-base font-normal">hànzì huāyuán</span>
+      <div className="mb-2 flex items-center gap-3">
+        {sun && (
+          <div
+            className="flex items-center gap-2 rounded-full bg-white px-3 py-2 shadow-sm"
+            aria-label={`Sunshine streak ${sun.streak} days. This week ${sun.week.filter(Boolean).length} of ${WEEKLY_GOAL} sunny days`}
+          >
+            <span className="text-xl font-bold">☀️ {sun.streak}</span>
+            <span className="text-base tracking-tight" aria-hidden="true">
+              {sun.week.map((lit, i) => (
+                <span key={i} className={lit ? '' : 'opacity-25 grayscale'}>
+                  🌞
+                </span>
+              ))}
+            </span>
+          </div>
+        )}
+        {current && (
+          <button
+            type="button"
+            onClick={() => choose(null)}
+            aria-label={`Playing as ${current.animal}. Change player`}
+            className="ml-auto flex size-16 items-center justify-center rounded-full bg-white text-4xl shadow-md active:scale-95"
+          >
+            {current.animal}
+          </button>
+        )}
+      </div>
+      <h1 className="han mb-4 text-center text-4xl font-bold">
+        <span className="py block text-base font-normal">hànzì huāyuán</span>
         汉字花园
-        <span className="mt-1 block text-base font-normal text-ink/60">Hanzi Garden</span>
+        <span className="en mt-1 block text-base font-normal text-ink/60">Hanzi Garden</span>
       </h1>
-      <div className="mb-4 flex items-stretch gap-3">
+      {festival && (
         <button
           type="button"
-          onClick={() => onOpen('today')}
-          aria-label="Today's adventure"
-          className="flex min-h-28 flex-1 items-center justify-center gap-2 rounded-3xl bg-[#f59f00] px-3 text-white shadow-md transition active:scale-95"
+          onClick={() => onOpen('festival')}
+          aria-label={festival.name}
+          className="mb-3 flex min-h-16 items-center justify-center gap-3 rounded-3xl bg-[#ffe3e3] px-4 shadow-md active:scale-95"
         >
-          <Baobao size={80} mood="happy" />
-          <span className="han text-4xl font-bold">
-            <span className="block text-base font-normal">jīntiān</span>今天
+          <span className="text-4xl">{festival.icon}</span>
+          <span className="han text-2xl font-bold">
+            <span className="py block text-sm font-normal">{festival.pinyin}</span>
+            {festival.han}
           </span>
         </button>
-        <div className="flex flex-col gap-3">
+      )}
+      <button
+        type="button"
+        onClick={() => onOpen('today')}
+        aria-label="Today's adventure"
+        className="mb-3 flex min-h-28 items-center justify-center gap-3 rounded-3xl bg-[#f59f00] px-3 text-white shadow-md transition active:scale-95"
+      >
+        <Baobao size={80} mood="happy" />
+        <span className="han text-4xl font-bold">
+          <span className="py block text-base font-normal">jīntiān</span>今天
+        </span>
+      </button>
+      <div className="mb-4 grid grid-cols-5 gap-2">
+        {SHORTCUTS.map((s) => (
           <button
+            key={s.id}
             type="button"
-            onClick={() => onOpen('garden')}
-            aria-label="My garden"
-            className="flex size-16 flex-1 items-center justify-center rounded-2xl bg-white text-4xl shadow-md active:scale-95"
+            onClick={() => onOpen(s.id)}
+            aria-label={s.label}
+            className="flex h-16 items-center justify-center rounded-2xl bg-white text-3xl shadow-md active:scale-95"
           >
-            🌷
+            {s.icon}
           </button>
-          <button
-            type="button"
-            onClick={() => onOpen('games')}
-            aria-label="Games"
-            className="flex size-16 flex-1 items-center justify-center rounded-2xl bg-white text-4xl shadow-md active:scale-95"
-          >
-            🎮
-          </button>
-          <button
-            type="button"
-            onClick={() => onOpen('map')}
-            aria-label="Map"
-            className="flex size-16 flex-1 items-center justify-center rounded-2xl bg-white text-4xl shadow-md active:scale-95"
-          >
-            🗺️
-          </button>
-        </div>
+        ))}
       </div>
       <div className="grid flex-1 grid-cols-2 gap-4 sm:gap-6">
         {SECTIONS.map((s) => (
@@ -70,12 +111,15 @@ export default function Home({ onOpen }: { onOpen: (id: SectionId | 'today' | 'g
             className={`${s.color} flex min-h-40 flex-col items-center justify-center gap-2 rounded-3xl p-4 shadow-md transition active:scale-95`}
           >
             <span className="block size-20 sm:size-28">{s.icon}</span>
-            <span className="text-base">{s.pinyin}</span>
+            <span className="py text-base">{s.pinyin}</span>
             <span className="han -mt-2 text-3xl font-bold sm:text-4xl">{s.han}</span>
-            <span className="text-sm opacity-70">{s.english}</span>
+            <span className="en text-sm opacity-70">{s.english}</span>
           </button>
         ))}
       </div>
+      <button type="button" onClick={() => onOpen('parents')} className="mt-6 min-h-14 self-center px-4 text-sm text-ink/50 underline">
+        For grown-ups
+      </button>
     </main>
   );
 }

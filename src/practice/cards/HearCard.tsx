@@ -8,10 +8,23 @@ import { distractors } from './distractors';
 import { shuffle, useChoice } from './useChoice';
 
 // Hear it: the sound plays, tap the character.
-export default function HearCard({ char, index, met, onDone }: { char: string; index: DataIndex; met: Set<string>; onDone: (o: Outcome) => void }) {
+export default function HearCard({
+  char,
+  index,
+  met,
+  choices = 3,
+  onDone,
+}: {
+  char: string;
+  index: DataIndex;
+  met: Set<string>;
+  // How many answers to show: 2 when things are hard, 4 when they are easy.
+  choices?: number;
+  onDone: (o: Outcome) => void;
+}) {
   const key = syllableKey(index.chars[char].pinyin);
-  const [choices] = useState(() =>
-    shuffle([char, ...distractors(index, char, met, 2, (c) => syllableKey(index.chars[c].pinyin) !== key)]),
+  const [options] = useState(() =>
+    shuffle([char, ...distractors(index, char, met, choices - 1, (c) => syllableKey(index.chars[c].pinyin) !== key)]),
   );
   const { choose, wobble, reveal } = useChoice(char, onDone);
 
@@ -30,7 +43,7 @@ export default function HearCard({ char, index, met, onDone }: { char: string; i
         👂
       </button>
       <div className="flex flex-wrap justify-center gap-4">
-        {choices.map((c) => (
+        {options.map((c) => (
           <ChoiceButton key={c} onPress={() => choose(c)} wobble={wobble === c} highlight={reveal && c === char} label={c}>
             <span className="han text-6xl">{c}</span>
           </ChoiceButton>

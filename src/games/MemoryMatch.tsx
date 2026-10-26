@@ -62,7 +62,7 @@ export default function MemoryMatch({ index, learned, onDone }: GameProps) {
               ) : card.face === 'picture' ? (
                 <img src={`${base}${entry.picture}`} alt="" className="size-full rounded-2xl p-1" />
               ) : (
-                <span className={`text-2xl font-semibold ${toneClass(entry.pinyin)}`}>{entry.pinyin}</span>
+                <span className={`text-2xl font-semibold py ${toneClass(entry.pinyin)}`}>{entry.pinyin}</span>
               )
             ) : (
               <span className="text-4xl text-white">?</span>

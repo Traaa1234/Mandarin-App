@@ -25,7 +25,7 @@ export function buildSession(index: DataIndex, cards: CardState[], now: Date): S
 
   const started = new Set(cards.map((c) => c.char));
   const fresh = Object.entries(index.chars)
-    .filter(([c, e]) => !started.has(c) && index.stages.find((s) => s.id === e.stage)?.ready)
+    .filter(([c, e]) => !started.has(c) && e.role !== 'festival' && index.stages.find((s) => s.id === e.stage)?.ready)
     .sort(([, a], [, b]) => a.order - b.order)
     .slice(0, MAX_NEW)
     .map(([char]): Step => ({ type: 'new', char }));
@@ -36,7 +36,7 @@ export function buildSession(index: DataIndex, cards: CardState[], now: Date): S
 // The stage the child is working on: the first one with a character not yet started.
 export function currentStage(index: DataIndex, startedChars: Set<string>): number {
   const next = Object.entries(index.chars)
-    .filter(([c]) => !startedChars.has(c))
+    .filter(([c, e]) => !startedChars.has(c) && e.role !== 'festival')
     .sort(([, a], [, b]) => a.order - b.order)[0];
-  return next ? next[1].stage : Math.max(...index.stages.filter((s) => s.chars.length).map((s) => s.id));
+  return next ? next[1].stage : Math.max(...index.stages.filter((s) => s.chars.length && s.key !== 'festivals').map((s) => s.id));
 }

@@ -27,7 +27,7 @@ interface ContentItem {
   char: string;
   pinyin: string;
   gloss: string;
-  role?: 'helper';
+  role?: 'helper' | 'festival';
   costumeOf?: string;
 }
 
@@ -125,8 +125,8 @@ async function main() {
 
       const role: Role = item.costumeOf
         ? 'costume'
-        : item.role === 'helper'
-          ? 'helper'
+        : item.role === 'helper' || item.role === 'festival'
+          ? item.role
           : stage.id === 1
             ? 'root'
             : 'compound';

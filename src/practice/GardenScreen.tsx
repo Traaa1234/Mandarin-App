@@ -2,17 +2,21 @@ import { useEffect, useState } from 'react';
 import Baobao, { Speech } from '../components/Baobao';
 import Flower from '../components/Flower';
 import { CHARS_PER_LEVEL, gardenLevel, LEVEL_DECOR, type Bloom } from './garden';
+import { BACKGROUNDS } from './rewards';
 import { useProfile } from './ProfileContext';
 import { store } from './store';
 
 // The child's garden: one flower per learned character. Tap a flower to visit
 // its character. The garden gains something new every few characters.
 export default function GardenScreen({ onHome, onChar }: { onHome: () => void; onChar: (c: string) => void }) {
-  const { current } = useProfile();
+  const { current, background } = useProfile();
   const [flowers, setFlowers] = useState<{ char: string; bloom: Bloom }[] | null>(null);
+  const [decor, setDecor] = useState<string[]>([]);
 
   useEffect(() => {
-    if (current) store.garden(current.id!).then(setFlowers);
+    if (!current) return;
+    store.garden(current.id!).then(setFlowers);
+    store.owned(current.id!).then((o) => setDecor([...o].filter((i) => i.startsWith('decor:')).map((i) => i.slice(6))));
   }, [current]);
 
   const level = gardenLevel(flowers?.length ?? 0);
@@ -49,7 +53,12 @@ export default function GardenScreen({ onHome, onChar }: { onHome: () => void; o
             </span>
           </div>
           {flowers.length ? (
-            <ul className="grid grid-cols-3 gap-2 rounded-3xl bg-[#c3e6b4] p-3 sm:grid-cols-5">
+            <ul className="grid grid-cols-3 gap-2 rounded-3xl p-3 sm:grid-cols-5" style={{ background: BACKGROUNDS[background] ?? BACKGROUNDS.meadow }}>
+              {decor.map((d) => (
+                <li key={d} className="flex items-center justify-center text-5xl" aria-label="Decoration">
+                  {d}
+                </li>
+              ))}
               {flowers.map((f) => (
                 <li key={f.char} className="flex justify-center">
                   <button type="button" onClick={() => onChar(f.char)} aria-label={`${f.char}, ${f.bloom}`} className="active:scale-95">

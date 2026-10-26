@@ -13,7 +13,9 @@ import ToneCard from './cards/ToneCard';
 import WriteCard from './cards/WriteCard';
 import { KIND_ICON, type Kind } from './kinds';
 import type { Outcome } from './rating';
+import { adapt, CHOICES, START, type AdaptState } from './adaptive';
 import type { Step } from './session';
+import { leniencyFor, useSettings } from './settings';
 import { store } from './store';
 
 type Phase = { type: 'loading' } | { type: 'intro'; data: CharData } | { type: 'card'; data: CharData; kind: Kind };
@@ -41,6 +43,8 @@ export default function CardRunner({
   const [phase, setPhase] = useState<Phase>({ type: 'loading' });
   const [known, setKnown] = useState(met);
   const passed = useRef(0);
+  const { settings } = useSettings();
+  const [level, setLevel] = useState<AdaptState>(START);
   const done = useRef(onDone);
   done.current = onDone;
 
@@ -64,6 +68,7 @@ export default function CardRunner({
   };
 
   const answered = (data: CharData, kind: Kind) => async (o: Outcome) => {
+    setLevel((s) => adapt(s, o));
     const rating = await store.answer(profileId, data.character, kind, o, index);
     if (rating > 1) passed.current++;
     setAt((n) => n + 1);
@@ -86,12 +91,25 @@ export default function CardRunner({
           <p className="text-center text-3xl" aria-hidden="true">
             {KIND_ICON[phase.kind]}
           </p>
-          {phase.kind === 'see' && <SeeCard key={key} data={phase.data} index={index} met={known} onDone={answered(phase.data, 'see')} />}
-          {phase.kind === 'hear' && (
-            <HearCard key={key} char={phase.data.character} index={index} met={known} onDone={answered(phase.data, 'hear')} />
+          {phase.kind === 'see' && (
+            <SeeCard key={key} data={phase.data} index={index} met={known} choices={CHOICES[level.level]} onDone={answered(phase.data, 'see')} />
           )}
-          {phase.kind === 'write' && <WriteCard key={key} char={phase.data.character} index={index} onDone={answered(phase.data, 'write')} />}
-          {phase.kind === 'tone' && <ToneCard key={key} char={phase.data.character} index={index} onDone={answered(phase.data, 'tone')} />}
+          {phase.kind === 'hear' && (
+            <HearCard key={key} char={phase.data.character} index={index} met={known} choices={CHOICES[level.level]} onDone={answered(phase.data, 'hear')} />
+          )}
+          {phase.kind === 'write' && (
+            <WriteCard
+              key={key}
+              char={phase.data.character}
+              index={index}
+              leniency={leniencyFor(settings) + (level.level === 'easier' ? 0.5 : 0)}
+              outline={level.level !== 'harder'}
+              onDone={answered(phase.data, 'write')}
+            />
+          )}
+          {phase.kind === 'tone' && (
+            <ToneCard key={key} char={phase.data.character} index={index} few={level.level === 'easier'} onDone={answered(phase.data, 'tone')} />
+          )}
         </>
       )}
     </div>
@@ -130,8 +148,8 @@ function NewChar({ data, onGo }: { data: CharData; onGo: () => void }) {
     <motion.div className="flex flex-col items-center gap-4" initial={{ scale: 0.3, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}>
       <MnemonicCard data={data} size={size} />
       <button type="button" onClick={() => playKey(syllableKey(data.pinyin))} className="flex flex-col items-center" aria-label={`${data.character}, listen`}>
-        <span className={`text-2xl ${toneClass(data.pinyin)}`}>{data.pinyin}</span>
-        <span className="text-ink/60">{data.gloss}</span>
+        <span className={`text-2xl py ${toneClass(data.pinyin)}`}>{data.pinyin}</span>
+        <span className="en text-ink/60">{data.gloss}</span>
       </button>
       <button
         type="button"

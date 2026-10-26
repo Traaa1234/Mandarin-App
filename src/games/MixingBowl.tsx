@@ -103,7 +103,7 @@ export default function MixingBowl({ index, learned, profileId, onDone }: GamePr
       <div className="min-h-12 text-center" aria-live="polite">
         {message?.made && (
           <p className="text-lg">
-            <span className={toneClass(index.chars[message.made].pinyin)}>{index.chars[message.made].pinyin}</span> {index.chars[message.made].gloss}
+            <span className={'py ' + toneClass(index.chars[message.made].pinyin)}>{index.chars[message.made].pinyin}</span> {index.chars[message.made].gloss}
             {message.planted && ' · 🌱'}
           </p>
         )}

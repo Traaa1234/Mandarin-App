@@ -8,7 +8,9 @@ import { allPhrases, usePhrases } from '../data/usePhrases';
 import GameHost from '../games/GameHost';
 import { gameOfTheDay, GAMES } from '../games/registry';
 import { playFile } from '../lib/audio';
-import { chime } from '../lib/sfx';
+import { celebrate, chime } from '../lib/sfx';
+import { weekId } from './calendar';
+import { pickGift, SHOP } from './rewards';
 import { RecordAndCompare } from '../screens/speak/PhraseScreen';
 import CardRunner from './CardRunner';
 import { useProfile } from './ProfileContext';
@@ -28,7 +30,7 @@ type PartId = (typeof PARTS)[number]['id'];
 
 const line = (phrases: Phrase[], id: string) => phrases.find((p) => p.id === id)!;
 
-export default function AdventureScreen({ onHome }: { onHome: () => void }) {
+export default function AdventureScreen({ onHome, onTeach }: { onHome: () => void; onTeach: () => void }) {
   const index = useIndex();
   const phrases = usePhrases();
   const { current } = useProfile();
@@ -53,13 +55,25 @@ export default function AdventureScreen({ onHome }: { onHome: () => void }) {
         <ProfilePicker onDone={() => {}} />
       ) : (
         index &&
-        phrases && <Adventure key={current.id} profileId={current.id!} index={index} phrases={allPhrases(phrases)} onHome={onHome} />
+        phrases && <Adventure key={current.id} profileId={current.id!} index={index} phrases={allPhrases(phrases)} onHome={onHome} onTeach={onTeach} />
       )}
     </main>
   );
 }
 
-function Adventure({ profileId, index, phrases, onHome }: { profileId: number; index: DataIndex; phrases: Phrase[]; onHome: () => void }) {
+function Adventure({
+  profileId,
+  index,
+  phrases,
+  onHome,
+  onTeach,
+}: {
+  profileId: number;
+  index: DataIndex;
+  phrases: Phrase[];
+  onHome: () => void;
+  onTeach: () => void;
+}) {
   const [plan, setPlan] = useState<{ reviews: Step[]; fresh: Step[]; met: Set<string> } | null>(null);
   const [part, setPart] = useState<PartId>('warmup');
   const [ready, setReady] = useState(false);
@@ -138,7 +152,7 @@ function Adventure({ profileId, index, phrases, onHome }: { profileId: number; i
           <NextButton onNext={next} />
         </div>
       ) : (
-        <Goodbye profileId={profileId} index={index} learned={learned ?? []} phrases={phrases} passed={passed.current} started={started.current} onHome={onHome} />
+        <Goodbye profileId={profileId} index={index} learned={learned ?? []} phrases={phrases} passed={passed.current} onHome={onHome} onTeach={onTeach} />
       )}
     </div>
   );
@@ -213,17 +227,20 @@ function Goodbye({
   learned,
   phrases,
   passed,
-  started,
   onHome,
+  onTeach,
 }: {
   profileId: number;
   index: DataIndex;
   learned: string[];
   phrases: Phrase[];
   passed: number;
-  started: number;
   onHome: () => void;
+  onTeach: () => void;
 }) {
+  const [gift, setGift] = useState<string | null>(null);
+  // Teach Mom or Dad is offered once a week.
+  const [teach, setTeach] = useState(false);
   const [open, setOpen] = useState(false);
   // One bonus game a day after the adventure, then a friendly goodbye. No endless play.
   const [bonus, setBonus] = useState<'offer' | 'playing' | 'done' | 'used'>('used');
@@ -234,7 +251,6 @@ function Goodbye({
   useEffect(() => {
     if (saved.current) return;
     saved.current = true;
-    store.addTime(profileId, performance.now() - started);
     (async () => {
       setFlowers(await store.garden(profileId));
       // The character whose next card comes due first.
@@ -243,17 +259,34 @@ function Goodbye({
       setTomorrow(soon?.char ?? null);
       const today = new Date().toDateString();
       if ((await store.getMeta(profileId, 'bonus-day', '')) !== today) setBonus('offer');
+      const taught = await store.events(profileId, 'teach');
+      setTeach(learned.length >= 3 && !taught.some((t) => t.data?.week === weekId(new Date())));
     })();
-  }, [profileId, started]);
+  }, [profileId, learned.length]);
 
   const bonusGame = useMemo(() => {
     const playable = GAMES.filter((g) => g.ready(learned, index));
     return playable[Math.floor(Math.random() * playable.length)];
   }, [learned, index]);
 
-  const unwrap = () => {
+  // Today's gift: a sticker, outfit or decoration (free), at most once a day.
+  const unwrap = async () => {
     setOpen(true);
+    celebrate(true);
     chime();
+    const today = new Date().toDateString();
+    if ((await store.getMeta(profileId, 'gift-day', '')) !== today) {
+      await store.setMeta(profileId, 'gift-day', today);
+      const g = pickGift(await store.owned(profileId));
+      if (g.item) {
+        await store.give(profileId, g.item);
+        setGift(g.item);
+      } else if (g.seeds) {
+        await store.addSeeds(profileId, g.seeds);
+        setGift(`seeds:${g.seeds}`);
+      }
+      await store.log(profileId, 'gift', { item: g.item, seeds: g.seeds });
+    }
     playFile(line(phrases, 'great').audio).then(() => setTimeout(() => playFile(line(phrases, 'see-you-tomorrow').audio), 300));
   };
 
@@ -285,6 +318,11 @@ function Goodbye({
       <Speech han="明天见！" pinyin="míngtiān jiàn" english={tomorrow ? `Your ${tomorrow} seedling will bloom tomorrow!` : 'See you tomorrow!'}>
         {tomorrow && <span className="han mt-1 block text-5xl">{tomorrow} 🌱</span>}
       </Speech>
+      {gift && (
+        <p className="text-5xl" aria-label={`Today's gift: ${gift}`}>
+          🎁 {giftIcon(gift)}
+        </p>
+      )}
       <p className="text-3xl" aria-label={`${passed} cards passed today`}>
         {'⭐'.repeat(Math.min(passed, 13))}
       </p>
@@ -294,6 +332,16 @@ function Goodbye({
         ))}
       </div>
       <div className="flex gap-3">
+        {teach && (
+          <button
+            type="button"
+            onClick={onTeach}
+            aria-label="Teach Mom or Dad"
+            className="flex h-16 items-center gap-2 rounded-2xl bg-[#d0ebff] px-4 text-3xl shadow-md active:scale-95"
+          >
+            🧑‍🏫
+          </button>
+        )}
         {bonus === 'offer' && bonusGame && (
           <button
             type="button"
@@ -318,4 +366,11 @@ function Goodbye({
       </div>
     </div>
   );
+}
+
+// What a gift looks like: a sticker's emoji, a shop item's icon, or seeds.
+function giftIcon(gift: string) {
+  if (gift.startsWith('seeds:')) return `+${gift.slice(6)} 🌰`;
+  if (gift.startsWith('sticker:')) return gift.slice(8);
+  return SHOP.find((i) => i.id === gift)?.icon ?? '';
 }

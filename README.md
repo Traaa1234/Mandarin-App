@@ -103,6 +103,26 @@ Hidden Hanzi, and the Weekly Dragon Riddle on Sundays. The adventure's play
 part takes a different game each day; after the goodbye there is one bonus
 game a day, then Bǎobao goes to sleep. Games earn seeds.
 
+Rewards are earned, never bought: seeds buy garden decorations, Bǎobao
+outfits and backgrounds in the shop; the album has a sticker slot per
+character with up to four stars (See, Hear, Write, Tone); badges reward effort
+and variety; the goodbye opens a free daily gift; finished islands give a
+sticker and a printable certificate. The Sunshine streak counts practice days
+with two automatic rest days a week, so missing one or two days never resets
+it; the home screen shows it with this week's seven suns. Teach Mom or Dad is
+offered once a week. Cards adapt to aim for about 80% success: two misses in
+a row make them easier, five quick right answers harder.
+
+The parent area (For grown-ups, behind a multiplication gate) shows each
+child's week, minutes per day, the trickiest characters, settings (hide
+pinyin or English, sounds, vibration, daily limit, tracing leniency by age,
+a reminder as a calendar file), and JSON export, import and profile deletion.
+Play time is counted while the app is open; at the daily limit (20 minutes by
+default) Bǎobao goes to sleep until tomorrow, unless a grown-up adds ten
+minutes. Seasonal festivals (Lunar New Year, Dragon Boat, Mid-Autumn) appear
+on the home screen around their dates, listed per year in
+`content/festivals.json`.
+
 Stages 6 (sound helpers) and 7 (words) are drafted in the content file with
 `"ready": false`; flip the flag when they're filled in.
 
@@ -147,6 +167,8 @@ credit to its speakers, Chen Wang and Yue Tan, on the credits screen.
       cards.** *Done.*
    2. **Daily adventure, the Bǎobao mascot, the garden and the island map.**
       *Done.*
-   3. **The nine mini-games.** *Done.* Rewards, the Sunshine streak, the
-      parent area and the daily limit follow.
+   3. **Mini-games, rewards, the Sunshine streak, the parent area, the daily
+      limit and seasonal festivals.** *Done.* Not yet: a Traditional
+      characters option, browser speech recognition, and read-along island
+      stories.
 7. Offline PWA mode, credits screen, accessibility pass.

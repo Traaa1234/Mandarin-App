@@ -3,7 +3,8 @@
 
 // root: a stage-1 picture character. costume: the side or top form of a root (亻 for 人).
 // helper: a part a later compound needs, taught just before it. compound: built from earlier items.
-export type Role = 'root' | 'costume' | 'helper' | 'compound';
+// festival: shown only during a seasonal event, outside the learning path.
+export type Role = 'root' | 'costume' | 'helper' | 'compound' | 'festival';
 
 export type EtymologyType = 'pictographic' | 'ideographic' | 'pictophonetic';
 

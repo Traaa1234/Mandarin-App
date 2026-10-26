@@ -33,7 +33,7 @@ export interface Island {
 // filled in are under construction.
 export function islands(index: DataIndex, learned: Set<string>): Island[] {
   let previousDone = true;
-  return index.stages.map((s) => {
+  return index.stages.filter((s) => s.key !== 'festivals').map((s) => {
     const got = s.chars.filter((c) => learned.has(c)).length;
     const complete = got === s.chars.length;
     const state: Island['state'] = !s.ready ? 'building' : !previousDone ? 'locked' : complete && s.chars.length ? 'done' : 'open';

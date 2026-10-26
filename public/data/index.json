@@ -108,6 +108,21 @@
    "island": "Word Village",
    "ready": false,
    "chars": []
+  },
+  {
+   "id": 8,
+   "key": "festivals",
+   "title": "Festivals",
+   "island": "Festival Fair",
+   "ready": true,
+   "chars": [
+    "红",
+    "福",
+    "春",
+    "龙",
+    "船",
+    "饼"
+   ]
   }
  ],
  "chars": {
@@ -550,6 +565,60 @@
    "pinyin": "ān",
    "gloss": "peaceful",
    "frequencyRank": 232,
+   "picture": null
+  },
+  "红": {
+   "stage": 8,
+   "order": 49,
+   "role": "festival",
+   "pinyin": "hóng",
+   "gloss": "red",
+   "frequencyRank": 502,
+   "picture": null
+  },
+  "福": {
+   "stage": 8,
+   "order": 50,
+   "role": "festival",
+   "pinyin": "fú",
+   "gloss": "good fortune",
+   "frequencyRank": 682,
+   "picture": null
+  },
+  "春": {
+   "stage": 8,
+   "order": 51,
+   "role": "festival",
+   "pinyin": "chūn",
+   "gloss": "spring",
+   "frequencyRank": 919,
+   "picture": null
+  },
+  "龙": {
+   "stage": 8,
+   "order": 52,
+   "role": "festival",
+   "pinyin": "lóng",
+   "gloss": "dragon",
+   "frequencyRank": 695,
+   "picture": null
+  },
+  "船": {
+   "stage": 8,
+   "order": 53,
+   "role": "festival",
+   "pinyin": "chuán",
+   "gloss": "boat",
+   "frequencyRank": 614,
+   "picture": null
+  },
+  "饼": {
+   "stage": 8,
+   "order": 54,
+   "role": "festival",
+   "pinyin": "bǐng",
+   "gloss": "cake",
+   "frequencyRank": 2354,
    "picture": null
   }
  },

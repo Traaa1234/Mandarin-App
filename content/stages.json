@@ -1,5 +1,5 @@
 {
-  "note": "Seed content for the learning path. Items are taught in the order listed; a compound may only use parts that appear earlier. 'pinyin' and 'gloss' are hand-checked for children and override the raw dictionary. Stages with ready=false are filled in later and skipped by build-data.",
+  "note": "Seed content for the learning path. Items are taught in the order listed; a compound may only use parts that appear earlier. 'pinyin' and 'gloss' are hand-checked for children and override the raw dictionary. Stages with ready=false are filled in later and skipped by build-data. The festivals stage (festival: true) is outside the learning path: its characters appear only during seasonal events.",
   "stages": [
     {
       "id": 1,
@@ -8,26 +8,106 @@
       "island": "Picture Meadow",
       "ready": true,
       "items": [
-        { "char": "人", "pinyin": "rén", "gloss": "person" },
-        { "char": "口", "pinyin": "kǒu", "gloss": "mouth" },
-        { "char": "日", "pinyin": "rì", "gloss": "sun, day" },
-        { "char": "月", "pinyin": "yuè", "gloss": "moon, month" },
-        { "char": "山", "pinyin": "shān", "gloss": "mountain" },
-        { "char": "水", "pinyin": "shuǐ", "gloss": "water" },
-        { "char": "火", "pinyin": "huǒ", "gloss": "fire" },
-        { "char": "木", "pinyin": "mù", "gloss": "tree" },
-        { "char": "女", "pinyin": "nǚ", "gloss": "woman" },
-        { "char": "子", "pinyin": "zǐ", "gloss": "child" },
-        { "char": "大", "pinyin": "dà", "gloss": "big" },
-        { "char": "小", "pinyin": "xiǎo", "gloss": "small" },
-        { "char": "目", "pinyin": "mù", "gloss": "eye" },
-        { "char": "手", "pinyin": "shǒu", "gloss": "hand" },
-        { "char": "心", "pinyin": "xīn", "gloss": "heart" },
-        { "char": "田", "pinyin": "tián", "gloss": "field" },
-        { "char": "土", "pinyin": "tǔ", "gloss": "earth, soil" },
-        { "char": "雨", "pinyin": "yǔ", "gloss": "rain" },
-        { "char": "马", "pinyin": "mǎ", "gloss": "horse" },
-        { "char": "鱼", "pinyin": "yú", "gloss": "fish" }
+        {
+          "char": "人",
+          "pinyin": "rén",
+          "gloss": "person"
+        },
+        {
+          "char": "口",
+          "pinyin": "kǒu",
+          "gloss": "mouth"
+        },
+        {
+          "char": "日",
+          "pinyin": "rì",
+          "gloss": "sun, day"
+        },
+        {
+          "char": "月",
+          "pinyin": "yuè",
+          "gloss": "moon, month"
+        },
+        {
+          "char": "山",
+          "pinyin": "shān",
+          "gloss": "mountain"
+        },
+        {
+          "char": "水",
+          "pinyin": "shuǐ",
+          "gloss": "water"
+        },
+        {
+          "char": "火",
+          "pinyin": "huǒ",
+          "gloss": "fire"
+        },
+        {
+          "char": "木",
+          "pinyin": "mù",
+          "gloss": "tree"
+        },
+        {
+          "char": "女",
+          "pinyin": "nǚ",
+          "gloss": "woman"
+        },
+        {
+          "char": "子",
+          "pinyin": "zǐ",
+          "gloss": "child"
+        },
+        {
+          "char": "大",
+          "pinyin": "dà",
+          "gloss": "big"
+        },
+        {
+          "char": "小",
+          "pinyin": "xiǎo",
+          "gloss": "small"
+        },
+        {
+          "char": "目",
+          "pinyin": "mù",
+          "gloss": "eye"
+        },
+        {
+          "char": "手",
+          "pinyin": "shǒu",
+          "gloss": "hand"
+        },
+        {
+          "char": "心",
+          "pinyin": "xīn",
+          "gloss": "heart"
+        },
+        {
+          "char": "田",
+          "pinyin": "tián",
+          "gloss": "field"
+        },
+        {
+          "char": "土",
+          "pinyin": "tǔ",
+          "gloss": "earth, soil"
+        },
+        {
+          "char": "雨",
+          "pinyin": "yǔ",
+          "gloss": "rain"
+        },
+        {
+          "char": "马",
+          "pinyin": "mǎ",
+          "gloss": "horse"
+        },
+        {
+          "char": "鱼",
+          "pinyin": "yú",
+          "gloss": "fish"
+        }
       ]
     },
     {
@@ -37,23 +117,76 @@
       "island": "Stroke Valley",
       "ready": true,
       "strokes": [
-        { "name": "横", "pinyin": "héng", "gloss": "flat line" },
-        { "name": "竖", "pinyin": "shù", "gloss": "straight down" },
-        { "name": "撇", "pinyin": "piě", "gloss": "sweep left" },
-        { "name": "捺", "pinyin": "nà", "gloss": "sweep right" },
-        { "name": "点", "pinyin": "diǎn", "gloss": "dot" },
-        { "name": "提", "pinyin": "tí", "gloss": "flick up" },
-        { "name": "折", "pinyin": "zhé", "gloss": "turn" },
-        { "name": "钩", "pinyin": "gōu", "gloss": "hook" }
+        {
+          "name": "横",
+          "pinyin": "héng",
+          "gloss": "flat line"
+        },
+        {
+          "name": "竖",
+          "pinyin": "shù",
+          "gloss": "straight down"
+        },
+        {
+          "name": "撇",
+          "pinyin": "piě",
+          "gloss": "sweep left"
+        },
+        {
+          "name": "捺",
+          "pinyin": "nà",
+          "gloss": "sweep right"
+        },
+        {
+          "name": "点",
+          "pinyin": "diǎn",
+          "gloss": "dot"
+        },
+        {
+          "name": "提",
+          "pinyin": "tí",
+          "gloss": "flick up"
+        },
+        {
+          "name": "折",
+          "pinyin": "zhé",
+          "gloss": "turn"
+        },
+        {
+          "name": "钩",
+          "pinyin": "gōu",
+          "gloss": "hook"
+        }
       ],
       "rules": [
-        { "rule": "Top before bottom", "example": "三" },
-        { "rule": "Left before right", "example": "川" },
-        { "rule": "Horizontal before vertical", "example": "十" },
-        { "rule": "Sweep left before sweep right", "example": "人" },
-        { "rule": "Outside before inside", "example": "月" },
-        { "rule": "Finish the inside before closing the box", "example": "日" },
-        { "rule": "Middle before the sides", "example": "小" }
+        {
+          "rule": "Top before bottom",
+          "example": "三"
+        },
+        {
+          "rule": "Left before right",
+          "example": "川"
+        },
+        {
+          "rule": "Horizontal before vertical",
+          "example": "十"
+        },
+        {
+          "rule": "Sweep left before sweep right",
+          "example": "人"
+        },
+        {
+          "rule": "Outside before inside",
+          "example": "月"
+        },
+        {
+          "rule": "Finish the inside before closing the box",
+          "example": "日"
+        },
+        {
+          "rule": "Middle before the sides",
+          "example": "小"
+        }
       ]
     },
     {
@@ -63,15 +196,60 @@
       "island": "Costume Castle",
       "ready": true,
       "items": [
-        { "char": "亻", "pinyin": "rén", "gloss": "person (side form)", "costumeOf": "人" },
-        { "char": "氵", "pinyin": "shuǐ", "gloss": "water (side form)", "costumeOf": "水" },
-        { "char": "忄", "pinyin": "xīn", "gloss": "heart (side form)", "costumeOf": "心" },
-        { "char": "扌", "pinyin": "shǒu", "gloss": "hand (side form)", "costumeOf": "手" },
-        { "char": "言", "pinyin": "yán", "gloss": "words, speech", "role": "helper" },
-        { "char": "讠", "pinyin": "yán", "gloss": "words (side form)", "costumeOf": "言" },
-        { "char": "灬", "pinyin": "huǒ", "gloss": "fire (bottom form)", "costumeOf": "火" },
-        { "char": "艸", "pinyin": "cǎo", "gloss": "grass", "role": "helper" },
-        { "char": "艹", "pinyin": "cǎo", "gloss": "grass (top form)", "costumeOf": "艸" }
+        {
+          "char": "亻",
+          "pinyin": "rén",
+          "gloss": "person (side form)",
+          "costumeOf": "人"
+        },
+        {
+          "char": "氵",
+          "pinyin": "shuǐ",
+          "gloss": "water (side form)",
+          "costumeOf": "水"
+        },
+        {
+          "char": "忄",
+          "pinyin": "xīn",
+          "gloss": "heart (side form)",
+          "costumeOf": "心"
+        },
+        {
+          "char": "扌",
+          "pinyin": "shǒu",
+          "gloss": "hand (side form)",
+          "costumeOf": "手"
+        },
+        {
+          "char": "言",
+          "pinyin": "yán",
+          "gloss": "words, speech",
+          "role": "helper"
+        },
+        {
+          "char": "讠",
+          "pinyin": "yán",
+          "gloss": "words (side form)",
+          "costumeOf": "言"
+        },
+        {
+          "char": "灬",
+          "pinyin": "huǒ",
+          "gloss": "fire (bottom form)",
+          "costumeOf": "火"
+        },
+        {
+          "char": "艸",
+          "pinyin": "cǎo",
+          "gloss": "grass",
+          "role": "helper"
+        },
+        {
+          "char": "艹",
+          "pinyin": "cǎo",
+          "gloss": "grass (top form)",
+          "costumeOf": "艸"
+        }
       ]
     },
     {
@@ -81,13 +259,41 @@
       "island": "Twin Forest",
       "ready": true,
       "items": [
-        { "char": "林", "pinyin": "lín", "gloss": "woods" },
-        { "char": "森", "pinyin": "sēn", "gloss": "forest" },
-        { "char": "从", "pinyin": "cóng", "gloss": "follow" },
-        { "char": "众", "pinyin": "zhòng", "gloss": "crowd" },
-        { "char": "炎", "pinyin": "yán", "gloss": "blazing" },
-        { "char": "晶", "pinyin": "jīng", "gloss": "sparkling" },
-        { "char": "品", "pinyin": "pǐn", "gloss": "goods" }
+        {
+          "char": "林",
+          "pinyin": "lín",
+          "gloss": "woods"
+        },
+        {
+          "char": "森",
+          "pinyin": "sēn",
+          "gloss": "forest"
+        },
+        {
+          "char": "从",
+          "pinyin": "cóng",
+          "gloss": "follow"
+        },
+        {
+          "char": "众",
+          "pinyin": "zhòng",
+          "gloss": "crowd"
+        },
+        {
+          "char": "炎",
+          "pinyin": "yán",
+          "gloss": "blazing"
+        },
+        {
+          "char": "晶",
+          "pinyin": "jīng",
+          "gloss": "sparkling"
+        },
+        {
+          "char": "品",
+          "pinyin": "pǐn",
+          "gloss": "goods"
+        }
       ]
     },
     {
@@ -97,19 +303,76 @@
       "island": "Combo Kitchen",
       "ready": true,
       "items": [
-        { "char": "力", "pinyin": "lì", "gloss": "strength", "role": "helper" },
-        { "char": "鸟", "pinyin": "niǎo", "gloss": "bird", "role": "helper" },
-        { "char": "不", "pinyin": "bù", "gloss": "not", "role": "helper" },
-        { "char": "正", "pinyin": "zhèng", "gloss": "straight", "role": "helper" },
-        { "char": "宀", "pinyin": "mián", "gloss": "roof", "role": "helper" },
-        { "char": "明", "pinyin": "míng", "gloss": "bright" },
-        { "char": "好", "pinyin": "hǎo", "gloss": "good" },
-        { "char": "休", "pinyin": "xiū", "gloss": "rest" },
-        { "char": "男", "pinyin": "nán", "gloss": "man" },
-        { "char": "鸣", "pinyin": "míng", "gloss": "birdsong" },
-        { "char": "尖", "pinyin": "jiān", "gloss": "pointy" },
-        { "char": "歪", "pinyin": "wāi", "gloss": "crooked" },
-        { "char": "安", "pinyin": "ān", "gloss": "peaceful" }
+        {
+          "char": "力",
+          "pinyin": "lì",
+          "gloss": "strength",
+          "role": "helper"
+        },
+        {
+          "char": "鸟",
+          "pinyin": "niǎo",
+          "gloss": "bird",
+          "role": "helper"
+        },
+        {
+          "char": "不",
+          "pinyin": "bù",
+          "gloss": "not",
+          "role": "helper"
+        },
+        {
+          "char": "正",
+          "pinyin": "zhèng",
+          "gloss": "straight",
+          "role": "helper"
+        },
+        {
+          "char": "宀",
+          "pinyin": "mián",
+          "gloss": "roof",
+          "role": "helper"
+        },
+        {
+          "char": "明",
+          "pinyin": "míng",
+          "gloss": "bright"
+        },
+        {
+          "char": "好",
+          "pinyin": "hǎo",
+          "gloss": "good"
+        },
+        {
+          "char": "休",
+          "pinyin": "xiū",
+          "gloss": "rest"
+        },
+        {
+          "char": "男",
+          "pinyin": "nán",
+          "gloss": "man"
+        },
+        {
+          "char": "鸣",
+          "pinyin": "míng",
+          "gloss": "birdsong"
+        },
+        {
+          "char": "尖",
+          "pinyin": "jiān",
+          "gloss": "pointy"
+        },
+        {
+          "char": "歪",
+          "pinyin": "wāi",
+          "gloss": "crooked"
+        },
+        {
+          "char": "安",
+          "pinyin": "ān",
+          "gloss": "peaceful"
+        }
       ]
     },
     {
@@ -119,16 +382,58 @@
       "island": "Sound Harbor",
       "ready": false,
       "items": [
-        { "char": "青", "pinyin": "qīng", "gloss": "blue-green", "role": "helper" },
-        { "char": "清", "pinyin": "qīng", "gloss": "clear (water)" },
-        { "char": "晴", "pinyin": "qíng", "gloss": "sunny" },
-        { "char": "请", "pinyin": "qǐng", "gloss": "please" },
-        { "char": "情", "pinyin": "qíng", "gloss": "feeling" },
-        { "char": "睛", "pinyin": "jīng", "gloss": "eyeball" },
-        { "char": "石", "pinyin": "shí", "gloss": "stone", "role": "helper" },
-        { "char": "妈", "pinyin": "mā", "gloss": "mom" },
-        { "char": "吗", "pinyin": "ma", "gloss": "question word" },
-        { "char": "码", "pinyin": "mǎ", "gloss": "code" }
+        {
+          "char": "青",
+          "pinyin": "qīng",
+          "gloss": "blue-green",
+          "role": "helper"
+        },
+        {
+          "char": "清",
+          "pinyin": "qīng",
+          "gloss": "clear (water)"
+        },
+        {
+          "char": "晴",
+          "pinyin": "qíng",
+          "gloss": "sunny"
+        },
+        {
+          "char": "请",
+          "pinyin": "qǐng",
+          "gloss": "please"
+        },
+        {
+          "char": "情",
+          "pinyin": "qíng",
+          "gloss": "feeling"
+        },
+        {
+          "char": "睛",
+          "pinyin": "jīng",
+          "gloss": "eyeball"
+        },
+        {
+          "char": "石",
+          "pinyin": "shí",
+          "gloss": "stone",
+          "role": "helper"
+        },
+        {
+          "char": "妈",
+          "pinyin": "mā",
+          "gloss": "mom"
+        },
+        {
+          "char": "吗",
+          "pinyin": "ma",
+          "gloss": "question word"
+        },
+        {
+          "char": "码",
+          "pinyin": "mǎ",
+          "gloss": "code"
+        }
       ]
     },
     {
@@ -138,12 +443,82 @@
       "island": "Word Village",
       "ready": false,
       "words": [
-        { "word": "大人", "pinyin": "dàrén", "gloss": "grown-up" },
-        { "word": "火山", "pinyin": "huǒshān", "gloss": "volcano" },
-        { "word": "山水", "pinyin": "shānshuǐ", "gloss": "landscape" },
-        { "word": "人口", "pinyin": "rénkǒu", "gloss": "population" },
-        { "word": "明天", "pinyin": "míngtiān", "gloss": "tomorrow" },
-        { "word": "森林", "pinyin": "sēnlín", "gloss": "forest" }
+        {
+          "word": "大人",
+          "pinyin": "dàrén",
+          "gloss": "grown-up"
+        },
+        {
+          "word": "火山",
+          "pinyin": "huǒshān",
+          "gloss": "volcano"
+        },
+        {
+          "word": "山水",
+          "pinyin": "shānshuǐ",
+          "gloss": "landscape"
+        },
+        {
+          "word": "人口",
+          "pinyin": "rénkǒu",
+          "gloss": "population"
+        },
+        {
+          "word": "明天",
+          "pinyin": "míngtiān",
+          "gloss": "tomorrow"
+        },
+        {
+          "word": "森林",
+          "pinyin": "sēnlín",
+          "gloss": "forest"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "key": "festivals",
+      "title": "Festivals",
+      "island": "Festival Fair",
+      "ready": true,
+      "festival": true,
+      "items": [
+        {
+          "char": "红",
+          "pinyin": "hóng",
+          "gloss": "red",
+          "role": "festival"
+        },
+        {
+          "char": "福",
+          "pinyin": "fú",
+          "gloss": "good fortune",
+          "role": "festival"
+        },
+        {
+          "char": "春",
+          "pinyin": "chūn",
+          "gloss": "spring",
+          "role": "festival"
+        },
+        {
+          "char": "龙",
+          "pinyin": "lóng",
+          "gloss": "dragon",
+          "role": "festival"
+        },
+        {
+          "char": "船",
+          "pinyin": "chuán",
+          "gloss": "boat",
+          "role": "festival"
+        },
+        {
+          "char": "饼",
+          "pinyin": "bǐng",
+          "gloss": "cake",
+          "role": "festival"
+        }
       ]
     }
   ]

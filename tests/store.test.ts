@@ -101,3 +101,35 @@ describe('Store: game layer', () => {
     expect(await store.events(b, 'game')).toEqual([]);
   });
 });
+
+describe('Store: parent data tools', () => {
+  it('exports to JSON and imports it back, dates included', async () => {
+    const id = await store.addProfile('🐼', now);
+    await store.startChar(id, '人', index, now);
+    await store.answer(id, '人', 'see', { retries: 0, helped: false, ms: 1000 }, index, now);
+    await store.addSeeds(id, 7);
+    const json = JSON.parse(JSON.stringify(await store.exportAll()));
+    const other = new Store(new GardenDb(`test-${n++}`), fsrs(generatorParameters({ enable_fuzz: false })));
+    await other.importAll(json);
+    expect((await other.profiles()).map((p) => p.animal)).toEqual(['🐼']);
+    expect(await other.seeds(id)).toBe(7);
+    const cards = await other.cards(id);
+    expect(cards.find((c) => c.kind === 'see')!.card.due).toBeInstanceOf(Date);
+    expect(await other.learned(id)).toEqual(new Set(['人']));
+  });
+
+  it('refuses files that are not an export', async () => {
+    await expect(store.importAll({} as never)).rejects.toThrow(/Not a Hanzi Garden export/);
+  });
+
+  it('deletes a child and all their progress', async () => {
+    const a = await store.addProfile('🐼', now);
+    const b = await store.addProfile('🐯', now);
+    await store.startChar(a, '人', index, now);
+    await store.startChar(b, '口', index, now);
+    await store.deleteProfile(a);
+    expect((await store.profiles()).map((p) => p.animal)).toEqual(['🐯']);
+    expect(await store.cards(a)).toEqual([]);
+    expect((await store.cards(b)).map((c) => c.char)).toEqual(['口']);
+  });
+});

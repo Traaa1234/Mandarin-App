@@ -44,10 +44,10 @@ export default function PictureCardScreen({
         {data && (
           <>
             <div className="flex flex-col items-center leading-none">
-              <span className={`text-lg ${toneClass(data.pinyin)}`}>{data.pinyin}</span>
+              <span className={`text-lg py ${toneClass(data.pinyin)}`}>{data.pinyin}</span>
               <h1 className="han text-5xl">{char}</h1>
             </div>
-            <span className="text-ink/60">{data.gloss}</span>
+            <span className="en text-ink/60">{data.gloss}</span>
             <span className="ml-auto">
               <SpeakButton text={char} />
             </span>

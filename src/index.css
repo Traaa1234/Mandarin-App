@@ -25,3 +25,11 @@ body {
 .han {
   font-family: var(--font-han);
 }
+
+/* Parent settings: hide pinyin (keeping its space) or English. */
+:root[data-hide-pinyin] .py {
+  visibility: hidden;
+}
+:root[data-hide-english] .en {
+  display: none;
+}

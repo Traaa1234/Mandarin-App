@@ -5,6 +5,7 @@ import TianGrid from '../components/TianGrid';
 import { charDataLoader } from '../data/load';
 import { INK, OUTLINE } from '../lib/colors';
 import { buzz, chime } from '../lib/sfx';
+import { leniencyFor, useSettings } from '../practice/settings';
 import { store } from '../practice/store';
 import { shuffle } from '../practice/cards/useChoice';
 import type { GameProps } from './types';
@@ -15,6 +16,7 @@ const SIZE = 280;
 // a ghost racing along the track.
 export default function StrokeRace({ learned, profileId, onDone }: GameProps) {
   const char = useMemo(() => shuffle(learned)[0], [learned]);
+  const leniency = leniencyFor(useSettings().settings);
   const svgRef = useRef<SVGSVGElement>(null);
   const [best, setBest] = useState<number | null | undefined>(undefined);
   const [progress, setProgress] = useState(0);
@@ -43,7 +45,7 @@ export default function StrokeRace({ learned, profileId, onDone }: GameProps) {
       drawingWidth: 20,
     });
     writer.quiz({
-      leniency: 1.5,
+      leniency,
       showHintAfterMisses: 2,
       onCorrectStroke: ({ strokeNum, strokesRemaining }) => {
         buzz(10);
@@ -62,7 +64,7 @@ export default function StrokeRace({ learned, profileId, onDone }: GameProps) {
       writer.cancelQuiz();
       while (svg.childNodes.length > keep) svg.removeChild(svg.lastChild!);
     };
-  }, [char, best, profileId]);
+  }, [char, best, profileId, leniency]);
 
   return (
     <div className="flex flex-col items-center gap-4">

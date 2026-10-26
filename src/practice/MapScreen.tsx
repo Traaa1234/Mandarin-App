@@ -8,13 +8,19 @@ import { store } from './store';
 const ISLAND_ICON = ['🌼', '✏️', '🏰', '🌲', '🍲', '⚓', '🏘️'];
 
 // The seven learning stages as garden islands, unlocked in order.
-export default function MapScreen({ onHome }: { onHome: () => void }) {
+export default function MapScreen({ onHome, onCertificate }: { onHome: () => void; onCertificate: (id: number) => void }) {
   const index = useIndex();
   const { current } = useProfile();
   const [list, setList] = useState<Island[] | null>(null);
 
   useEffect(() => {
-    if (index && current) store.learned(current.id!).then((l) => setList(islands(index, l)));
+    if (!index || !current) return;
+    (async () => {
+      const list = islands(index, await store.learned(current.id!));
+      setList(list);
+      // Finishing an island earns its sticker.
+      for (const i of list) if (i.state === 'done') await store.give(current.id!, `sticker:island-${i.id}`);
+    })();
   }, [index, current]);
 
   const here = list?.findIndex((i) => i.state === 'open') ?? -1;
@@ -59,7 +65,16 @@ export default function MapScreen({ onHome }: { onHome: () => void }) {
                 <Baobao size={48} />
               </span>
             )}
-            {island.state === 'done' && <span className="ml-auto text-3xl">⭐</span>}
+            {island.state === 'done' && (
+              <button
+                type="button"
+                onClick={() => onCertificate(island.id)}
+                aria-label={`Certificate for ${island.island}`}
+                className="ml-auto flex size-14 items-center justify-center rounded-full bg-white text-3xl shadow-sm active:scale-95"
+              >
+                📜
+              </button>
+            )}
           </li>
         ))}
       </ol>

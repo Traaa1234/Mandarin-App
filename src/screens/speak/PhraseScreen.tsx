@@ -7,6 +7,8 @@ import { TONE_COLORS } from '../../lib/colors';
 import { contours, pitchTrack, syllableSpans, toneStars } from '../../lib/pitch';
 import { canRecord, decodeFile, playBuffer, startRecording, type Recording } from '../../lib/recorder';
 import { buzz, chime } from '../../lib/sfx';
+import { useProfile } from '../../practice/ProfileContext';
+import { store } from '../../practice/store';
 import PitchCompare from './PitchCompare';
 
 const SLOW = 0.7;
@@ -59,7 +61,7 @@ export default function PhraseScreen({
           {phrase.icon}
         </span>
         <Ruby phrase={phrase} known={(c) => !!index?.chars[c]} onChar={onChar} />
-        <p className="text-lg text-ink/60">{phrase.english}</p>
+        <p className="en text-lg text-ink/60">{phrase.english}</p>
         <div className="flex gap-3">
           <button
             type="button"
@@ -118,7 +120,7 @@ function Ruby({ phrase, known, onChar }: { phrase: Phrase; known: (c: string) =>
         const ruby = (
           <ruby className="px-0.5">
             {ch}
-            <rt className="pb-1 font-sans text-lg" style={{ color: TONE_COLORS[syl.tone] }}>
+            <rt className="py pb-1 font-sans text-lg" style={{ color: TONE_COLORS[syl.tone] }}>
               {syl.written}
             </rt>
           </ruby>
@@ -149,6 +151,7 @@ const CHEERS: Record<number, { han: string; pinyin: string }> = {
 
 // Tap the mic, say the phrase, see both pitch lines syllable by syllable.
 export function RecordAndCompare({ phrase }: { phrase: Phrase }) {
+  const { current } = useProfile();
   const [state, setState] = useState<'idle' | 'recording' | 'thinking' | 'done' | 'no-mic'>(canRecord() ? 'idle' : 'no-mic');
   const [result, setResult] = useState<Result | null>(null);
   const recording = useRef<Recording | null>(null);
@@ -173,6 +176,7 @@ export function RecordAndCompare({ phrase }: { phrase: Phrase }) {
     const stars = modelC.map((m, i) => toneStars(m, childC[i]));
     setResult({ model: modelC, child: childC, stars, buffer: child });
     setState('done');
+    if (current) store.log(current.id!, 'speak', { phrase: phrase.id });
     if (Math.round(stars.reduce((a, b) => a + b, 0) / n) >= 2) {
       chime();
       buzz();

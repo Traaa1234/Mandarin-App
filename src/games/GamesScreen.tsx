@@ -64,7 +64,7 @@ export default function GamesScreen({ onHome }: { onHome: () => void }) {
                   </span>
                   <span className="text-sm">{g.pinyin}</span>
                   <span className="han -mt-1 text-xl font-bold">{g.han}</span>
-                  <span className="text-xs text-ink/50">{g.english}</span>
+                  <span className="en text-xs text-ink/50">{g.english}</span>
                 </button>
               </li>
             );

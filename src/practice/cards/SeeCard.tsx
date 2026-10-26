@@ -15,19 +15,22 @@ export default function SeeCard({
   data,
   index,
   met,
+  choices = 3,
   onDone,
 }: {
   data: CharData;
   index: DataIndex;
   met: Set<string>;
+  // How many answers to show: 2 when things are hard, 4 when they are easy.
+  choices?: number;
   onDone: (o: Outcome) => void;
 }) {
   const char = data.character;
   const entry = index.chars[char];
   const base = import.meta.env.BASE_URL;
   const pictured = !!entry.picture;
-  const [choices] = useState(() =>
-    shuffle([char, ...distractors(index, char, met, 2, (c) => (pictured ? !!index.chars[c].picture : true))]),
+  const [options] = useState(() =>
+    shuffle([char, ...distractors(index, char, met, choices - 1, (c) => (pictured ? !!index.chars[c].picture : true))]),
   );
   const { choose, wobble, reveal } = useChoice(char, onDone);
   const say = () => playKey(syllableKey(entry.pinyin));
@@ -59,8 +62,8 @@ export default function SeeCard({
     <div className="flex flex-col items-center gap-8">
       <div className="flex min-h-40 items-center justify-center">{prompt}</div>
       <div className="flex flex-wrap justify-center gap-4">
-        {choices.map((c) => (
-          <ChoiceButton key={c} onPress={() => choose(c)} wobble={wobble === c} highlight={reveal && c === char} label={pictured ? `Picture ${choices.indexOf(c) + 1}` : c}>
+        {options.map((c) => (
+          <ChoiceButton key={c} onPress={() => choose(c)} wobble={wobble === c} highlight={reveal && c === char} label={pictured ? `Picture ${options.indexOf(c) + 1}` : c}>
             {pictured ? (
               <img src={`${base}${index.chars[c].picture}`} alt="" className="size-24 rounded-2xl sm:size-32" />
             ) : (

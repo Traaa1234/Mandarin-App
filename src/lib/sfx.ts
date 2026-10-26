@@ -1,8 +1,18 @@
 // Short feedback sounds made with the Web Audio API, so no files are needed.
 
 let ctx: AudioContext | null = null;
+let options = { sounds: true, haptics: true };
+
+// Set from the parent settings.
+export const setSfxOptions = (o: { sounds: boolean; haptics: boolean }) => {
+  options = o;
+};
+
+// Ask the confetti layer for a burst; `big` at the end of a session.
+export const celebrate = (big = false) => window.dispatchEvent(new CustomEvent('hg:celebrate', { detail: { big } }));
 
 function tone(freq: number, start: number, length: number, type: OscillatorType = 'sine', volume = 0.15) {
+  if (!options.sounds) return;
   ctx ??= new AudioContext();
   const t = ctx.currentTime + start;
   const osc = ctx.createOscillator();
@@ -19,6 +29,7 @@ function tone(freq: number, start: number, length: number, type: OscillatorType 
 
 // A rising two-note chime for a right answer.
 export function chime() {
+  celebrate();
   try {
     tone(784, 0, 0.25);
     tone(1175, 0.12, 0.35);
@@ -37,4 +48,6 @@ export function boop() {
 }
 
 // Light haptics where the device supports them.
-export const buzz = (ms = 15) => navigator.vibrate?.(ms);
+export const buzz = (ms = 15) => {
+  if (options.haptics) navigator.vibrate?.(ms);
+};

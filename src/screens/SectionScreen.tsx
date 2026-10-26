@@ -55,7 +55,7 @@ function StageTiles({ onOpen }: { onOpen: (char: string) => void }) {
   return (
     <div className="flex flex-col gap-8">
       {index.stages
-        .filter((s) => s.chars.length)
+        .filter((s) => s.chars.length && s.key !== 'festivals')
         .map((stage) => (
           <section key={stage.id} aria-label={stage.island}>
             <h2 className="mb-3 flex items-center gap-3 text-lg font-bold">
@@ -75,9 +75,9 @@ function StageTiles({ onOpen }: { onOpen: (char: string) => void }) {
                       aria-label={`${c}, ${entry.gloss}`}
                       className="flex aspect-square w-full flex-col items-center justify-center rounded-2xl bg-white shadow-sm active:scale-95"
                     >
-                      <span className={`text-base ${toneClass(entry.pinyin)}`}>{entry.pinyin}</span>
+                      <span className={`text-base py ${toneClass(entry.pinyin)}`}>{entry.pinyin}</span>
                       <span className="han text-5xl leading-tight">{c}</span>
-                      <span className="text-xs text-ink/50">{entry.gloss}</span>
+                      <span className="en text-xs text-ink/50">{entry.gloss}</span>
                     </button>
                   </li>
                 );
@@ -107,7 +107,7 @@ function PictureTiles({ onOpen }: { onOpen: (char: string) => void }) {
               className="flex w-full flex-col items-center gap-1 rounded-2xl bg-white p-2 shadow-sm active:scale-95"
             >
               <PictureThumb char={c} />
-              <span className={`text-base ${toneClass(entry.pinyin)}`}>{entry.pinyin}</span>
+              <span className={`text-base py ${toneClass(entry.pinyin)}`}>{entry.pinyin}</span>
               <span className="han -mt-1 text-4xl">{c}</span>
             </button>
           </li>

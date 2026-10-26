@@ -1,14 +1,14 @@
 import { createEmptyCard, fsrs, generatorParameters, Rating, type Card, type FSRS } from 'ts-fsrs';
 import type { DataIndex } from '../data/types';
 import { db as defaultDb, MAX_PROFILES, type CardRow, type GardenDb, type Profile } from './db';
+import { localDate } from './calendar';
 import { flowerState, type Bloom } from './garden';
 import { kindsFor, type Kind } from './kinds';
 import { rateOutcome, type FsrsRating, type Outcome } from './rating';
 
 const DAY = 86400000;
 
-export const localDate = (d: Date) =>
-  `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+export { localDate } from './calendar';
 
 // Review scheduling and storage for one device.
 export class Store {
@@ -137,6 +137,77 @@ export class Store {
       await this.setMeta(profileId, 'seeds', have - price);
       await this.give(profileId, item, now);
       return true;
+    });
+  }
+
+  // Days with any practice, as YYYY-MM-DD.
+  async practisedDays(profileId: number): Promise<Set<string>> {
+    const rows = await this.db.days.where('profileId').equals(profileId).toArray();
+    return new Set(rows.filter((r) => r.ms > 0).map((r) => r.date));
+  }
+
+  async dayMs(profileId: number, now = new Date()): Promise<number> {
+    return (await this.db.days.get([profileId, localDate(now)]))?.ms ?? 0;
+  }
+
+  async days(profileId: number) {
+    return this.db.days.where('profileId').equals(profileId).sortBy('date');
+  }
+
+  reviews(profileId: number) {
+    return this.db.reviews.where('profileId').equals(profileId).toArray();
+  }
+
+  // For the album: each character's stars, one per kind of card passed at least once.
+  async stars(profileId: number): Promise<Map<string, Set<Kind>>> {
+    const out = new Map<string, Set<Kind>>();
+    for (const r of await this.reviews(profileId)) {
+      if (r.rating < 2) continue;
+      if (!out.has(r.char)) out.set(r.char, new Set());
+      out.get(r.char)!.add(r.kind);
+    }
+    return out;
+  }
+
+  // Everything on this device, for the parent's JSON export.
+  async exportAll() {
+    const [profiles, cards, reviews, days, meta, events, items] = await Promise.all([
+      this.db.profiles.toArray(),
+      this.db.cards.toArray(),
+      this.db.reviews.toArray(),
+      this.db.days.toArray(),
+      this.db.meta.toArray(),
+      this.db.events.toArray(),
+      this.db.items.toArray(),
+    ]);
+    return { app: 'hanzi-garden', version: 2, exportedAt: new Date().toISOString(), profiles, cards, reviews, days, meta, events, items };
+  }
+
+  // Replace everything with an export. Dates come back from JSON as strings.
+  async importAll(data: Awaited<ReturnType<Store['exportAll']>>) {
+    if (data?.app !== 'hanzi-garden') throw new Error('Not a Hanzi Garden export');
+    const date = (v: unknown) => (v ? new Date(v as string) : v);
+    const tables = [this.db.profiles, this.db.cards, this.db.reviews, this.db.days, this.db.meta, this.db.events, this.db.items];
+    await this.db.transaction('rw', tables, async () => {
+      await Promise.all(tables.map((t) => t.clear()));
+      await this.db.profiles.bulkPut(data.profiles.map((p) => ({ ...p, createdAt: date(p.createdAt) as Date })));
+      await this.db.cards.bulkPut(
+        data.cards.map((c) => ({ ...c, card: { ...c.card, due: date(c.card.due) as Date, last_review: date(c.card.last_review) as Date | undefined } })),
+      );
+      await this.db.reviews.bulkPut(data.reviews.map((r) => ({ ...r, at: date(r.at) as Date })));
+      await this.db.days.bulkPut(data.days);
+      await this.db.meta.bulkPut(data.meta);
+      await this.db.events.bulkPut(data.events.map((e) => ({ ...e, at: date(e.at) as Date })));
+      await this.db.items.bulkPut(data.items.map((i) => ({ ...i, at: date(i.at) as Date })));
+    });
+  }
+
+  // Remove a child and everything they did.
+  async deleteProfile(profileId: number) {
+    const tables = [this.db.cards, this.db.reviews, this.db.days, this.db.meta, this.db.events, this.db.items];
+    await this.db.transaction('rw', [this.db.profiles, ...tables], async () => {
+      await this.db.profiles.delete(profileId);
+      for (const t of tables) await t.where('profileId').equals(profileId).delete();
     });
   }
 

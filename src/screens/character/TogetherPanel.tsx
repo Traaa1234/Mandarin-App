@@ -124,9 +124,9 @@ export default function TogetherPanel({
         ))}
         <span aria-hidden="true">=</span>
         <div className="flex min-h-16 min-w-20 flex-col items-center rounded-2xl bg-[#ffe8a3] px-3 py-2 shadow-sm">
-          <span className={`text-sm ${toneClass(data.pinyin)}`}>{data.pinyin}</span>
+          <span className={`text-sm py ${toneClass(data.pinyin)}`}>{data.pinyin}</span>
           <span className="han text-4xl leading-tight">{data.character}</span>
-          <span className="text-xs text-ink/60">{data.gloss}</span>
+          <span className="en text-xs text-ink/60">{data.gloss}</span>
         </div>
       </div>
 

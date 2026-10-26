@@ -45,3 +45,17 @@ describe('calendar', async () => {
     expect(dragonAvailable(new Date('2026-10-31T10:00:00'), null)).toBe(false);
   });
 });
+
+describe('festivals', async () => {
+  const { activeFestival } = await import('../src/practice/festivals');
+  it('shows a festival from a week before to a week after its date', () => {
+    expect(activeFestival(new Date('2027-02-01T10:00:00'))?.id).toBe('lunar-new-year');
+    expect(activeFestival(new Date('2027-02-13T10:00:00'))?.id).toBe('lunar-new-year');
+    expect(activeFestival(new Date('2027-02-14T10:00:00'))).toBe(null);
+    expect(activeFestival(new Date('2026-09-25T10:00:00'))?.id).toBe('mid-autumn');
+  });
+  it('keeps festival characters out of the learning path and the islands', () => {
+    expect(islands(index, new Set()).map((i) => i.island)).not.toContain('Festival Fair');
+    expect(Object.entries(index.chars).filter(([, e]) => e.role === 'festival').map(([c]) => c)).toEqual(['红', '福', '春', '龙', '船', '饼']);
+  });
+});
