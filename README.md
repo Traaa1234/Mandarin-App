@@ -15,6 +15,13 @@ npm run build      # typecheck + production build into dist/
 npm run data       # rebuild public/data/ from the raw datasets
 ```
 
+## Play it online
+
+The app is published to GitHub Pages by `.github/workflows/deploy.yml` on
+every push to `main`: https://traaa1234.github.io/Mandarin-App/
+(one-time setup: Settings → Pages → Source: GitHub Actions). Open it once
+online; after that it works offline and can be added to the home screen.
+
 ## How the character data works
 
 `content/stages.json` is the learning path: seven stages, taught in order,
