@@ -77,6 +77,14 @@ uploaded, and the microphone is released when recording stops. Browser speech
 recognition is not used; it can send audio to a server, so it waits for the
 parent gate.
 
+Practice (`src/practice/`) keeps each child's progress on the device in
+IndexedDB (Dexie): up to four profiles, each just an animal avatar. Every
+character has four cards, unlocked one after another: See it, Hear it, Write
+it (Hanzi Writer's tracing quiz) and Tone it; helper parts with nothing to
+look at start at Hear it. Results become FSRS ratings automatically (ts-fsrs),
+following the spec's table, so a child never grades themselves. A session is
+up to 10 due reviews, then up to 3 new characters, capped at 8 minutes.
+
 Stages 6 (sound helpers) and 7 (words) are drafted in the content file with
 `"ready": false`; flip the flag when they're filled in.
 
@@ -90,6 +98,8 @@ Stages 6 (sound helpers) and 7 (words) are drafted in the content file with
 | [audio-cmn](https://github.com/hugolpz/audio-cmn) syllables, pinned commit | Native recordings of every syllable; speaker Chen Wang | CC BY-SA, credit required |
 | [audio-cmn](https://github.com/hugolpz/audio-cmn) HSK words, pinned commit | Word recordings inside phrases; speaker Yue Tan | CC BY-SA, credit required |
 | [pinyin-pro](https://github.com/zh-lx/pinyin-pro) | Tone-mark conversion, 一/不 tone changes | MIT |
+| [ts-fsrs](https://github.com/open-spaced-repetition/ts-fsrs) | Review scheduling (FSRS) | MIT |
+| [Dexie](https://github.com/dexie/Dexie.js) | Progress storage in IndexedDB | Apache-2.0 |
 | [HanziJS](https://github.com/nieldlr/hanzi) | Character frequency rank, at build time only | MIT |
 | [Hanzi Writer](https://github.com/chanind/hanzi-writer) | Stroke animation; tracing later | MIT |
 | [Framer Motion](https://github.com/motiondivision/motion) | The put-together animation | MIT |
@@ -114,6 +124,9 @@ credit to its speakers, Chen Wang and Yue Tan, on the credits screen.
 5. **Speak Mandarin**: six scenes, 17 phrases with ruby pinyin, slow
    playback, and on-device record-and-compare. *Done.* Phrase pictures are
    emoji for now.
-6. Practice and game layer: FSRS scheduling, daily adventure, mascot,
-   mini-games, garden, parent area.
+6. Practice and game layer, in three parts:
+   1. **Profiles, progress storage, FSRS scheduling and the four practice
+      cards.** *Done.*
+   2. Daily adventure, the Bǎobao mascot and the garden.
+   3. Mini-games, rewards and the parent area.
 7. Offline PWA mode, credits screen, accessibility pass.

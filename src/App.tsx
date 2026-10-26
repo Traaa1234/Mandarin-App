@@ -8,9 +8,14 @@ import { SECTIONS, type SectionId } from './sections';
 
 // The playground carries pinyin-pro, so it loads only when opened.
 const PinyinScreen = lazy(() => import('./screens/pinyin/PinyinScreen'));
+// Practice carries the scheduler and the database.
+const PracticeScreen = lazy(() => import('./practice/PracticeScreen'));
+
+// Screens outside the four sections.
+const PAGES = ['today'] as const;
 
 interface Route {
-  section: SectionId | null;
+  section: SectionId | (typeof PAGES)[number] | null;
   char?: string;
 }
 
@@ -18,8 +23,8 @@ interface Route {
 // button works and the app stays a static site.
 function readRoute(): Route {
   const [id, char] = window.location.hash.replace(/^#\/?/, '').split('/');
-  if (!SECTIONS.some((s) => s.id === id)) return { section: null };
-  return { section: id as SectionId, char: char ? decodeURIComponent(char) : undefined };
+  if (!SECTIONS.some((s) => s.id === id) && !PAGES.includes(id as (typeof PAGES)[number])) return { section: null };
+  return { section: id as Route['section'], char: char ? decodeURIComponent(char) : undefined };
 }
 
 export default function App() {
@@ -34,10 +39,17 @@ export default function App() {
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
 
-  const go = (section: SectionId | null, char?: string) => {
+  const go = (section: Route['section'], char?: string) => {
     window.location.hash = section ? `/${section}${char ? `/${encodeURIComponent(char)}` : ''}` : '';
   };
 
+  if (route.section === 'today') {
+    return (
+      <Suspense fallback={null}>
+        <PracticeScreen onHome={() => go(null)} onFreePlay={() => go('pinyin', 'which')} />
+      </Suspense>
+    );
+  }
   if (route.section === 'roots' && route.char) {
     return (
       <CharacterScreen
@@ -78,7 +90,7 @@ export default function App() {
     );
   }
   if (route.section) {
-    const section = route.section;
+    const section: SectionId = route.section;
     return <SectionScreen id={section} onHome={() => go(null)} onOpenChar={(c) => go(section, c)} />;
   }
   return <Home onOpen={go} />;

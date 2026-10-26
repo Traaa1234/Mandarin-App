@@ -1,12 +1,7 @@
 import { convert } from 'pinyin-pro';
 import { stripTones } from './ids';
-import { toneOf } from './tones';
 
-// Recordings are named like audio-cmn's files: syllable without marks, ü as v,
-// then the tone number (5 = neutral). 'hǎo' → 'hao3', 'nǚ' → 'nv3'.
-export function syllableKey(marked: string): string {
-  return `${stripTones(marked).replace(/ü/g, 'v')}${toneOf(marked)}`;
-}
+export { syllableKey } from './syllable';
 
 // Tone-marked display form of a key: 'lv4' → 'lǜ'.
 export const keyToMarked = (key: string) => convert(key.replace(/5$/, '0'));
