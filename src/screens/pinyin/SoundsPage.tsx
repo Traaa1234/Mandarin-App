@@ -16,7 +16,7 @@ export default function SoundsPage() {
     <div className="flex flex-col gap-7">
       {content.groups.map((group) => (
         <section key={group.id} aria-label={group.title}>
-          <h2 className="mb-2 text-sm font-bold text-ink/60">{group.title}</h2>
+          <h2 className="mb-2 text-sm font-bold text-ink/70">{group.title}</h2>
           <div className="flex flex-col gap-2">
             {group.rows.map((row, r) => (
               <div key={r} className="flex flex-wrap gap-2">

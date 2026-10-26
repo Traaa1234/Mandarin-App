@@ -12,4 +12,4 @@ export const UNMATCHED = '#adb5bd';
 export const partColor = (i: number) => (i < 0 ? UNMATCHED : PART_COLORS[i % PART_COLORS.length]);
 
 // Same values as --color-tone-* in index.css; index 5 is the neutral tone.
-export const TONE_COLORS = ['', '#e0393e', '#2f9e44', '#1c7ed6', '#8e44ad', '#868e96'];
+export const TONE_COLORS = ['', '#c92a2a', '#237032', '#1864ab', '#8e44ad', '#5f666d'];

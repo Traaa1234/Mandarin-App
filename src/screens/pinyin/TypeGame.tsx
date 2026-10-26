@@ -27,7 +27,7 @@ export default function TypeGame() {
   return (
     <div className="flex flex-col gap-5">
       <label className="flex flex-col gap-2">
-        <span className="text-sm text-ink/60">Type pinyin with tone numbers</span>
+        <span className="text-sm text-ink/70">Type pinyin with tone numbers</span>
         <input
           value={text}
           onChange={(e) => setText(e.target.value)}

@@ -125,15 +125,15 @@ export default function TogetherPanel({
         <span aria-hidden="true">=</span>
         <div className="flex min-h-16 min-w-20 flex-col items-center rounded-2xl bg-[#ffe8a3] px-3 py-2 shadow-sm">
           <span className={`text-sm py ${toneClass(data.pinyin)}`}>{data.pinyin}</span>
-          <span className="han text-4xl leading-tight">{data.character}</span>
-          <span className="en text-xs text-ink/60">{data.gloss}</span>
+          <span lang="zh-Hans" className="han text-4xl leading-tight">{data.character}</span>
+          <span className="en text-xs text-ink/70">{data.gloss}</span>
         </div>
       </div>
 
       <BigButton onClick={replay} label="Put it together again">
         🔁
       </BigButton>
-      {etym?.hint && <p className="max-w-sm text-center text-sm text-ink/50">{etym.hint}</p>}
+      {etym?.hint && <p className="max-w-sm text-center text-sm text-ink/70">{etym.hint}</p>}
     </div>
   );
 }
@@ -164,7 +164,7 @@ function RootCard({
           <PartChip char={data.character} index={index} onOpen={onOpen} />
         </div>
       )}
-      <p className="max-w-sm text-sm text-ink/50">{data.mnemonic.story}</p>
+      <p className="max-w-sm text-sm text-ink/70">{data.mnemonic.story}</p>
     </div>
   );
 }

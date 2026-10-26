@@ -93,7 +93,7 @@ export default function PinyinTrain({ index, learned, onDone }: GameProps) {
       >
         <span className="text-5xl">🚂</span>
         {(['initial', 'final', 'tone'] as const).map((part) => (
-          <div key={part} aria-label={`${part} car`} className="flex size-20 items-center justify-center rounded-xl border-4 border-dashed border-[#d9c7a3] bg-[#fff9db] text-3xl font-semibold">
+          <div role="group" key={part} aria-label={`${part} car`} className="flex size-20 items-center justify-center rounded-xl border-4 border-dashed border-[#d9c7a3] bg-[#fff9db] text-3xl font-semibold">
             {part === 'tone' ? cars.tone && <ToneShape tone={cars.tone} width={56} /> : cars[part]}
           </div>
         ))}

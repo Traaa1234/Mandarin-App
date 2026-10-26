@@ -29,15 +29,15 @@ export default function CertificateScreen({ islandId, onBack }: { islandId: numb
         </button>
       </div>
       <section className="flex w-full flex-col items-center gap-3 rounded-3xl border-8 border-double border-[#f59f00] bg-white p-6">
-        <p className="han text-4xl font-bold">
+        <p lang="zh-Hans" className="han text-4xl font-bold">
           <span className="block text-base font-normal">jiǎngzhuàng</span>奖状
         </p>
         <p className="text-lg">Certificate</p>
         <p className="text-7xl">{current?.animal}</p>
         <p className="text-2xl font-bold">{island.island}</p>
-        <p className="han text-3xl leading-relaxed">{chars.join(' ')}</p>
+        <p lang="zh-Hans" className="han text-3xl leading-relaxed">{chars.join(' ')}</p>
         <Baobao mood="cheer" size={110} outfit={null} />
-        <p className="text-sm text-ink/60">{new Date().toLocaleDateString()}</p>
+        <p className="text-sm text-ink/70">{new Date().toLocaleDateString()}</p>
       </section>
     </main>
   );

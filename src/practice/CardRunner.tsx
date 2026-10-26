@@ -149,7 +149,7 @@ function NewChar({ data, onGo }: { data: CharData; onGo: () => void }) {
       <MnemonicCard data={data} size={size} />
       <button type="button" onClick={() => playKey(syllableKey(data.pinyin))} className="flex flex-col items-center" aria-label={`${data.character}, listen`}>
         <span className={`text-2xl py ${toneClass(data.pinyin)}`}>{data.pinyin}</span>
-        <span className="en text-ink/60">{data.gloss}</span>
+        <span className="en text-ink/70">{data.gloss}</span>
       </button>
       <button
         type="button"

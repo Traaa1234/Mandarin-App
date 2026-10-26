@@ -68,7 +68,7 @@ export default function StrokeRace({ learned, profileId, onDone }: GameProps) {
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <div className="relative h-12 w-full max-w-sm rounded-full bg-[#e9dfcc]" aria-label="Race track">
+      <div role="group" className="relative h-12 w-full max-w-sm rounded-full bg-[#e9dfcc]" aria-label="Race track">
         {best && !result && (
           <motion.span className="absolute top-1 text-3xl" initial={{ left: '0%' }} animate={{ left: '88%' }} transition={{ duration: best, ease: 'linear' }} aria-label={`Ghost: your best is ${best} seconds`}>
             👻

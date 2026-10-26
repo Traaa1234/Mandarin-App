@@ -15,7 +15,7 @@ export default function ProfilePicker({ onDone }: { onDone: () => void }) {
 
   return (
     <div className="flex flex-col items-center gap-6">
-      <p className="han text-3xl">
+      <p lang="zh-Hans" className="han text-3xl">
         <span className="block text-center text-base">nǐ shì shéi?</span>你是谁？
       </p>
       {!showAdd && (
@@ -39,7 +39,7 @@ export default function ProfilePicker({ onDone }: { onDone: () => void }) {
               type="button"
               onClick={() => setAdding(true)}
               aria-label="Add a child"
-              className="flex size-28 items-center justify-center rounded-full border-4 border-dashed border-[#d9c7a3] text-6xl text-ink/40 active:scale-95"
+              className="flex size-28 items-center justify-center rounded-full border-4 border-dashed border-[#d9c7a3] text-6xl text-ink/70 active:scale-95"
             >
               +
             </button>

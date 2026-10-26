@@ -50,8 +50,8 @@ export default function PhraseScreen({
         <span className="text-4xl" aria-hidden="true">
           {scene.icon}
         </span>
-        <span className="text-ink/60">{scene.title}</span>
-        <span className="ml-auto text-sm text-ink/50 tabular-nums">
+        <h1 className="text-lg text-ink/70">{scene.title}</h1>
+        <span className="ml-auto text-sm text-ink/70 tabular-nums">
           {at + 1} / {inScene.length}
         </span>
       </header>
@@ -61,7 +61,7 @@ export default function PhraseScreen({
           {phrase.icon}
         </span>
         <Ruby phrase={phrase} known={(c) => !!index?.chars[c]} onChar={onChar} />
-        <p className="en text-lg text-ink/60">{phrase.english}</p>
+        <p className="en text-lg text-ink/70">{phrase.english}</p>
         <div className="flex gap-3">
           <button
             type="button"
@@ -113,7 +113,7 @@ export default function PhraseScreen({
 function Ruby({ phrase, known, onChar }: { phrase: Phrase; known: (c: string) => boolean; onChar: (c: string) => void }) {
   let s = 0;
   return (
-    <p className="han flex flex-wrap items-end justify-center text-5xl leading-none">
+    <p lang="zh-Hans" className="han flex flex-wrap items-end justify-center text-5xl leading-none">
       {Array.from(phrase.chars).map((ch, i) => {
         const syl = /\p{Script=Han}/u.test(ch) ? phrase.syllables[s++] : null;
         if (!syl) return <span key={i}>{ch}</span>;
@@ -131,7 +131,7 @@ function Ruby({ phrase, known, onChar }: { phrase: Phrase; known: (c: string) =>
             type="button"
             onClick={() => onChar(ch)}
             aria-label={`Open ${ch} in Character Roots`}
-            className="min-h-14 rounded-xl underline decoration-[#f59f00] decoration-dotted decoration-4 underline-offset-8 active:scale-95"
+            className="min-h-14 min-w-14 rounded-xl underline decoration-[#f59f00] decoration-dotted decoration-4 underline-offset-8 active:scale-95"
           >
             {ruby}
           </button>
@@ -216,7 +216,7 @@ export function RecordAndCompare({ phrase }: { phrase: Phrase }) {
   return (
     <section className="mt-5 flex w-full flex-col items-center gap-4" aria-label="Say it">
       {state === 'no-mic' ? (
-        <p className="text-sm text-ink/50">The microphone isn't available on this device.</p>
+        <p className="text-sm text-ink/70">The microphone isn't available on this device.</p>
       ) : (
         <button
           type="button"
@@ -234,7 +234,7 @@ export function RecordAndCompare({ phrase }: { phrase: Phrase }) {
 
       {result && (
         <>
-          <p className="han text-3xl" aria-live="polite">
+          <p lang="zh-Hans" className="han text-3xl" aria-live="polite">
             <span className="block text-center text-base">{CHEERS[overall].pinyin}</span>
             {CHEERS[overall].han}
           </p>

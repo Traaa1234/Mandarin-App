@@ -28,7 +28,7 @@ export default function ScreenFrame({
         >
           ←
         </button>
-        <h1 className="han text-3xl font-bold">
+        <h1 lang="zh-Hans" className="han text-3xl font-bold">
           <span className="py block text-base font-normal">{pinyin}</span>
           {han}
         </h1>

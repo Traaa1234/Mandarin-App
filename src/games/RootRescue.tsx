@@ -99,11 +99,11 @@ export default function RootRescue({ index, learned, onDone }: GameProps) {
         >
           🌼
         </motion.span>
-        <span className="text-sm text-ink/50">
+        <span className="text-sm text-ink/70">
           {round + 1} / {chars.length}
         </span>
       </div>
-      <div ref={box} aria-label={`Put ${data.character} back together`}>
+      <div role="group" ref={box} aria-label={`Put ${data.character} back together`}>
         <svg width={BOX} height={BOX} viewBox={`0 0 ${BOX} ${BOX}`}>
           <TianGrid size={BOX} />
           {strokesSvg(BOX, null, (s) => (placed.has(owner(s)) ? partColor(owner(s)) : OUTLINE))}

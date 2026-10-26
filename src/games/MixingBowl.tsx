@@ -83,18 +83,18 @@ export default function MixingBowl({ index, learned, profileId, onDone }: GamePr
 
   if (!Object.keys(partsOf).length) return null;
   if (!possible.length) {
-    return <p className="text-center text-ink/60">Learn a few more roots to start cooking! 🥣</p>;
+    return <p className="text-center text-ink/70">Learn a few more roots to start cooking! 🥣</p>;
   }
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <div ref={bowlRef} className="relative flex h-40 w-64 items-center justify-center rounded-b-full bg-[#ffe3c2] shadow-inner" aria-label={`Bowl: ${bowl.join(' ') || 'empty'}`}>
+      <div role="group" ref={bowlRef} className="relative flex h-40 w-64 items-center justify-center rounded-b-full bg-[#ffe3c2] shadow-inner" aria-label={`Bowl: ${bowl.join(' ') || 'empty'}`}>
         {message?.made ? (
-          <motion.span initial={{ scale: 0 }} animate={{ scale: 1.2 }} className="han text-7xl">
+          <motion.span initial={{ scale: 0 }} animate={{ scale: 1.2 }} lang="zh-Hans" className="han text-7xl">
             {message.made}
           </motion.span>
         ) : (
-          <span className="han text-5xl">{bowl.join(' + ')}</span>
+          <span lang="zh-Hans" className="han text-5xl">{bowl.join(' + ')}</span>
         )}
         <span className="absolute -bottom-2 text-5xl" aria-hidden="true">
           🥣
@@ -109,7 +109,7 @@ export default function MixingBowl({ index, learned, profileId, onDone }: GamePr
         )}
         {message?.hint && (
           <p className="text-lg">
-            🤔 Not a character yet. Try <span className="han font-bold">{message.hint}</span>
+            🤔 Not a character yet. Try <span lang="zh-Hans" className="han font-bold">{message.hint}</span>
           </p>
         )}
       </div>
@@ -124,7 +124,7 @@ export default function MixingBowl({ index, learned, profileId, onDone }: GamePr
             onTap={() => add(c)}
             onDragEnd={dropped(c)}
             aria-label={c}
-            className="han flex size-16 touch-none items-center justify-center rounded-2xl bg-white text-4xl shadow-md"
+            lang="zh-Hans" className="han flex size-16 touch-none items-center justify-center rounded-2xl bg-white text-4xl shadow-md"
           >
             {c}
           </motion.button>
@@ -132,7 +132,7 @@ export default function MixingBowl({ index, learned, profileId, onDone }: GamePr
       </div>
       <p className="text-2xl" aria-label={`${made.length} cooked`}>
         {made.map((c) => (
-          <span key={c} className="han">
+          <span key={c} lang="zh-Hans" className="han">
             {c}{' '}
           </span>
         ))}

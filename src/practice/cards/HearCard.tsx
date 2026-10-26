@@ -45,7 +45,7 @@ export default function HearCard({
       <div className="flex flex-wrap justify-center gap-4">
         {options.map((c) => (
           <ChoiceButton key={c} onPress={() => choose(c)} wobble={wobble === c} highlight={reveal && c === char} label={c}>
-            <span className="han text-6xl">{c}</span>
+            <span lang="zh-Hans" className="han text-6xl">{c}</span>
           </ChoiceButton>
         ))}
       </div>

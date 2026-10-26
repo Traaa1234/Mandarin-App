@@ -22,7 +22,7 @@ export default function ToneCard({ char, index, few = false, onDone }: { char: s
 
   return (
     <div className="flex flex-col items-center gap-8">
-      <button type="button" onClick={() => playKey(key)} aria-label={`${char}, listen`} className="han text-9xl leading-none">
+      <button type="button" onClick={() => playKey(key)} aria-label={`${char}, listen`} lang="zh-Hans" className="han text-9xl leading-none">
         {char}
       </button>
       <div className="grid grid-cols-2 gap-4">

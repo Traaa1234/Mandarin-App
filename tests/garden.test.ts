@@ -59,3 +59,13 @@ describe('festivals', async () => {
     expect(Object.entries(index.chars).filter(([, e]) => e.role === 'festival').map(([c]) => c)).toEqual(['红', '福', '春', '龙', '船', '饼']);
   });
 });
+
+describe('festival names have recordings', async () => {
+  const raw = (await import('../content/festivals.json')).default as { festivals: { pinyin: string }[] };
+  const { syllableKey } = await import('../src/lib/syllable');
+  const { readFileSync } = await import('node:fs');
+  const recorded = new Set<string>(JSON.parse(readFileSync(join(import.meta.dirname, '..', 'public', 'data', 'syllables.json'), 'utf8')));
+  it('splits each name into recorded syllables', () => {
+    for (const f of raw.festivals) for (const s of f.pinyin.split(' ')) expect(recorded.has(syllableKey(s)), s).toBe(true);
+  });
+});

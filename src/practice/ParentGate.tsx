@@ -25,7 +25,7 @@ export default function ParentGate({ onPass, onCancel }: { onPass: () => void; o
       <p className="text-3xl tabular-nums">
         {q[0]} × {q[1]} = <span className="inline-block min-w-16 border-b-2 border-ink/30">{typed}</span>
       </p>
-      {wrong && <p className="text-sm text-ink/60">Not quite, try again.</p>}
+      {wrong && <p className="text-sm text-ink/70">Not quite, try again.</p>}
       <div className="grid grid-cols-3 gap-2">
         {['1', '2', '3', '4', '5', '6', '7', '8', '9', '', '0', ''].map((d, i) =>
           d ? (
@@ -37,7 +37,7 @@ export default function ParentGate({ onPass, onCancel }: { onPass: () => void; o
           ),
         )}
       </div>
-      <button type="button" onClick={onCancel} className="min-h-14 rounded-2xl px-4 text-ink/60 underline">
+      <button type="button" onClick={onCancel} className="min-h-14 rounded-2xl px-4 text-ink/70 underline">
         Cancel
       </button>
     </div>

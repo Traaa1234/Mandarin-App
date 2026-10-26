@@ -73,10 +73,10 @@ export default function HiddenHanzi({ index, learned, onDone }: GameProps) {
   return (
     <div className="flex flex-col items-center gap-3">
       <p className="flex items-center gap-3 text-2xl">
-        <span className="han text-5xl">{target}</span>
+        <span lang="zh-Hans" className="han text-5xl">{target}</span>
         <span aria-label={`${found.size} of ${COPIES} found`}>{Array.from({ length: COPIES }, (_, i) => (i < found.size ? '✅' : '⬜')).join('')}</span>
       </p>
-      <div className="relative h-[26rem] w-full max-w-md overflow-hidden rounded-3xl bg-gradient-to-b from-[#dff1ff] to-[#c3e6b4]" aria-label="Garden scene">
+      <div role="group" className="relative h-[26rem] w-full max-w-md overflow-hidden rounded-3xl bg-gradient-to-b from-[#dff1ff] to-[#c3e6b4]" aria-label="Garden scene">
         {scene.map((item, i) => (
           <motion.button
             key={`${round}-${i}`}

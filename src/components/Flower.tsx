@@ -25,7 +25,7 @@ export default function Flower({ char, bloom, size = 96 }: { char: string; bloom
           <ellipse key={a} cx="50" cy="22" rx="13" ry="20" fill={petal} transform={`rotate(${a} 50 42)`} />
         ))}
         <circle cx="50" cy="42" r="15" fill="#fff9db" stroke="#f2c46d" strokeWidth="2" />
-        <text x="50" y="49" textAnchor="middle" fontSize="20" className="han" fill="#2b2b2b">
+        <text x="50" y="49" textAnchor="middle" fontSize="20" lang="zh-Hans" className="han" fill="#2b2b2b">
           {char}
         </text>
       </motion.g>

@@ -45,11 +45,11 @@ export default function CharacterScreen({
           <>
             <div className="flex flex-col items-center leading-none">
               <span className={`text-lg py ${toneClass(data.pinyin)}`}>{data.pinyin}</span>
-              <h1 className="han text-5xl">{char}</h1>
+              <h1 lang="zh-Hans" className="han text-5xl">{char}</h1>
             </div>
-            <span className="en text-ink/60">{data.gloss}</span>
+            <span className="en text-ink/70">{data.gloss}</span>
             <span className="ml-auto">
-              <SpeakButton text={char} />
+              <SpeakButton text={char} pinyin={data.pinyin} />
             </span>
           </>
         )}

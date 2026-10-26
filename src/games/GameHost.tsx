@@ -66,7 +66,7 @@ export default function GameHost({
         <span className="text-3xl" aria-hidden="true">
           {game.icon}
         </span>{' '}
-        <span className="han text-2xl font-bold">{game.han}</span> <span className="text-sm text-ink/50">{game.pinyin}</span>
+        <span lang="zh-Hans" className="han text-2xl font-bold">{game.han}</span> <span className="text-sm text-ink/70">{game.pinyin}</span>
       </p>
       <Suspense fallback={null}>
         <Game index={index} learned={learned} profileId={profileId} onDone={done} />

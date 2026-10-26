@@ -67,7 +67,7 @@ export default function CharacterCatch({ chars, index, onDone }: { chars: string
       >
         👂
       </button>
-      <div className="relative h-96 w-full max-w-md overflow-hidden rounded-3xl bg-[#dff1ff]" aria-label={`Round ${round + 1} of ${ROUNDS}`}>
+      <div role="group" className="relative h-96 w-full max-w-md overflow-hidden rounded-3xl bg-[#dff1ff]" aria-label={`Round ${round + 1} of ${ROUNDS}`}>
         {balloons.map((c, i) => (
           <motion.button
             key={`${round}-${c}`}
@@ -81,7 +81,7 @@ export default function CharacterCatch({ chars, index, onDone }: { chars: string
             transition={popped === c ? { duration: 0.4 } : { duration: 7 + i, repeat: Infinity, ease: 'linear', delay: i * 0.6 }}
           >
             <span
-              className="han flex size-20 items-center justify-center rounded-full text-5xl shadow-md"
+              lang="zh-Hans" className="han flex size-20 items-center justify-center rounded-full text-5xl shadow-md"
               style={{ background: BALLOONS[i % BALLOONS.length] }}
             >
               {c}

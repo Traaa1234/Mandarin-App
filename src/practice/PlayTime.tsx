@@ -50,7 +50,7 @@ export default function PlayTime({ children }: { children: ReactNode }) {
         <>
           <Baobao mood="sleep" size={180} />
           <Speech han="明天见！" pinyin="míngtiān jiàn" english="Bǎobao is sleeping. See you tomorrow!" />
-          <button type="button" onClick={() => setGate(true)} className="mt-6 min-h-14 rounded-2xl px-4 text-sm text-ink/50 underline">
+          <button type="button" onClick={() => setGate(true)} className="mt-6 min-h-14 rounded-2xl px-4 text-sm text-ink/70 underline">
             Grown-ups: {EXTRA_MIN} more minutes
           </button>
         </>

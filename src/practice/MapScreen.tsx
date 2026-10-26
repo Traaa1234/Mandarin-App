@@ -36,7 +36,7 @@ export default function MapScreen({ onHome, onCertificate }: { onHome: () => voi
         >
           ←
         </button>
-        <h1 className="han text-3xl font-bold">
+        <h1 lang="zh-Hans" className="han text-3xl font-bold">
           <span className="block text-base font-normal">dìtú</span>地图
         </h1>
       </header>
@@ -55,7 +55,7 @@ export default function MapScreen({ onHome, onCertificate }: { onHome: () => voi
             <span className="flex flex-col">
               <span className="font-bold">{island.island}</span>
               {island.total > 0 && island.state !== 'building' && (
-                <span className="text-sm text-ink/60">
+                <span className="text-sm text-ink/70">
                   {island.learned} / {island.total} 🌷
                 </span>
               )}

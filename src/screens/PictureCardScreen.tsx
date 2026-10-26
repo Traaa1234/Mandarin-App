@@ -45,11 +45,11 @@ export default function PictureCardScreen({
           <>
             <div className="flex flex-col items-center leading-none">
               <span className={`text-lg py ${toneClass(data.pinyin)}`}>{data.pinyin}</span>
-              <h1 className="han text-5xl">{char}</h1>
+              <h1 lang="zh-Hans" className="han text-5xl">{char}</h1>
             </div>
-            <span className="en text-ink/60">{data.gloss}</span>
+            <span className="en text-ink/70">{data.gloss}</span>
             <span className="ml-auto">
-              <SpeakButton text={char} />
+              <SpeakButton text={char} pinyin={data.pinyin} />
             </span>
           </>
         )}
@@ -68,7 +68,7 @@ export default function PictureCardScreen({
             aria-label={`Open ${char} in Character Roots`}
             className="mt-4 flex min-h-14 items-center gap-2 rounded-2xl bg-[#ffe8a3] px-4 text-2xl shadow-sm active:scale-95"
           >
-            🌱 <span className="han">{char}</span>
+            🌱 <span lang="zh-Hans" className="han">{char}</span>
           </button>
         </>
       )}

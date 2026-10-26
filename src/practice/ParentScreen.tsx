@@ -127,7 +127,7 @@ function ChildReport({ profileId, index }: { profileId: number; index: DataIndex
             ['Sunshine streak', `${report.streak} days`],
           ].map(([label, value]) => (
             <div key={label} className="rounded-2xl bg-[#fdf6e3] p-3">
-              <dt className="text-xs text-ink/60">{label}</dt>
+              <dt className="text-xs text-ink/70">{label}</dt>
               <dd className="text-2xl font-bold tabular-nums">{value}</dd>
             </div>
           ))}
@@ -142,13 +142,13 @@ function ChildReport({ profileId, index }: { profileId: number; index: DataIndex
             {report.tricky.map((t) => (
               <li key={t.char} className="flex flex-col items-center rounded-2xl bg-[#fdf6e3] px-3 py-2">
                 <span className={`text-sm ${toneClass(index.chars[t.char]?.pinyin ?? '')}`}>{index.chars[t.char]?.pinyin}</span>
-                <span className="han text-4xl">{t.char}</span>
-                <span className="text-xs text-ink/60">needed help {t.misses}×</span>
+                <span lang="zh-Hans" className="han text-4xl">{t.char}</span>
+                <span className="text-xs text-ink/70">needed help {t.misses}×</span>
               </li>
             ))}
           </ol>
         ) : (
-          <p className="text-sm text-ink/60">Nothing tricky yet.</p>
+          <p className="text-sm text-ink/70">Nothing tricky yet.</p>
         )}
       </Card>
     </>
@@ -172,7 +172,7 @@ function MinutesChart({ daily }: { daily: { date: string; minutes: number }[] })
       {table ? (
         <table className="w-full text-sm">
           <thead>
-            <tr className="text-left text-ink/60">
+            <tr className="text-left text-ink/70">
               <th className="font-normal">Day</th>
               <th className="font-normal">Minutes</th>
             </tr>
@@ -218,7 +218,7 @@ function MinutesChart({ daily }: { daily: { date: string; minutes: number }[] })
           })}
         </svg>
       )}
-      <button type="button" onClick={() => setTable((t) => !t)} className="mt-2 min-h-12 text-sm text-ink/60 underline">
+      <button type="button" onClick={() => setTable((t) => !t)} className="mt-2 min-h-14 text-sm text-ink/70 underline">
         {table ? 'Show chart' : 'Show as table'}
       </button>
     </div>
@@ -227,9 +227,9 @@ function MinutesChart({ daily }: { daily: { date: string; minutes: number }[] })
 
 function Toggle({ label, on, set }: { label: string; on: boolean; set: (v: boolean) => void }) {
   return (
-    <label className="flex min-h-12 items-center justify-between gap-3">
+    <label className="flex min-h-14 items-center justify-between gap-3">
       <span>{label}</span>
-      <input type="checkbox" checked={on} onChange={(e) => set(e.target.checked)} className="size-6 accent-[#f59f00]" />
+      <input type="checkbox" checked={on} onChange={(e) => set(e.target.checked)} className="size-14 accent-[#f59f00]" />
     </label>
   );
 }
@@ -251,9 +251,9 @@ function SettingsPanel() {
         <Toggle label="Show English" on={settings.showEnglish} set={(v) => update({ showEnglish: v })} />
         <Toggle label="Sounds" on={settings.sounds} set={(v) => update({ sounds: v })} />
         <Toggle label="Vibration" on={settings.haptics} set={(v) => update({ haptics: v })} />
-        <label className="flex min-h-12 items-center justify-between gap-3">
+        <label className="flex min-h-14 items-center justify-between gap-3">
           <span>Daily limit</span>
-          <select value={settings.dailyLimitMin} onChange={(e) => update({ dailyLimitMin: Number(e.target.value) })} className="min-h-12 rounded-xl bg-[#fdf6e3] px-2">
+          <select value={settings.dailyLimitMin} onChange={(e) => update({ dailyLimitMin: Number(e.target.value) })} className="min-h-14 rounded-xl bg-[#fdf6e3] px-2">
             {[10, 15, 20, 30, 45, 60].map((m) => (
               <option key={m} value={m}>
                 {m} minutes
@@ -261,26 +261,25 @@ function SettingsPanel() {
             ))}
           </select>
         </label>
-        <label className="flex min-h-12 items-center justify-between gap-3">
+        <label className="flex min-h-14 items-center justify-between gap-3">
           <span>Writing practice</span>
-          <select value={settings.writing} onChange={(e) => update({ writing: e.target.value as 'younger' | 'older' })} className="min-h-12 rounded-xl bg-[#fdf6e3] px-2">
+          <select value={settings.writing} onChange={(e) => update({ writing: e.target.value as 'younger' | 'older' })} className="min-h-14 rounded-xl bg-[#fdf6e3] px-2">
             <option value="younger">Ages 5–7 (more forgiving)</option>
             <option value="older">Ages 8–10</option>
           </select>
         </label>
-        <p className="py-2 text-xs text-ink/50">Tracing leniency is {leniencyFor(settings)}.</p>
-        <div className="flex min-h-12 flex-wrap items-center justify-between gap-3 py-2">
+        <p className="py-2 text-xs text-ink/70">Tracing leniency is {leniencyFor(settings)}.</p>
+        <div className="flex min-h-14 flex-wrap items-center justify-between gap-3 py-2">
           <label htmlFor="reminder">Daily reminder</label>
           <span className="flex items-center gap-2">
-            <input id="reminder" type="time" value={settings.reminder} onChange={(e) => update({ reminder: e.target.value })} className="min-h-12 rounded-xl bg-[#fdf6e3] px-2" />
-            <button type="button" onClick={download} disabled={!settings.reminder} className="min-h-12 rounded-xl bg-[#ffe8a3] px-3 disabled:opacity-40">
+            <input id="reminder" type="time" value={settings.reminder} onChange={(e) => update({ reminder: e.target.value })} className="min-h-14 rounded-xl bg-[#fdf6e3] px-2" />
+            <button type="button" onClick={download} disabled={!settings.reminder} className="min-h-14 rounded-xl bg-[#ffe8a3] px-3 disabled:opacity-40">
               Add to calendar
             </button>
           </span>
         </div>
-        <p className="py-2 text-xs text-ink/50">
-          Web apps can't wake a closed phone, so the reminder is a repeating event for your own calendar. Simplified characters are used; a Traditional
-          option is planned.
+        <p className="py-2 text-xs text-ink/70">
+          Web apps can't wake a closed phone, so the reminder is a repeating event for your own calendar.
         </p>
       </div>
     </Card>
@@ -322,12 +321,12 @@ function DataPanel() {
 
   return (
     <Card title="Data">
-      <p className="mb-3 text-sm text-ink/60">All progress stays on this device. Nothing is uploaded.</p>
+      <p className="mb-3 text-sm text-ink/70">All progress stays on this device. Nothing is uploaded.</p>
       <div className="flex flex-wrap gap-2">
-        <button type="button" onClick={exportAll} className="min-h-12 rounded-xl bg-[#ffe8a3] px-3">
+        <button type="button" onClick={exportAll} className="min-h-14 rounded-xl bg-[#ffe8a3] px-3">
           Export (JSON)
         </button>
-        <button type="button" onClick={() => file.current?.click()} className="min-h-12 rounded-xl bg-[#fdf6e3] px-3">
+        <button type="button" onClick={() => file.current?.click()} className="min-h-14 rounded-xl bg-[#fdf6e3] px-3">
           Import
         </button>
         <input ref={file} type="file" accept="application/json" hidden onChange={(e) => e.target.files?.[0] && importAll(e.target.files[0])} />
@@ -336,7 +335,7 @@ function DataPanel() {
       {profiles && profiles.length > 0 && (
         <div className="mt-4 flex flex-wrap gap-2">
           {profiles.map((p) => (
-            <button key={p.id} type="button" onClick={() => remove(p.id!, p.animal)} className="min-h-12 rounded-xl border border-[#ffc9c9] px-3 text-sm">
+            <button key={p.id} type="button" onClick={() => remove(p.id!, p.animal)} className="min-h-14 rounded-xl border border-[#ffc9c9] px-3 text-sm">
               Delete {p.animal}
             </button>
           ))}

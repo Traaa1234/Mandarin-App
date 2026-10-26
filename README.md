@@ -1,6 +1,7 @@
 # Hanzi Garden (汉字花园)
 
-An offline-first web app that teaches Mandarin Chinese to children aged 5–10:
+An offline-first web app that teaches Mandarin Chinese, in Simplified
+characters, to children aged 5–10:
 character roots, picture cards, speaking, and pinyin. No ads, accounts or
 network requests after install; progress stays on the device.
 
@@ -123,6 +124,25 @@ minutes. Seasonal festivals (Lunar New Year, Dragon Boat, Mid-Autumn) appear
 on the home screen around their dates, listed per year in
 `content/festivals.json`.
 
+## Offline, credits and accessibility
+
+The app is an installable PWA (vite-plugin-pwa / Workbox). On first load the
+service worker precaches everything it uses: about 1,800 files, 8.6 MB,
+including every syllable and phrase recording, character file and picture.
+After that it works in airplane mode, and it never contacts another server:
+there are no fonts, analytics or CDNs. The icons are Bǎobao, rendered to PNG
+in `public/icons/`.
+
+The About and credits screen (home → About and credits) lists every dataset,
+library and voice with its license (`src/credits.ts`; a test checks every
+shipped library is listed). Web addresses are shown as plain text, since the
+app has no outbound links.
+
+Accessibility: Chinese text is marked `lang="zh-Hans"`, the rest English;
+text and tone colors meet 4.5:1 contrast; every tap target is at least 56 px;
+axe-core reports no violations on any screen, and Lighthouse scores 100 for
+accessibility.
+
 Stages 6 (sound helpers) and 7 (words) are drafted in the content file with
 `"ready": false`; flip the flag when they're filled in.
 
@@ -168,7 +188,28 @@ credit to its speakers, Chen Wang and Yue Tan, on the credits screen.
    2. **Daily adventure, the Bǎobao mascot, the garden and the island map.**
       *Done.*
    3. **Mini-games, rewards, the Sunshine streak, the parent area, the daily
-      limit and seasonal festivals.** *Done.* Not yet: a Traditional
-      characters option, browser speech recognition, and read-along island
-      stories.
-7. Offline PWA mode, credits screen, accessibility pass.
+      limit and seasonal festivals.** *Done.* Not yet: browser speech
+      recognition and read-along island stories.
+7. **Offline PWA mode, credits screen, accessibility pass.** *Done.*
+
+## Acceptance criteria
+
+| Criterion | Status |
+|---|---|
+| Airplane mode: every seed character, picture and audio clip works after the first load | Checked: 1,779 assets load offline, none fail |
+| Every Chinese item has tone-marked pinyin and plays audio | Characters, phrases and pinyin play native recordings; headings show pinyin |
+| 好, 明, 休, 林, 森 show the correct parts, coloured by `matches`, and animate together | Tested |
+| A 5-year-old can finish a session with taps and audio only | Yes; English is for parents and can be hidden |
+| Tracing accepts a finger-drawn 人 and 口 on a phone | Tested at 390 px |
+| All 9 mini-games run with learned characters in under 90 seconds | Tested in a browser |
+| Missing 1 or 2 days doesn't reset the Sunshine streak; nothing in the garden dies | Unit tested |
+| The adventure ends with a goodbye, and the parent's daily limit stops play | Tested |
+| Every correct answer, game and session has a sound and an animation | Chime and confetti |
+| No network request after install; no recording is stored | No outside requests; recordings stay in memory |
+| Lighthouse accessibility ≥ 90, tap targets ≥ 56 px | Accessibility 100; no small targets. Lighthouse no longer scores PWAs separately; the manifest and service worker make the app installable |
+| Credits list every dataset, library and speaker with its license | Yes |
+
+Still open: a teacher's review of the stroke names and memory lines; the
+festival dates for each new year; phrase recordings from a neural voice
+(`content/phrase-audio/`); browser speech recognition behind the parent gate;
+and read-along island stories.

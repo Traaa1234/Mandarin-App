@@ -81,8 +81,8 @@ export default function WatchPanel({ data }: { data: CharData }) {
           {shown} / {total}
         </span>
         {name && (
-          <span className="han text-xl">
-            {name} <span className="text-base text-ink/60">{strokePinyin(name)}</span>
+          <span lang="zh-Hans" className="han text-xl">
+            {name} <span className="text-base text-ink/70">{strokePinyin(name)}</span>
           </span>
         )}
       </div>

@@ -36,24 +36,24 @@ export default function SeeCard({
   const say = () => playKey(syllableKey(entry.pinyin));
 
   const prompt = pictured ? (
-    <button type="button" onClick={say} aria-label={`${char}, listen`} className="han text-9xl leading-none">
+    <button type="button" onClick={say} aria-label={`${char}, listen`} lang="zh-Hans" className="han text-9xl leading-none">
       {char}
     </button>
   ) : entry.role === 'costume' ? (
-    <span className="han flex items-center gap-3 text-7xl">
+    <span lang="zh-Hans" className="han flex items-center gap-3 text-7xl">
       {data.costumeOf}
-      <span className="text-4xl text-ink/40">→</span>
+      <span className="text-4xl text-ink/70">→</span>
       <span className="text-ink/30">?</span>
     </span>
   ) : (
-    <span className="han flex items-center gap-2 text-6xl">
+    <span lang="zh-Hans" className="han flex items-center gap-2 text-6xl">
       {leaves(data.decomposition).map((p, i) => (
         <span key={i}>
-          {i > 0 && <span className="px-2 text-4xl text-ink/40">+</span>}
+          {i > 0 && <span className="px-2 text-4xl text-ink/70">+</span>}
           {p}
         </span>
       ))}
-      <span className="px-2 text-4xl text-ink/40">=</span>
+      <span className="px-2 text-4xl text-ink/70">=</span>
       <span className="text-ink/30">?</span>
     </span>
   );
@@ -67,7 +67,7 @@ export default function SeeCard({
             {pictured ? (
               <img src={`${base}${index.chars[c].picture}`} alt="" className="size-24 rounded-2xl sm:size-32" />
             ) : (
-              <span className="han text-6xl">{c}</span>
+              <span lang="zh-Hans" className="han text-6xl">{c}</span>
             )}
           </ChoiceButton>
         ))}

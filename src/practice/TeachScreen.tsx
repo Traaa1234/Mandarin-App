@@ -48,13 +48,13 @@ export default function TeachScreen({ onHome }: { onHome: () => void }) {
         </div>
       ) : (
         <div className="flex flex-col items-center gap-5">
-          <p className="en text-center text-ink/60">Show this to Mom or Dad. What is it?</p>
-          <span className="han text-9xl leading-none">{char}</span>
+          <p className="en text-center text-ink/70">Show this to Mom or Dad. What is it?</p>
+          <span lang="zh-Hans" className="han text-9xl leading-none">{char}</span>
           {peek ? (
             <div className="flex flex-col items-center gap-2">
               {index.chars[char].picture && <img src={`${base}${index.chars[char].picture}`} alt="" className="size-28 rounded-2xl" />}
               <span className={`text-3xl ${toneClass(index.chars[char].pinyin)}`}>{index.chars[char].pinyin}</span>
-              <span className="text-lg text-ink/60">{index.chars[char].gloss}</span>
+              <span className="text-lg text-ink/70">{index.chars[char].gloss}</span>
             </div>
           ) : (
             <button

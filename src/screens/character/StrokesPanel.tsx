@@ -20,11 +20,11 @@ export default function StrokesPanel({ data }: { data: CharData }) {
               className="flex w-full flex-col items-center gap-1 rounded-2xl bg-white p-2 shadow-sm active:scale-95"
             >
               <StrokeSvg strokes={data.strokes} colors={colors} size={88} />
-              <span className="text-sm text-ink/50 tabular-nums">{i + 1}</span>
+              <span className="text-sm text-ink/70 tabular-nums">{i + 1}</span>
               {name && (
                 <>
                   <span className="text-xs leading-none">{strokePinyin(name)}</span>
-                  <span className="han text-lg leading-tight">{name}</span>
+                  <span lang="zh-Hans" className="han text-lg leading-tight">{name}</span>
                 </>
               )}
             </button>

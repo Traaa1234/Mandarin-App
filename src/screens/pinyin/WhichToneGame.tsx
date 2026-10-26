@@ -42,7 +42,7 @@ export default function WhichToneGame() {
   if (round >= ROUNDS) {
     return (
       <div className="flex flex-col items-center gap-4">
-        <p className="han text-3xl">
+        <p lang="zh-Hans" className="han text-3xl">
           <span className="block text-base">tài bàng le</span>太棒了！
         </p>
         <Stars count={stars} of={ROUNDS} />
@@ -86,7 +86,7 @@ export default function WhichToneGame() {
 
   return (
     <div className="flex flex-col items-center gap-6">
-      <p className="text-sm text-ink/50">
+      <p className="text-sm text-ink/70">
         {round + 1} / {ROUNDS}
       </p>
       <button

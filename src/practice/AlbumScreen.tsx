@@ -46,7 +46,7 @@ export default function AlbumScreen({ onHome }: { onHome: () => void }) {
               {got && entry.picture ? (
                 <img src={`${base}${entry.picture}`} alt="" className="aspect-square w-full rounded-xl" />
               ) : (
-                <span className={`han flex aspect-square w-full items-center justify-center text-4xl ${got ? '' : 'text-[#cdbf9f] blur-[2px]'}`}>{c}</span>
+                <span lang="zh-Hans" className={`han flex aspect-square w-full items-center justify-center text-4xl ${got ? '' : 'text-[#cdbf9f] blur-[2px]'}`}>{c}</span>
               )}
               <span className="text-xs leading-none" aria-hidden="true">
                 {got ? '⭐'.repeat(earned) + '☆'.repeat(kinds.length - earned) : ''}

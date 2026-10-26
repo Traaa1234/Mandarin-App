@@ -6,7 +6,7 @@ import { store } from '../practice/store';
 import { sunshineStreak, weekSuns, WEEKLY_GOAL } from '../practice/streak';
 import { SECTIONS, type SectionId } from '../sections';
 
-export type HomeTarget = SectionId | 'today' | 'garden' | 'map' | 'games' | 'album' | 'shop' | 'parents' | 'festival';
+export type HomeTarget = SectionId | 'today' | 'garden' | 'map' | 'games' | 'album' | 'shop' | 'parents' | 'festival' | 'credits';
 
 const SHORTCUTS: { id: HomeTarget; icon: string; label: string }[] = [
   { id: 'garden', icon: '🌷', label: 'My garden' },
@@ -33,7 +33,7 @@ export default function Home({ onOpen }: { onOpen: (id: HomeTarget) => void }) {
     <main className="mx-auto flex min-h-dvh max-w-3xl flex-col px-4 py-6">
       <div className="mb-2 flex items-center gap-3">
         {sun && (
-          <div
+          <div role="group"
             className="flex items-center gap-2 rounded-full bg-white px-3 py-2 shadow-sm"
             aria-label={`Sunshine streak ${sun.streak} days. This week ${sun.week.filter(Boolean).length} of ${WEEKLY_GOAL} sunny days`}
           >
@@ -58,10 +58,10 @@ export default function Home({ onOpen }: { onOpen: (id: HomeTarget) => void }) {
           </button>
         )}
       </div>
-      <h1 className="han mb-4 text-center text-4xl font-bold">
+      <h1 lang="zh-Hans" className="han mb-4 text-center text-4xl font-bold">
         <span className="py block text-base font-normal">hànzì huāyuán</span>
         汉字花园
-        <span className="en mt-1 block text-base font-normal text-ink/60">Hanzi Garden</span>
+        <span className="en mt-1 block text-base font-normal text-ink/70">Hanzi Garden</span>
       </h1>
       {festival && (
         <button
@@ -71,7 +71,7 @@ export default function Home({ onOpen }: { onOpen: (id: HomeTarget) => void }) {
           className="mb-3 flex min-h-16 items-center justify-center gap-3 rounded-3xl bg-[#ffe3e3] px-4 shadow-md active:scale-95"
         >
           <span className="text-4xl">{festival.icon}</span>
-          <span className="han text-2xl font-bold">
+          <span lang="zh-Hans" className="han text-2xl font-bold">
             <span className="py block text-sm font-normal">{festival.pinyin}</span>
             {festival.han}
           </span>
@@ -81,10 +81,10 @@ export default function Home({ onOpen }: { onOpen: (id: HomeTarget) => void }) {
         type="button"
         onClick={() => onOpen('today')}
         aria-label="Today's adventure"
-        className="mb-3 flex min-h-28 items-center justify-center gap-3 rounded-3xl bg-[#f59f00] px-3 text-white shadow-md transition active:scale-95"
+        className="mb-3 flex min-h-28 items-center justify-center gap-3 rounded-3xl bg-[#f59f00] px-3 text-ink shadow-md transition active:scale-95"
       >
         <Baobao size={80} mood="happy" />
-        <span className="han text-4xl font-bold">
+        <span lang="zh-Hans" className="han text-4xl font-bold">
           <span className="py block text-base font-normal">jīntiān</span>今天
         </span>
       </button>
@@ -112,14 +112,19 @@ export default function Home({ onOpen }: { onOpen: (id: HomeTarget) => void }) {
           >
             <span className="block size-20 sm:size-28">{s.icon}</span>
             <span className="py text-base">{s.pinyin}</span>
-            <span className="han -mt-2 text-3xl font-bold sm:text-4xl">{s.han}</span>
-            <span className="en text-sm opacity-70">{s.english}</span>
+            <span lang="zh-Hans" className="han -mt-2 text-3xl font-bold sm:text-4xl">{s.han}</span>
+            <span className="en text-sm">{s.english}</span>
           </button>
         ))}
       </div>
-      <button type="button" onClick={() => onOpen('parents')} className="mt-6 min-h-14 self-center px-4 text-sm text-ink/50 underline">
-        For grown-ups
-      </button>
+      <div className="mt-6 flex justify-center gap-2">
+        <button type="button" onClick={() => onOpen('parents')} className="min-h-14 px-4 text-sm text-ink/70 underline">
+          For grown-ups
+        </button>
+        <button type="button" onClick={() => onOpen('credits')} className="min-h-14 px-4 text-sm text-ink/70 underline">
+          About and credits
+        </button>
+      </div>
     </main>
   );
 }

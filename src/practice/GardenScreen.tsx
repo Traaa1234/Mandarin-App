@@ -33,7 +33,7 @@ export default function GardenScreen({ onHome, onChar }: { onHome: () => void; o
         >
           ←
         </button>
-        <h1 className="han text-3xl font-bold">
+        <h1 lang="zh-Hans" className="han text-3xl font-bold">
           <span className="block text-base font-normal">huāyuán</span>花园
         </h1>
         {current && <span className="ml-auto text-5xl">{current.animal}</span>}
@@ -48,7 +48,7 @@ export default function GardenScreen({ onHome, onChar }: { onHome: () => void; o
             <span className="text-2xl" aria-label="Garden decorations">
               {LEVEL_DECOR.slice(0, level).join(' ')}
             </span>
-            <span className="text-sm text-ink/50" aria-label={`${toNext} more flowers to the next level`}>
+            <span className="text-sm text-ink/70" aria-label={`${toNext} more flowers to the next level`}>
               {'🌱'.repeat(toNext)}
             </span>
           </div>

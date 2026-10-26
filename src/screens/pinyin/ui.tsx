@@ -11,11 +11,11 @@ export function PageHeader({ han, pinyin, english, onBack }: { han: string; piny
       >
         ←
       </button>
-      <h1 className="han text-3xl font-bold">
+      <h1 lang="zh-Hans" className="han text-3xl font-bold">
         <span className="block text-base font-normal">{pinyin}</span>
         {han}
       </h1>
-      <span className="text-sm text-ink/50">{english}</span>
+      <span className="text-sm text-ink/70">{english}</span>
     </header>
   );
 }

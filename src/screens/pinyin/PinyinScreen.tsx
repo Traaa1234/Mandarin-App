@@ -65,8 +65,8 @@ export default function PinyinScreen({
                   {p.icon}
                 </span>
                 <span className="text-sm">{p.pinyin}</span>
-                <span className="han -mt-1 text-2xl font-bold">{p.han}</span>
-                <span className="text-xs text-ink/50">{p.english}</span>
+                <span lang="zh-Hans" className="han -mt-1 text-2xl font-bold">{p.han}</span>
+                <span className="text-xs text-ink/70">{p.english}</span>
               </button>
             ))}
           </div>

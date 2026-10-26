@@ -37,7 +37,7 @@ export default function GamesScreen({ onHome }: { onHome: () => void }) {
         >
           ←
         </button>
-        <h1 className="han text-3xl font-bold">
+        <h1 lang="zh-Hans" className="han text-3xl font-bold">
           <span className="block text-base font-normal">yóuxì</span>游戏
         </h1>
         {current && <span className="ml-auto text-5xl">{current.animal}</span>}
@@ -63,8 +63,8 @@ export default function GamesScreen({ onHome }: { onHome: () => void }) {
                     {ready ? g.icon : '🔒'}
                   </span>
                   <span className="text-sm">{g.pinyin}</span>
-                  <span className="han -mt-1 text-xl font-bold">{g.han}</span>
-                  <span className="en text-xs text-ink/50">{g.english}</span>
+                  <span lang="zh-Hans" className="han -mt-1 text-xl font-bold">{g.han}</span>
+                  <span className="en text-xs text-ink/70">{g.english}</span>
                 </button>
               </li>
             );

@@ -107,8 +107,8 @@ export function Speech({ han, pinyin, english, children }: { han: string; pinyin
   return (
     <div className="relative rounded-3xl bg-white px-5 py-3 text-center shadow-md" aria-live="polite">
       <p className="py text-base">{pinyin}</p>
-      <p className="han text-3xl font-bold">{han}</p>
-      {english && <p className="en text-sm text-ink/50">{english}</p>}
+      <p lang="zh-Hans" className="han text-3xl font-bold">{han}</p>
+      {english && <p className="en text-sm text-ink/70">{english}</p>}
       {children}
     </div>
   );

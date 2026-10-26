@@ -80,7 +80,7 @@ export default function BuildGame() {
           🚂
         </span>
         {(['initial', 'final', 'tone'] as Kind[]).map((kind) => (
-          <div
+          <div role="group"
             key={kind}
             ref={carRefs[kind]}
             aria-label={`${KIND_LABEL[kind]} car: ${cars[kind] ?? 'empty'}`}

@@ -46,14 +46,14 @@ export default function FestivalScreen({ onHome, onChar }: { onHome: () => void;
                   className="flex w-full flex-col items-center rounded-3xl bg-[#ffe3e3] p-3 shadow-md active:scale-95"
                 >
                   <span className={`py text-lg ${toneClass(entry.pinyin)}`}>{entry.pinyin}</span>
-                  <span className="han text-6xl text-[#c92a2a]">{c}</span>
-                  <span className="en text-xs text-ink/50">{entry.gloss}</span>
+                  <span lang="zh-Hans" className="han text-6xl text-[#c92a2a]">{c}</span>
+                  <span className="en text-xs text-ink/70">{entry.gloss}</span>
                 </button>
               </li>
             );
           })}
         </ul>
-        <SpeakButton text={festival.han} />
+        <SpeakButton text={festival.han} pinyin={festival.pinyin} />
       </div>
     </ScreenFrame>
   );

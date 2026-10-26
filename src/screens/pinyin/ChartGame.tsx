@@ -57,7 +57,9 @@ export default function ChartGame() {
         <table className="border-separate border-spacing-1 text-lg">
           <thead>
             <tr>
-              <th className="sticky top-0 left-0 z-20 bg-white" />
+              <th className="sticky top-0 left-0 z-20 bg-white">
+                <span className="sr-only">Initial / final</span>
+              </th>
               {chart.columns.map((f) => (
                 <th key={f} scope="col" className="sticky top-0 z-10 min-w-14 bg-[#fff9db] px-1 py-2 font-bold">
                   {f}

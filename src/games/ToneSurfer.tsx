@@ -55,7 +55,7 @@ export default function ToneSurfer({ index, learned, onDone }: GameProps) {
   return (
     <div className="flex flex-col items-center gap-4">
       <button type="button" onClick={say} aria-label="Listen again" className="flex size-20 items-center justify-center rounded-full bg-white text-4xl shadow-md active:scale-95">
-        {riding ? <span className="han">{char}</span> : '👂'}
+        {riding ? <span lang="zh-Hans" className="han">{char}</span> : '👂'}
       </button>
       <div className="grid w-full max-w-md grid-cols-2 gap-3">
         {[1, 2, 3, 4].map((t) => (

@@ -23,7 +23,7 @@ export default function FamilyPanel({
         <span className="text-7xl" aria-hidden="true">
           🌱
         </span>
-        <p className="text-sm text-ink/50">No family members yet. They grow in later stages.</p>
+        <p className="text-sm text-ink/70">No family members yet. They grow in later stages.</p>
       </div>
     );
   }
@@ -41,11 +41,11 @@ export default function FamilyPanel({
               className="flex w-full flex-col items-center rounded-2xl bg-white p-3 shadow-sm active:scale-95"
             >
               <span className={`text-base py ${toneClass(entry.pinyin)}`}>{entry.pinyin}</span>
-              <span className="han text-6xl leading-tight">{c}</span>
-              <span className="en text-xs text-ink/50">{entry.gloss}</span>
+              <span lang="zh-Hans" className="han text-6xl leading-tight">{c}</span>
+              <span className="en text-xs text-ink/70">{entry.gloss}</span>
             </button>
             <div className="absolute top-1 right-1">
-              <SpeakButton text={c} size="sm" />
+              <SpeakButton text={c} pinyin={entry.pinyin} size="sm" />
             </div>
           </li>
         );

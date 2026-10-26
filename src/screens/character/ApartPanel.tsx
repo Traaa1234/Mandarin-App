@@ -30,11 +30,11 @@ export default function ApartPanel({
             <PartChip char={data.character} index={index} onOpen={onOpen} />
           </div>
         ) : (
-          <p className="han text-2xl">
+          <p lang="zh-Hans" className="han text-2xl">
             <span className="block text-base">gēn 🌱</span>根
           </p>
         )}
-        <p className="text-sm text-ink/50">
+        <p className="text-sm text-ink/70">
           {data.role === 'costume'
             ? `${data.character} is ${data.costumeOf} in costume. It can't be split.`
             : `${data.character} is a root. It can't be split.`}

@@ -28,7 +28,7 @@ export default function SectionScreen({
           ←
         </button>
         <span className={`${section.color} block size-16 rounded-2xl p-2`}>{section.icon}</span>
-        <h1 className="han text-3xl font-bold">
+        <h1 lang="zh-Hans" className="han text-3xl font-bold">
           <span className="block text-base font-normal">{section.pinyin}</span>
           {section.han}
         </h1>
@@ -76,8 +76,8 @@ function StageTiles({ onOpen }: { onOpen: (char: string) => void }) {
                       className="flex aspect-square w-full flex-col items-center justify-center rounded-2xl bg-white shadow-sm active:scale-95"
                     >
                       <span className={`text-base py ${toneClass(entry.pinyin)}`}>{entry.pinyin}</span>
-                      <span className="han text-5xl leading-tight">{c}</span>
-                      <span className="en text-xs text-ink/50">{entry.gloss}</span>
+                      <span lang="zh-Hans" className="han text-5xl leading-tight">{c}</span>
+                      <span className="en text-xs text-ink/70">{entry.gloss}</span>
                     </button>
                   </li>
                 );
@@ -108,7 +108,7 @@ function PictureTiles({ onOpen }: { onOpen: (char: string) => void }) {
             >
               <PictureThumb char={c} />
               <span className={`text-base py ${toneClass(entry.pinyin)}`}>{entry.pinyin}</span>
-              <span className="han -mt-1 text-4xl">{c}</span>
+              <span lang="zh-Hans" className="han -mt-1 text-4xl">{c}</span>
             </button>
           </li>
         );
@@ -134,8 +134,8 @@ function SceneTiles({ onOpen }: { onOpen: (phraseId: string) => void }) {
             <span className="text-6xl" aria-hidden="true">
               {scene.icon}
             </span>
-            <span className="han text-2xl">{scene.phrases[0].chars}</span>
-            <span className="text-xs text-ink/50">{scene.title}</span>
+            <span lang="zh-Hans" className="han text-2xl">{scene.phrases[0].chars}</span>
+            <span className="text-xs text-ink/70">{scene.title}</span>
           </button>
         </li>
       ))}
@@ -151,14 +151,14 @@ function PictureThumb({ char }: { char: string }) {
 function ComingSoon() {
   return (
     <div className="flex flex-1 flex-col items-center justify-center gap-4 text-center">
-      <span className="han text-8xl" aria-hidden="true">
+      <span lang="zh-Hans" className="han text-8xl" aria-hidden="true">
         🌱
       </span>
-      <p className="han text-2xl">
+      <p lang="zh-Hans" className="han text-2xl">
         <span className="block text-base">kuài lái le</span>
         快来了！
       </p>
-      <p className="text-sm text-ink/50">Coming soon</p>
+      <p className="text-sm text-ink/70">Coming soon</p>
     </div>
   );
 }

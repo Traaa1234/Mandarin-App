@@ -46,7 +46,7 @@ export default function AdventureScreen({ onHome, onTeach }: { onHome: () => voi
         >
           ←
         </button>
-        <h1 className="han text-3xl font-bold">
+        <h1 lang="zh-Hans" className="han text-3xl font-bold">
           <span className="block text-base font-normal">jīntiān</span>今天
         </h1>
         {current && <span className="ml-auto text-5xl">{current.animal}</span>}
@@ -192,7 +192,7 @@ function SpeakToday({ phrase }: { phrase: Phrase }) {
         {phrase.icon}
       </span>
       <span className="text-lg">{phrase.syllables.map((s) => s.written).join(' ')}</span>
-      <span className="han text-4xl">{phrase.chars}</span>
+      <span lang="zh-Hans" className="han text-4xl">{phrase.chars}</span>
     </button>
   );
 }
@@ -201,7 +201,7 @@ function SkipPlay({ onNext }: { onNext: () => void }) {
   return (
     <div className="flex flex-col items-center gap-4 text-center">
       <span className="text-7xl">🌱</span>
-      <p className="text-sm text-ink/50">Games open once three flowers have grown.</p>
+      <p className="text-sm text-ink/70">Games open once three flowers have grown.</p>
       <NextButton onNext={onNext} />
     </div>
   );
@@ -316,7 +316,7 @@ function Goodbye({
     <div className="flex flex-col items-center gap-4 text-center">
       <Baobao mood={bonus === 'done' ? 'sleep' : 'happy'} size={130} />
       <Speech han="明天见！" pinyin="míngtiān jiàn" english={tomorrow ? `Your ${tomorrow} seedling will bloom tomorrow!` : 'See you tomorrow!'}>
-        {tomorrow && <span className="han mt-1 block text-5xl">{tomorrow} 🌱</span>}
+        {tomorrow && <span lang="zh-Hans" className="han mt-1 block text-5xl">{tomorrow} 🌱</span>}
       </Speech>
       {gift && (
         <p className="text-5xl" aria-label={`Today's gift: ${gift}`}>

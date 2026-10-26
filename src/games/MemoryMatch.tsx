@@ -58,7 +58,7 @@ export default function MemoryMatch({ index, learned, onDone }: GameProps) {
           >
             {shown ? (
               card.face === 'char' ? (
-                <span className="han text-5xl">{card.pair}</span>
+                <span lang="zh-Hans" className="han text-5xl">{card.pair}</span>
               ) : card.face === 'picture' ? (
                 <img src={`${base}${entry.picture}`} alt="" className="size-full rounded-2xl p-1" />
               ) : (

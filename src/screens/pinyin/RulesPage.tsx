@@ -36,7 +36,7 @@ export default function RulesPage() {
             <span className="text-3xl font-semibold">
               <Colored text={DEMOS[rule.id].to} />
             </span>
-            <span className="ml-auto text-sm text-ink/60">{rule.title}</span>
+            <span className="ml-auto text-sm text-ink/70">{rule.title}</span>
           </button>
         </li>
       ))}
@@ -138,15 +138,15 @@ function RuleCard({ rule, onDone }: { rule: Rule; onDone: () => void }) {
   return (
     <div className="flex flex-col items-center gap-5">
       <RuleDemo ruleId={rule.id} />
-      <p className="max-w-sm text-center text-sm text-ink/60">{rule.explain}</p>
+      <p className="max-w-sm text-center text-sm text-ink/70">{rule.explain}</p>
 
       {item ? (
         <div className="flex w-full flex-col items-center gap-4 rounded-3xl bg-[#fff9db] p-4">
-          <p className="text-sm text-ink/50">
+          <p className="text-sm text-ink/70">
             {step + 1} / {rule.practice.length}
           </p>
           <div className="flex items-center gap-3">
-            <span className="han text-5xl font-semibold">{item.prompt}</span>
+            <span lang="zh-Hans" className="han text-5xl font-semibold">{item.prompt}</span>
             {canSay && (
               <button
                 type="button"
@@ -175,7 +175,7 @@ function RuleCard({ rule, onDone }: { rule: Rule; onDone: () => void }) {
         </div>
       ) : (
         <div className="flex flex-col items-center gap-3">
-          <p className="han text-3xl">
+          <p lang="zh-Hans" className="han text-3xl">
             <span className="block text-base">tài bàng le</span>太棒了！
           </p>
           <Stars count={stars} of={rule.practice.length} />
