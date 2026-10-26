@@ -74,7 +74,7 @@ function prepare(input: string, output: string): number {
 
 async function main() {
   const content = JSON.parse(readFileSync(join(ROOT, 'content', 'phrases.json'), 'utf8')) as {
-    scenes: { id: string; title: string; icon: string; phrases: ContentPhrase[] }[];
+    scenes: { id: string; title: string; icon: string; hidden?: boolean; phrases: ContentPhrase[] }[];
   };
   const syllables = new Set<string>(JSON.parse(readFileSync(join(ROOT, 'public', 'data', 'syllables.json'), 'utf8')));
   const bases = new Set([...syllables].map((k) => k.slice(0, -1)));
@@ -189,7 +189,7 @@ async function main() {
         times,
       });
     }
-    data.scenes.push({ id: scene.id, title: scene.title, icon: scene.icon, phrases });
+    data.scenes.push({ id: scene.id, title: scene.title, icon: scene.icon, ...(scene.hidden ? { hidden: true } : {}), phrases });
   }
 
   if (errors.length) {

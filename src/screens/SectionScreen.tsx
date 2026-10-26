@@ -123,7 +123,7 @@ function SceneTiles({ onOpen }: { onOpen: (phraseId: string) => void }) {
   if (!data) return null;
   return (
     <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-      {data.scenes.map((scene) => (
+      {data.scenes.filter((s) => !s.hidden).map((scene) => (
         <li key={scene.id}>
           <button
             type="button"

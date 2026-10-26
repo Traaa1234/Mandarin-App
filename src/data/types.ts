@@ -110,5 +110,6 @@ export interface Phrase {
 }
 
 export interface PhraseData {
-  scenes: { id: string; title: string; icon: string; phrases: Phrase[] }[];
+  // hidden: Bǎobao's own lines, not listed in Speak Mandarin.
+  scenes: { id: string; title: string; icon: string; hidden?: boolean; phrases: Phrase[] }[];
 }

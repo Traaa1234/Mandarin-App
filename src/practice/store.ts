@@ -1,6 +1,7 @@
 import { createEmptyCard, fsrs, generatorParameters, Rating, type Card, type FSRS } from 'ts-fsrs';
 import type { DataIndex } from '../data/types';
 import { db as defaultDb, MAX_PROFILES, type CardRow, type GardenDb, type Profile } from './db';
+import { flowerState, type Bloom } from './garden';
 import { kindsFor, type Kind } from './kinds';
 import { rateOutcome, type FsrsRating, type Outcome } from './rating';
 
@@ -70,6 +71,27 @@ export class Store {
     const count = new Map<string, number>();
     for (const r of await this.cards(profileId)) count.set(r.char, (count.get(r.char) ?? 0) + 1);
     return new Set([...count].filter(([, n]) => n > 1).map(([c]) => c));
+  }
+
+  // Every learned character as a flower, in the order they were learned.
+  async garden(profileId: number, now = new Date()): Promise<{ char: string; bloom: Bloom }[]> {
+    const [cards, reviews, learned] = await Promise.all([
+      this.cards(profileId),
+      this.db.reviews.where('profileId').equals(profileId).sortBy('at'),
+      this.learned(profileId),
+    ]);
+    const last = new Map<string, Date>();
+    const first = new Map<string, number>();
+    for (const r of reviews) {
+      last.set(r.char, r.at);
+      if (!first.has(r.char)) first.set(r.char, r.at.getTime());
+    }
+    return [...learned]
+      .sort((a, b) => (first.get(a) ?? 0) - (first.get(b) ?? 0))
+      .map((char) => ({
+        char,
+        bloom: flowerState(cards.filter((c) => c.char === char).map((c) => c.card.due), last.get(char) ?? null, now),
+      }));
   }
 
   async addTime(profileId: number, ms: number, now = new Date()) {

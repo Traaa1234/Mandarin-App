@@ -823,6 +823,141 @@
      ]
     }
    ]
+  },
+  {
+   "id": "baobao",
+   "title": "Bǎobao says",
+   "icon": "🐼",
+   "hidden": true,
+   "phrases": [
+    {
+     "id": "great",
+     "chars": "太棒了！",
+     "english": "Great job!",
+     "icon": "🎉",
+     "syllables": [
+      {
+       "char": "太",
+       "written": "tài",
+       "key": "tai4",
+       "tone": 4,
+       "spokenTone": 4
+      },
+      {
+       "char": "棒",
+       "written": "bàng",
+       "key": "bang4",
+       "tone": 4,
+       "spokenTone": 4
+      },
+      {
+       "char": "了",
+       "written": "le",
+       "key": "le4",
+       "tone": 5,
+       "spokenTone": 5
+      }
+     ],
+     "audio": "audio/phrases/great.mp3",
+     "source": "syllables",
+     "approximate": true,
+     "times": [
+      [
+       0,
+       0.398
+      ],
+      [
+       0.518,
+       0.773
+      ],
+      [
+       0.893,
+       1.242
+      ]
+     ]
+    },
+    {
+     "id": "keep-going",
+     "chars": "加油！",
+     "english": "Keep going!",
+     "icon": "💪",
+     "syllables": [
+      {
+       "char": "加",
+       "written": "jiā",
+       "key": "jia1",
+       "tone": 1,
+       "spokenTone": 1
+      },
+      {
+       "char": "油",
+       "written": "yóu",
+       "key": "you2",
+       "tone": 2,
+       "spokenTone": 2
+      }
+     ],
+     "audio": "audio/phrases/keep-going.mp3",
+     "source": "words",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.408
+      ],
+      [
+       0.408,
+       0.817
+      ]
+     ]
+    },
+    {
+     "id": "see-you-tomorrow",
+     "chars": "明天见！",
+     "english": "See you tomorrow!",
+     "icon": "👋",
+     "syllables": [
+      {
+       "char": "明",
+       "written": "míng",
+       "key": "ming2",
+       "tone": 2,
+       "spokenTone": 2
+      },
+      {
+       "char": "天",
+       "written": "tiān",
+       "key": "tian1",
+       "tone": 1,
+       "spokenTone": 1
+      },
+      {
+       "char": "见",
+       "written": "jiàn",
+       "key": "jian4",
+       "tone": 4,
+       "spokenTone": 4
+      }
+     ],
+     "audio": "audio/phrases/see-you-tomorrow.mp3",
+     "source": "mixed",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.407
+      ],
+      [
+       0.407,
+       0.814
+      ],
+      [
+       0.934,
+       1.33
+      ]
+     ]
+    }
+   ]
   }
  ]
 }

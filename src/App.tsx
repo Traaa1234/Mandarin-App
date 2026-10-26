@@ -8,11 +8,13 @@ import { SECTIONS, type SectionId } from './sections';
 
 // The playground carries pinyin-pro, so it loads only when opened.
 const PinyinScreen = lazy(() => import('./screens/pinyin/PinyinScreen'));
-// Practice carries the scheduler and the database.
-const PracticeScreen = lazy(() => import('./practice/PracticeScreen'));
+// The game layer carries the scheduler and the database.
+const AdventureScreen = lazy(() => import('./practice/AdventureScreen'));
+const GardenScreen = lazy(() => import('./practice/GardenScreen'));
+const MapScreen = lazy(() => import('./practice/MapScreen'));
 
 // Screens outside the four sections.
-const PAGES = ['today'] as const;
+const PAGES = ['today', 'garden', 'map'] as const;
 
 interface Route {
   section: SectionId | (typeof PAGES)[number] | null;
@@ -46,7 +48,21 @@ export default function App() {
   if (route.section === 'today') {
     return (
       <Suspense fallback={null}>
-        <PracticeScreen onHome={() => go(null)} onFreePlay={() => go('pinyin', 'which')} />
+        <AdventureScreen onHome={() => go(null)} />
+      </Suspense>
+    );
+  }
+  if (route.section === 'garden') {
+    return (
+      <Suspense fallback={null}>
+        <GardenScreen onHome={() => go(null)} onChar={(c) => go('roots', c)} />
+      </Suspense>
+    );
+  }
+  if (route.section === 'map') {
+    return (
+      <Suspense fallback={null}>
+        <MapScreen onHome={() => go(null)} />
       </Suspense>
     );
   }

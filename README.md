@@ -85,6 +85,16 @@ look at start at Hear it. Results become FSRS ratings automatically (ts-fsrs),
 following the spec's table, so a child never grades themselves. A session is
 up to 10 due reviews, then up to 3 new characters, capped at 8 minutes.
 
+The daily adventure (今天 on the home screen) always has the same five parts:
+water the flowers (due reviews), find a seed (new characters hatch and are
+introduced), play (Character Catch with learned characters), say today's
+phrase to Bǎobao, and open a gift before a goodbye that names the seedling
+blooming tomorrow. Bǎobao, the app's own panda gardener, is drawn in
+`src/components/Baobao.tsx`; his lines (太棒了！, 加油！, 明天见！) are built
+like the phrases. Every learned character is a flower in the garden: it blooms
+after a review, looks sleepy when overdue, and never dies. The map shows the
+seven stages as islands, opened in order.
+
 Stages 6 (sound helpers) and 7 (words) are drafted in the content file with
 `"ready": false`; flip the flag when they're filled in.
 
@@ -127,6 +137,7 @@ credit to its speakers, Chen Wang and Yue Tan, on the credits screen.
 6. Practice and game layer, in three parts:
    1. **Profiles, progress storage, FSRS scheduling and the four practice
       cards.** *Done.*
-   2. Daily adventure, the Bǎobao mascot and the garden.
+   2. **Daily adventure, the Bǎobao mascot, the garden and the island map.**
+      *Done.*
    3. Mini-games, rewards and the parent area.
 7. Offline PWA mode, credits screen, accessibility pass.

@@ -148,7 +148,7 @@ const CHEERS: Record<number, { han: string; pinyin: string }> = {
 };
 
 // Tap the mic, say the phrase, see both pitch lines syllable by syllable.
-function RecordAndCompare({ phrase }: { phrase: Phrase }) {
+export function RecordAndCompare({ phrase }: { phrase: Phrase }) {
   const [state, setState] = useState<'idle' | 'recording' | 'thinking' | 'done' | 'no-mic'>(canRecord() ? 'idle' : 'no-mic');
   const [result, setResult] = useState<Result | null>(null);
   const recording = useRef<Recording | null>(null);

@@ -61,6 +61,16 @@ describe('Store', () => {
     ]);
   });
 
+  it('grows a flower per learned character, sleepy when overdue', async () => {
+    const id = await store.addProfile('🐼', now);
+    await store.startChar(id, '人', index, now);
+    await store.startChar(id, '口', index, now);
+    await store.answer(id, '人', 'see', { retries: 0, helped: false, ms: 1000 }, index, now);
+    expect(await store.garden(id, later(60))).toEqual([{ char: '人', bloom: 'bloom' }]);
+    // Three days later the unlocked Hear card is long overdue.
+    expect(await store.garden(id, later(3 * 24 * 60))).toEqual([{ char: '人', bloom: 'sleepy' }]);
+  });
+
   it('adds up practice time per day', async () => {
     const id = await store.addProfile('🐼', now);
     await store.addTime(id, 60000, now);

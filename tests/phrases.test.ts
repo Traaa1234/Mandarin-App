@@ -16,7 +16,7 @@ describe('Speak Mandarin phrases', () => {
     expect(phrases.map((p) => p.id)).toEqual(
       content.scenes.flatMap((s: { phrases: { id: string }[] }) => s.phrases.map((p) => p.id)),
     );
-    expect(phrases).toHaveLength(17);
+    expect(phrases.filter((p) => !data.scenes.find((s) => s.phrases.includes(p))!.hidden)).toHaveLength(17);
   });
 
   it('has one syllable per character, each with a recording', () => {
