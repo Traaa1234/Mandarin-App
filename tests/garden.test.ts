@@ -30,3 +30,18 @@ describe('garden and islands', () => {
     expect(islands(index, meadow).map((i) => i.state)).toEqual(['done', 'open', 'open', 'locked', 'locked', 'building', 'building']);
   });
 });
+
+describe('calendar', async () => {
+  const { weekId, dragonAvailable } = await import('../src/practice/calendar');
+  it('names a week by its Monday', () => {
+    expect(weekId(new Date('2026-10-26T10:00:00'))).toBe('2026-10-26'); // Monday
+    expect(weekId(new Date('2026-11-01T10:00:00'))).toBe('2026-10-26'); // Sunday
+    expect(weekId(new Date('2026-11-02T10:00:00'))).toBe('2026-11-02');
+  });
+  it('brings the dragon on Sundays, once a week', () => {
+    const sunday = new Date('2026-11-01T10:00:00');
+    expect(dragonAvailable(sunday, null)).toBe(true);
+    expect(dragonAvailable(sunday, '2026-10-26')).toBe(false);
+    expect(dragonAvailable(new Date('2026-10-31T10:00:00'), null)).toBe(false);
+  });
+});

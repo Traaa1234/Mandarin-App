@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Baobao, { Speech, type Mood } from '../components/Baobao';
 import Flower from '../components/Flower';
 import type { DataIndex, Phrase } from '../data/types';
 import { useIndex } from '../data/useData';
 import { allPhrases, usePhrases } from '../data/usePhrases';
-import CharacterCatch from '../games/CharacterCatch';
+import GameHost from '../games/GameHost';
+import { gameOfTheDay, GAMES } from '../games/registry';
 import { playFile } from '../lib/audio';
 import { chime } from '../lib/sfx';
 import { RecordAndCompare } from '../screens/speak/PhraseScreen';
@@ -62,7 +63,7 @@ function Adventure({ profileId, index, phrases, onHome }: { profileId: number; i
   const [plan, setPlan] = useState<{ reviews: Step[]; fresh: Step[]; met: Set<string> } | null>(null);
   const [part, setPart] = useState<PartId>('warmup');
   const [ready, setReady] = useState(false);
-  const [garden, setGarden] = useState<string[]>([]);
+  const [learned, setLearned] = useState<string[] | null>(null);
   const passed = useRef(0);
   const started = useRef(performance.now());
   const deadline = started.current + SESSION_MS;
@@ -84,8 +85,9 @@ function Adventure({ profileId, index, phrases, onHome }: { profileId: number; i
   }, [plan, part]);
 
   useEffect(() => {
-    if (part === 'play' || part === 'reward') store.garden(profileId).then((g) => setGarden(g.map((f) => f.char)));
-  }, [part, profileId]);
+    if (part === 'play' || part === 'reward')
+      store.learned(profileId).then((set) => setLearned(Object.keys(index.chars).filter((c) => set.has(c))));
+  }, [part, profileId, index]);
 
   const next = () => setPart((p) => PARTS[Math.min(PARTS.length - 1, PARTS.findIndex((x) => x.id === p) + 1)].id);
   const finishCards = (n: number) => {
@@ -124,8 +126,8 @@ function Adventure({ profileId, index, phrases, onHome }: { profileId: number; i
         // Its own key: a reused runner would keep the warm-up's finished position.
         <CardRunner key="discover" profileId={profileId} index={index} steps={plan.fresh} met={plan.met} deadline={deadline} onDone={finishCards} />
       ) : part === 'play' ? (
-        garden.length >= 3 ? (
-          <CharacterCatch chars={garden} index={index} onDone={next} />
+        !learned ? null : gameOfTheDay(learned, index) ? (
+          <GameHost game={gameOfTheDay(learned, index)!} index={index} learned={learned} profileId={profileId} onFinish={next} />
         ) : (
           <SkipPlay onNext={next} />
         )
@@ -136,7 +138,7 @@ function Adventure({ profileId, index, phrases, onHome }: { profileId: number; i
           <NextButton onNext={next} />
         </div>
       ) : (
-        <Goodbye profileId={profileId} phrases={phrases} passed={passed.current} started={started.current} onHome={onHome} />
+        <Goodbye profileId={profileId} index={index} learned={learned ?? []} phrases={phrases} passed={passed.current} started={started.current} onHome={onHome} />
       )}
     </div>
   );
@@ -205,8 +207,26 @@ function NextButton({ onNext }: { onNext: () => void }) {
 }
 
 // Open the gift, see the garden, and leave with a reason to come back tomorrow.
-function Goodbye({ profileId, phrases, passed, started, onHome }: { profileId: number; phrases: Phrase[]; passed: number; started: number; onHome: () => void }) {
+function Goodbye({
+  profileId,
+  index,
+  learned,
+  phrases,
+  passed,
+  started,
+  onHome,
+}: {
+  profileId: number;
+  index: DataIndex;
+  learned: string[];
+  phrases: Phrase[];
+  passed: number;
+  started: number;
+  onHome: () => void;
+}) {
   const [open, setOpen] = useState(false);
+  // One bonus game a day after the adventure, then a friendly goodbye. No endless play.
+  const [bonus, setBonus] = useState<'offer' | 'playing' | 'done' | 'used'>('used');
   const [flowers, setFlowers] = useState<{ char: string; bloom: 'bloom' | 'open' | 'sleepy' }[]>([]);
   const [tomorrow, setTomorrow] = useState<string | null>(null);
   const saved = useRef(false);
@@ -221,8 +241,15 @@ function Goodbye({ profileId, phrases, passed, started, onHome }: { profileId: n
       const cards = await store.cards(profileId);
       const soon = cards.filter((c) => c.card.due.getTime() > Date.now()).sort((a, b) => a.card.due.getTime() - b.card.due.getTime())[0];
       setTomorrow(soon?.char ?? null);
+      const today = new Date().toDateString();
+      if ((await store.getMeta(profileId, 'bonus-day', '')) !== today) setBonus('offer');
     })();
   }, [profileId, started]);
+
+  const bonusGame = useMemo(() => {
+    const playable = GAMES.filter((g) => g.ready(learned, index));
+    return playable[Math.floor(Math.random() * playable.length)];
+  }, [learned, index]);
 
   const unwrap = () => {
     setOpen(true);
@@ -248,9 +275,13 @@ function Goodbye({ profileId, phrases, passed, started, onHome }: { profileId: n
     );
   }
 
+  if (bonus === 'playing' && bonusGame) {
+    return <GameHost game={bonusGame} index={index} learned={learned} profileId={profileId} onFinish={() => setBonus('done')} />;
+  }
+
   return (
     <div className="flex flex-col items-center gap-4 text-center">
-      <Baobao mood="happy" size={130} />
+      <Baobao mood={bonus === 'done' ? 'sleep' : 'happy'} size={130} />
       <Speech han="明天见！" pinyin="míngtiān jiàn" english={tomorrow ? `Your ${tomorrow} seedling will bloom tomorrow!` : 'See you tomorrow!'}>
         {tomorrow && <span className="han mt-1 block text-5xl">{tomorrow} 🌱</span>}
       </Speech>
@@ -262,14 +293,29 @@ function Goodbye({ profileId, phrases, passed, started, onHome }: { profileId: n
           <Flower key={f.char} char={f.char} bloom={f.bloom} size={64} />
         ))}
       </div>
-      <button
-        type="button"
-        onClick={onHome}
-        aria-label="Home"
-        className="flex size-16 items-center justify-center rounded-2xl bg-white text-3xl shadow-md active:scale-95"
-      >
-        🏠
-      </button>
+      <div className="flex gap-3">
+        {bonus === 'offer' && bonusGame && (
+          <button
+            type="button"
+            onClick={async () => {
+              await store.setMeta(profileId, 'bonus-day', new Date().toDateString());
+              setBonus('playing');
+            }}
+            aria-label="One bonus game"
+            className="flex h-16 items-center gap-2 rounded-2xl bg-[#ffe8a3] px-4 text-3xl shadow-md active:scale-95"
+          >
+            🎮 +1
+          </button>
+        )}
+        <button
+          type="button"
+          onClick={onHome}
+          aria-label="Home"
+          className="flex size-16 items-center justify-center rounded-2xl bg-white text-3xl shadow-md active:scale-95"
+        >
+          🏠
+        </button>
+      </div>
     </div>
   );
 }

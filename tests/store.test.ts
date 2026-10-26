@@ -78,3 +78,26 @@ describe('Store', () => {
     expect(await db.days.get([id, '2026-10-26'])).toEqual({ profileId: id, date: '2026-10-26', ms: 90000 });
   });
 });
+
+describe('Store: game layer', () => {
+  it('earns and spends seeds, never going below zero', async () => {
+    const id = await store.addProfile('🐼', now);
+    expect(await store.addSeeds(id, 5)).toBe(5);
+    expect(await store.buy(id, 'decor:🦋', 8, now)).toBe(false);
+    await store.addSeeds(id, 5);
+    expect(await store.buy(id, 'decor:🦋', 8, now)).toBe(true);
+    expect(await store.seeds(id)).toBe(2);
+    expect(await store.owned(id)).toEqual(new Set(['decor:🦋']));
+  });
+
+  it('keeps small values and a log of events per child', async () => {
+    const a = await store.addProfile('🐼', now);
+    const b = await store.addProfile('🐯', now);
+    await store.setMeta(a, 'best:人', 9.5);
+    expect(await store.getMeta(a, 'best:人', null)).toBe(9.5);
+    expect(await store.getMeta(b, 'best:人', null)).toBe(null);
+    await store.log(a, 'game', { id: 'catch', score: 4 }, now);
+    expect((await store.events(a, 'game')).map((e) => e.data)).toEqual([{ id: 'catch', score: 4 }]);
+    expect(await store.events(b, 'game')).toEqual([]);
+  });
+});

@@ -94,6 +94,52 @@ export class Store {
       }));
   }
 
+  async getMeta<T>(profileId: number, key: string, fallback: T): Promise<T> {
+    return ((await this.db.meta.get([profileId, key]))?.value as T) ?? fallback;
+  }
+
+  async setMeta(profileId: number, key: string, value: unknown) {
+    await this.db.meta.put({ profileId, key, value });
+  }
+
+  async log(profileId: number, type: string, data?: Record<string, unknown>, now = new Date()) {
+    await this.db.events.add({ profileId, type, at: now, data });
+  }
+
+  events(profileId: number, type: string) {
+    return this.db.events.where('[profileId+type]').equals([profileId, type]).toArray();
+  }
+
+  // Seeds are earned by playing, never bought.
+  seeds(profileId: number): Promise<number> {
+    return this.getMeta(profileId, 'seeds', 0);
+  }
+
+  async addSeeds(profileId: number, n: number): Promise<number> {
+    const total = (await this.seeds(profileId)) + n;
+    await this.setMeta(profileId, 'seeds', total);
+    return total;
+  }
+
+  async owned(profileId: number): Promise<Set<string>> {
+    return new Set((await this.db.items.where('profileId').equals(profileId).toArray()).map((r) => r.item));
+  }
+
+  async give(profileId: number, item: string, now = new Date()) {
+    await this.db.items.put({ profileId, item, at: now });
+  }
+
+  // Spend seeds on an item; false when there aren't enough.
+  async buy(profileId: number, item: string, price: number, now = new Date()): Promise<boolean> {
+    return this.db.transaction('rw', this.db.meta, this.db.items, async () => {
+      const have = await this.seeds(profileId);
+      if (have < price) return false;
+      await this.setMeta(profileId, 'seeds', have - price);
+      await this.give(profileId, item, now);
+      return true;
+    });
+  }
+
   async addTime(profileId: number, ms: number, now = new Date()) {
     const date = localDate(now);
     const row = await this.db.days.get([profileId, date]);

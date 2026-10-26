@@ -95,6 +95,14 @@ like the phrases. Every learned character is a flower in the garden: it blooms
 after a review, looks sleepy when overdue, and never dies. The map shows the
 seven stages as islands, opened in order.
 
+The nine mini-games (🎮 on the home screen) use only learned characters and
+take 60–90 seconds: Character Catch, Root Rescue, Mixing Bowl (drag roots
+together; a real character is cooked and planted), Tone Surfer, Memory Match,
+Stroke Race (against your own best time, shown as a ghost), Pinyin Train,
+Hidden Hanzi, and the Weekly Dragon Riddle on Sundays. The adventure's play
+part takes a different game each day; after the goodbye there is one bonus
+game a day, then Bǎobao goes to sleep. Games earn seeds.
+
 Stages 6 (sound helpers) and 7 (words) are drafted in the content file with
 `"ready": false`; flip the flag when they're filled in.
 
@@ -139,5 +147,6 @@ credit to its speakers, Chen Wang and Yue Tan, on the credits screen.
       cards.** *Done.*
    2. **Daily adventure, the Bǎobao mascot, the garden and the island map.**
       *Done.*
-   3. Mini-games, rewards and the parent area.
+   3. **The nine mini-games.** *Done.* Rewards, the Sunshine streak, the
+      parent area and the daily limit follow.
 7. Offline PWA mode, credits screen, accessibility pass.

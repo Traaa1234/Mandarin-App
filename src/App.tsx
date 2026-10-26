@@ -12,9 +12,10 @@ const PinyinScreen = lazy(() => import('./screens/pinyin/PinyinScreen'));
 const AdventureScreen = lazy(() => import('./practice/AdventureScreen'));
 const GardenScreen = lazy(() => import('./practice/GardenScreen'));
 const MapScreen = lazy(() => import('./practice/MapScreen'));
+const GamesScreen = lazy(() => import('./games/GamesScreen'));
 
 // Screens outside the four sections.
-const PAGES = ['today', 'garden', 'map'] as const;
+const PAGES = ['today', 'garden', 'map', 'games'] as const;
 
 interface Route {
   section: SectionId | (typeof PAGES)[number] | null;
@@ -56,6 +57,13 @@ export default function App() {
     return (
       <Suspense fallback={null}>
         <GardenScreen onHome={() => go(null)} onChar={(c) => go('roots', c)} />
+      </Suspense>
+    );
+  }
+  if (route.section === 'games') {
+    return (
+      <Suspense fallback={null}>
+        <GamesScreen onHome={() => go(null)} />
       </Suspense>
     );
   }

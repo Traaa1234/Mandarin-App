@@ -2,7 +2,7 @@ import Baobao from '../components/Baobao';
 import { useProfile } from '../practice/ProfileContext';
 import { SECTIONS, type SectionId } from '../sections';
 
-export default function Home({ onOpen }: { onOpen: (id: SectionId | 'today' | 'garden' | 'map') => void }) {
+export default function Home({ onOpen }: { onOpen: (id: SectionId | 'today' | 'garden' | 'map' | 'games') => void }) {
   const { current, choose } = useProfile();
   return (
     <main className="mx-auto flex min-h-dvh max-w-3xl flex-col px-4 py-6">
@@ -41,6 +41,14 @@ export default function Home({ onOpen }: { onOpen: (id: SectionId | 'today' | 'g
             className="flex size-16 flex-1 items-center justify-center rounded-2xl bg-white text-4xl shadow-md active:scale-95"
           >
             🌷
+          </button>
+          <button
+            type="button"
+            onClick={() => onOpen('games')}
+            aria-label="Games"
+            className="flex size-16 flex-1 items-center justify-center rounded-2xl bg-white text-4xl shadow-md active:scale-95"
+          >
+            🎮
           </button>
           <button
             type="button"
