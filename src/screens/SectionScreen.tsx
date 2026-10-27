@@ -55,7 +55,8 @@ function StageTiles({ onOpen }: { onOpen: (char: string) => void }) {
   return (
     <div className="flex flex-col gap-8">
       {index.stages
-        .filter((s) => s.chars.length && s.key !== 'festivals')
+        // Character islands only: Word Village holds words, which open on their own pages.
+        .filter((s) => s.chars.length && s.key !== 'festivals' && s.key !== 'words')
         .map((stage) => (
           <section key={stage.id} aria-label={stage.island}>
             <h2 className="mb-3 flex items-center gap-3 text-lg font-bold">

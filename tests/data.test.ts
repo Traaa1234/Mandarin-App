@@ -139,6 +139,10 @@ describe('generated data', () => {
     }
     const village = index.stages.find((s) => s.key === 'words')!;
     expect(village.chars).toEqual(Object.keys(index.words));
+    // Every other stage lists only characters, which screens look up in index.chars.
+    for (const stage of index.stages.filter((s) => s.key !== 'words')) {
+      for (const c of stage.chars) expect(index.chars[c], `stage ${stage.id} ${c}`).toBeDefined();
+    }
   });
 
   it('builds the family index from the compounds', () => {
