@@ -66,7 +66,7 @@ export default function App() {
     case 'garden':
       return lazyScreen(<GardenScreen onHome={home} onChar={roots} />);
     case 'map':
-      return lazyScreen(<MapScreen onHome={home} onCertificate={(id) => go('certificate', String(id))} />);
+      return lazyScreen(<MapScreen onHome={home} onCertificate={(id) => go('certificate', String(id))} onChar={roots} />);
     case 'games':
       return lazyScreen(<GamesScreen onHome={home} />);
     case 'album':

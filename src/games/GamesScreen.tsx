@@ -3,6 +3,7 @@ import { useIndex } from '../data/useData';
 import { dragonAvailable } from '../practice/calendar';
 import { useProfile } from '../practice/ProfileContext';
 import ProfilePicker from '../practice/ProfilePicker';
+import TodayButton from '../practice/TodayButton';
 import { store } from '../practice/store';
 import GameHost from './GameHost';
 import { DRAGON, GAMES, type GameInfo } from './registry';
@@ -47,6 +48,18 @@ export default function GamesScreen({ onHome }: { onHome: () => void }) {
       ) : !index || !learned ? null : playing ? (
         <GameHost game={playing} index={index} learned={learned} profileId={current.id!} onFinish={() => setPlaying(null)} />
       ) : (
+        <>
+        {games.some((g) => !g.ready(learned, index)) && (
+          <div className="mb-4">
+            <TodayButton
+              hint={
+                learned.length
+                  ? `${learned.length} characters learned. Games use only characters the child knows, so 🔒 games open as more are learned in today's adventure.`
+                  : "Games use only characters the child knows. Play today's adventure first to learn some; the games open as they are learned."
+              }
+            />
+          </div>
+        )}
         <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           {games.map((g) => {
             const ready = g.ready(learned, index);
@@ -70,6 +83,7 @@ export default function GamesScreen({ onHome }: { onHome: () => void }) {
             );
           })}
         </ul>
+        </>
       )}
     </main>
   );

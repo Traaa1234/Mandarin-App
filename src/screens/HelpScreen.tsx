@@ -27,9 +27,9 @@ const TOP: Item[] = [
 const SHORTCUTS: Item[] = [
   { icon: '🌷', name: 'My garden', han: '花园', pinyin: 'huāyuán', text: 'One flower for every character learned. A flower blooms after it is reviewed and looks sleepy when it is due for practice. Flowers never die. Tap a flower to open its character. The garden levels up every few flowers, and decorations bought in the shop appear here.' },
   { icon: '🎮', name: 'Games', han: '游戏', pinyin: 'yóuxì', text: 'Nine short games using only characters already learned. A game shows 🔒 until enough characters are learned for it. Games earn seeds 🌰.' },
-  { icon: '🗺️', name: 'Map', han: '地图', pinyin: 'dìtú', text: 'The learning path as islands, opened one at a time. Bǎobao stands on the island being learned now; each shows how many of its characters are flowers. A finished island gives a sticker and a 📜 printable certificate.' },
+  { icon: '🗺️', name: 'Map', han: '地图', pinyin: 'dìtú', text: 'The learning path as islands, opened one at a time. Bǎobao stands on the island being learned now; each shows how many of its characters are flowers. Tap an island to see its characters (green ones are learned) and tap a character to explore it. A finished island gives a sticker and a 📜 printable certificate.' },
   { icon: '📒', name: 'Album', han: '相册', pinyin: 'xiàngcè', text: 'A sticker slot for every character. Stars show which of the four cards are done: See, Hear, Write, Tone. Badges for effort and variety and island stickers are kept here too.' },
-  { icon: '🏪', name: 'Shop', han: '商店', pinyin: 'shāngdiàn', text: 'Spend seeds 🌰 on garden decorations, outfits for Bǎobao and garden backgrounds. Seeds are earned by playing; nothing here costs real money.' },
+  { icon: '🏪', name: 'Shop', han: '商店', pinyin: 'shāngdiàn', text: 'Spend seeds 🌰 on garden decorations, outfits for Bǎobao and garden backgrounds. Seeds are earned by playing today’s adventure and the games, so a new child starts with none and the items look greyed out. Nothing here costs real money.' },
 ];
 
 const SECTION_TEXT: Record<SectionId, string> = {

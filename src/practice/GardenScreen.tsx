@@ -5,6 +5,7 @@ import { CHARS_PER_LEVEL, gardenLevel, LEVEL_DECOR, type Bloom } from './garden'
 import { BACKGROUNDS } from './rewards';
 import { useProfile } from './ProfileContext';
 import ProfilePicker from './ProfilePicker';
+import TodayButton from './TodayButton';
 import { store } from './store';
 
 // The child's garden: one flower per learned character. Tap a flower to visit
@@ -44,13 +45,13 @@ export default function GardenScreen({ onHome, onChar }: { onHome: () => void; o
       {current && flowers && (
         <>
           <div className="mb-3 flex items-center justify-between rounded-2xl bg-white px-4 py-2 shadow-sm">
-            <span className="text-lg font-bold" aria-label={`Garden level ${level}`}>
+            <span role="img" className="text-lg font-bold" aria-label={`Garden level ${level}`}>
               ⭐ {level}
             </span>
-            <span className="text-2xl" aria-label="Garden decorations">
+            <span role="img" className="text-2xl" aria-label="Garden decorations">
               {LEVEL_DECOR.slice(0, level).join(' ')}
             </span>
-            <span className="text-sm text-ink/70" aria-label={`${toNext} more flowers to the next level`}>
+            <span role="img" className="text-sm text-ink/70" aria-label={`${toNext} more flowers to the next level`}>
               {'🌱'.repeat(toNext)}
             </span>
           </div>
@@ -73,6 +74,7 @@ export default function GardenScreen({ onHome, onChar }: { onHome: () => void; o
             <div className="flex flex-col items-center gap-4">
               <Baobao mood="happy" />
               <Speech han="种花吧！" pinyin="zhòng huā ba" english="Let's plant some flowers!" />
+              <TodayButton hint="Every character learned in today's adventure grows a flower here." />
             </div>
           )}
         </>

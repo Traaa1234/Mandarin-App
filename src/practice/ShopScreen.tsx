@@ -5,6 +5,7 @@ import { useProfile } from './ProfileContext';
 import { SHOP } from './rewards';
 import ScreenFrame from './ScreenFrame';
 import { store } from './store';
+import TodayButton from './TodayButton';
 
 // Spend seeds (earned only by playing) on garden decorations, Bǎobao outfits and backgrounds.
 export default function ShopScreen({ onHome }: { onHome: () => void }) {
@@ -40,6 +41,11 @@ export default function ShopScreen({ onHome }: { onHome: () => void }) {
           {seeds} 🌰
         </p>
       </div>
+      {SHOP.some((i) => !owned.has(i.id)) && seeds < Math.min(...SHOP.filter((i) => !owned.has(i.id)).map((i) => i.price)) && (
+        <div className="mb-4">
+          <TodayButton hint="Spend seeds 🌰 here on garden decorations, outfits for Bǎobao and backgrounds. Seeds are earned by playing today's adventure and the games." />
+        </div>
+      )}
       <ul className="grid grid-cols-3 gap-3 sm:grid-cols-4">
         {SHOP.map((item) => {
           const have = owned.has(item.id);
