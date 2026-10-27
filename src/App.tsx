@@ -20,9 +20,10 @@ const FestivalScreen = lazy(() => import('./practice/FestivalScreen'));
 const TeachScreen = lazy(() => import('./practice/TeachScreen'));
 const CertificateScreen = lazy(() => import('./practice/CertificateScreen'));
 const CreditsScreen = lazy(() => import('./screens/CreditsScreen'));
+const HelpScreen = lazy(() => import('./screens/HelpScreen'));
 
 // Screens outside the four sections.
-const PAGES = ['today', 'garden', 'map', 'games', 'album', 'shop', 'parents', 'festival', 'teach', 'certificate', 'credits'] as const;
+const PAGES = ['today', 'garden', 'map', 'games', 'album', 'shop', 'parents', 'festival', 'teach', 'certificate', 'credits', 'help'] as const;
 type Page = (typeof PAGES)[number];
 
 interface Route {
@@ -82,6 +83,8 @@ export default function App() {
       return lazyScreen(<CertificateScreen islandId={Number(route.char)} onBack={() => go('map')} />);
     case 'credits':
       return lazyScreen(<CreditsScreen onHome={home} />);
+    case 'help':
+      return lazyScreen(<HelpScreen onHome={home} />);
     case 'pinyin':
       return lazyScreen(<PinyinScreen page={route.char} onHome={home} onPage={(p) => go('pinyin', p ?? undefined)} />);
   }

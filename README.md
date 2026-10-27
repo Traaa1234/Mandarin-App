@@ -140,6 +140,10 @@ After that it works in airplane mode, and it never contacts another server:
 there are no fonts, analytics or CDNs. The icons are Bǎobao, rendered to PNG
 in `public/icons/`.
 
+How to play (❓ on the home screen, or the link at the bottom) explains every
+button and screen for the grown-up beside the child
+(`src/screens/HelpScreen.tsx`).
+
 The About and credits screen (home → About and credits) lists every dataset,
 library and voice with its license (`src/credits.ts`; a test checks every
 shipped library is listed). Web addresses are shown as plain text, since the

@@ -6,7 +6,7 @@ import { store } from '../practice/store';
 import { sunshineStreak, weekSuns, WEEKLY_GOAL } from '../practice/streak';
 import { SECTIONS, type SectionId } from '../sections';
 
-export type HomeTarget = SectionId | 'today' | 'garden' | 'map' | 'games' | 'album' | 'shop' | 'parents' | 'festival' | 'credits';
+export type HomeTarget = SectionId | 'today' | 'garden' | 'map' | 'games' | 'album' | 'shop' | 'parents' | 'festival' | 'credits' | 'help';
 
 const SHORTCUTS: { id: HomeTarget; icon: string; label: string }[] = [
   { id: 'garden', icon: '🌷', label: 'My garden' },
@@ -47,12 +47,20 @@ export default function Home({ onOpen }: { onOpen: (id: HomeTarget) => void }) {
             </span>
           </div>
         )}
+        <button
+          type="button"
+          onClick={() => onOpen('help')}
+          aria-label="How to play"
+          className="ml-auto flex size-16 items-center justify-center rounded-full bg-white text-3xl shadow-md active:scale-95"
+        >
+          ❓
+        </button>
         {current && (
           <button
             type="button"
             onClick={() => choose(null)}
             aria-label={`Playing as ${current.animal}. Change player`}
-            className="ml-auto flex size-16 items-center justify-center rounded-full bg-white text-4xl shadow-md active:scale-95"
+            className="flex size-16 items-center justify-center rounded-full bg-white text-4xl shadow-md active:scale-95"
           >
             {current.animal}
           </button>
@@ -117,7 +125,10 @@ export default function Home({ onOpen }: { onOpen: (id: HomeTarget) => void }) {
           </button>
         ))}
       </div>
-      <div className="mt-6 flex justify-center gap-2">
+      <div className="mt-6 flex flex-wrap justify-center gap-2">
+        <button type="button" onClick={() => onOpen('help')} className="min-h-14 px-4 text-sm text-ink/70 underline">
+          How to play
+        </button>
         <button type="button" onClick={() => onOpen('parents')} className="min-h-14 px-4 text-sm text-ink/70 underline">
           For grown-ups
         </button>
