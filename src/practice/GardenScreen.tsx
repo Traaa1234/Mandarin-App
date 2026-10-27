@@ -4,6 +4,7 @@ import Flower from '../components/Flower';
 import { CHARS_PER_LEVEL, gardenLevel, LEVEL_DECOR, type Bloom } from './garden';
 import { BACKGROUNDS } from './rewards';
 import { useProfile } from './ProfileContext';
+import ProfilePicker from './ProfilePicker';
 import { store } from './store';
 
 // The child's garden: one flower per learned character. Tap a flower to visit
@@ -39,7 +40,8 @@ export default function GardenScreen({ onHome, onChar }: { onHome: () => void; o
         {current && <span className="ml-auto text-5xl">{current.animal}</span>}
       </header>
 
-      {flowers && (
+      {!current && <ProfilePicker onDone={() => {}} />}
+      {current && flowers && (
         <>
           <div className="mb-3 flex items-center justify-between rounded-2xl bg-white px-4 py-2 shadow-sm">
             <span className="text-lg font-bold" aria-label={`Garden level ${level}`}>
