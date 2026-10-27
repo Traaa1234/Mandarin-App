@@ -26,7 +26,8 @@ export default function TeachScreen({ onHome }: { onHome: () => void }) {
   useEffect(() => {
     if (current) store.learned(current.id!).then((s) => setLearned([...s]));
   }, [current]);
-  const questions = useMemo(() => (learned ? shuffle(learned).slice(0, ROUNDS) : []), [learned]);
+  // Characters only: words are practised in the adventure.
+  const questions = useMemo(() => (learned && index ? shuffle(learned.filter((c) => index.chars[c])).slice(0, ROUNDS) : []), [learned, index]);
 
   useEffect(() => {
     if (current && learned && at >= questions.length && questions.length) store.log(current.id!, 'teach', { week: weekId(new Date()), right });

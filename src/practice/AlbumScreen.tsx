@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useIndex } from '../data/useData';
-import { KINDS, kindsFor, type Kind } from './kinds';
+import { KINDS, kindsFor, WORD_KINDS, type Kind } from './kinds';
 import { useProfile } from './ProfileContext';
 import { BADGES, type Stats } from './rewards';
 import ScreenFrame from './ScreenFrame';
@@ -50,6 +50,21 @@ export default function AlbumScreen({ onHome }: { onHome: () => void }) {
               )}
               <span className="text-xs leading-none" aria-hidden="true">
                 {got ? '⭐'.repeat(earned) + '☆'.repeat(kinds.length - earned) : ''}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
+      <ul className="mb-6 grid grid-cols-3 gap-2 sm:grid-cols-5" aria-label="Words">
+        {Object.entries(index.words).map(([w, entry]) => {
+          const got = learned.has(w);
+          const earned = WORD_KINDS.filter((k) => stars.get(w)?.has(k)).length;
+          return (
+            <li key={w} className={`flex flex-col items-center rounded-2xl p-1 ${got ? 'bg-white shadow-sm' : 'bg-[#e9dfcc]'}`} aria-label={got ? `${w}, ${earned} of ${WORD_KINDS.length} stars` : 'Not learned yet'}>
+              <span className="text-3xl" aria-hidden="true">{got ? entry.icon : '🌱'}</span>
+              {got && <span lang="zh-Hans" className="han text-3xl">{w}</span>}
+              <span className="text-xs leading-none" aria-hidden="true">
+                {got ? '⭐'.repeat(earned) + '☆'.repeat(WORD_KINDS.length - earned) : ''}
               </span>
             </li>
           );

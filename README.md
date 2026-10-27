@@ -154,8 +154,14 @@ text and tone colors meet 4.5:1 contrast; every tap target is at least 56 px;
 axe-core reports no violations on any screen, and Lighthouse scores 100 for
 accessibility.
 
-Stages 6 (sound helpers) and 7 (words) are drafted in the content file with
-`"ready": false`; flip the flag when they're filled in.
+Stage 7, Word Village, teaches 21 two-character words built only from
+characters taught earlier (大人, 火山, 小心…). They are listed under `words` in
+`content/stages.json` with an interim emoji picture; `npm run data` checks each
+character is taught first and its pinyin matches, and `npm run phrases` builds
+each word's recording as a hidden scene. A word has two cards, See it (tap its
+picture) and Hear it (tap the word), becomes a flower like a character, and
+opens on its own page from the garden or map. Stage 6 (sound helpers) is
+drafted in the content file with `"ready": false`; the map sails past it.
 
 ## Data sources and licenses
 
@@ -190,7 +196,7 @@ credit to its speakers, Chen Wang and Yue Tan, on the credits screen.
 4. **Pinyin Playground**: sounds, tones with shapes and hand motions, the
    five rules with practice, and the five games (chart, build a syllable,
    which tone, tone painter, type it). *Done.*
-5. **Speak Mandarin**: six scenes, 17 phrases with ruby pinyin, slow
+5. **Speak Mandarin**: eleven scenes, 42 phrases with ruby pinyin, slow
    playback, and on-device record-and-compare. *Done.* Phrase pictures are
    emoji for now.
 6. Practice and game layer, in three parts:

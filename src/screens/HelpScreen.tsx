@@ -27,7 +27,7 @@ const TOP: Item[] = [
 const SHORTCUTS: Item[] = [
   { icon: '🌷', name: 'My garden', han: '花园', pinyin: 'huāyuán', text: 'One flower for every character learned. A flower blooms after it is reviewed and looks sleepy when it is due for practice. Flowers never die. Tap a flower to open its character. The garden levels up every few flowers, and decorations bought in the shop appear here.' },
   { icon: '🎮', name: 'Games', han: '游戏', pinyin: 'yóuxì', text: 'Nine short games using only characters already learned. A game shows 🔒 until enough characters are learned for it. Games earn seeds 🌰.' },
-  { icon: '🗺️', name: 'Map', han: '地图', pinyin: 'dìtú', text: 'The learning path as islands, opened one at a time. Bǎobao stands on the island being learned now; each shows how many of its characters are flowers. Tap an island to see its characters (green ones are learned) and tap a character to explore it. A finished island gives a sticker and a 📜 printable certificate.' },
+  { icon: '🗺️', name: 'Map', han: '地图', pinyin: 'dìtú', text: 'The learning path as islands, opened one at a time. Bǎobao stands on the island being learned now; each shows how many of its characters are flowers. Tap an island to see its characters (green ones are learned) and tap a character to explore it. After the character islands comes Word Village 🏘️: 21 two-character words made from characters already learned, like 火山 (volcano) and 小心 (careful!). A finished island gives a sticker and a 📜 printable certificate.' },
   { icon: '📒', name: 'Album', han: '相册', pinyin: 'xiàngcè', text: 'A sticker slot for every character. Stars show which of the four cards are done: See, Hear, Write, Tone. Badges for effort and variety and island stickers are kept here too.' },
   { icon: '🏪', name: 'Shop', han: '商店', pinyin: 'shāngdiàn', text: 'Spend seeds 🌰 on garden decorations, outfits for Bǎobao and garden backgrounds. Seeds are earned by playing today’s adventure and the games, so a new child starts with none and the items look greyed out. Nothing here costs real money.' },
 ];
@@ -35,7 +35,7 @@ const SHORTCUTS: Item[] = [
 const SECTION_TEXT: Record<SectionId, string> = {
   roots: 'Explore any character in five steps: 👀 watch it written, ✏️ stroke by stroke with each stroke’s name, ✂️ take it apart into its roots, 🧩 put it together, and 🌳 its family of characters that contain it. Use ◀ ▶ to move between steps; 🔊 says it.',
   pictures: 'Picture cards for the starter characters: a drawing turns into the real character, with a short memory line. 🔊 says the character, 💬 reads the memory line, 🌱 opens it in Character Roots, ◀ ▶ go to the next card.',
-  speak: 'Everyday phrases grouped in scenes (meeting people, being polite, at the table, family…). ▶️ plays the phrase and 🐢 plays it slowly. A character with an orange dotted line opens in Character Roots when tapped. 🎤 records the child; the app then compares their tones with the model voice and 🔊🧒 plays their voice back. Nothing is recorded or sent anywhere.',
+  speak: '42 everyday phrases in eleven scenes: meeting people, being polite, at the table, family, colours, counting to ten, animals, feelings, asking where things are and more. ▶️ plays the phrase and 🐢 plays it slowly. A character with an orange dotted line opens in Character Roots when tapped. 🎤 records the child; the app then compares their tones with the model voice and 🔊🧒 plays their voice back. Nothing is recorded or sent anywhere.',
   pinyin: 'How Mandarin sounds are written. 🎵 Sounds, 🌈 Tones (with shapes and hand motions) and 📏 Rules teach; 🗺️ Pinyin chart, 🚂 Build a syllable, 👂 Which tone?, 🖌️ Tone painter and ⌨️ Type it are games to practise.',
 };
 
@@ -130,7 +130,7 @@ export default function HelpScreen({ onHome }: { onHome: () => void }) {
         <p className="mt-3 text-sm text-ink/70">These are open to explore any time, without a profile.</p>
       </Part>
       <Part title="Practice cards">
-        <p className="mb-3 text-sm">Each character has four cards, unlocked one after another. The app judges the answers itself, so a child never grades their own work, and it brings each character back just before it would be forgotten.</p>
+        <p className="mb-3 text-sm">Each character has four cards, unlocked one after another; a Word Village word has two, See it (tap its picture) and Hear it (tap the word). The app judges the answers itself, so a child never grades their own work, and it brings each character back just before it would be forgotten.</p>
         <List items={CARDS} />
       </Part>
       <Part title="The games">

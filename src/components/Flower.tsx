@@ -5,7 +5,7 @@ const PETALS = ['#ff8fa3', '#ffa94d', '#da77f2', '#74c0fc', '#ffd43b', '#ff6b6b'
 
 // A learned character's flower. Petal color comes from the character, so each
 // flower keeps its own color. Sleepy flowers droop and close; blooming ones
-// open wide and sparkle. None ever wilt.
+// open wide and sparkle. None ever wilt. A word's flower holds the whole word.
 export default function Flower({ char, bloom, size = 96 }: { char: string; bloom: Bloom; size?: number }) {
   const petal = PETALS[char.codePointAt(0)! % PETALS.length];
   const open = bloom === 'sleepy' ? 0.75 : bloom === 'open' ? 0.88 : 1;
@@ -25,7 +25,7 @@ export default function Flower({ char, bloom, size = 96 }: { char: string; bloom
           <ellipse key={a} cx="50" cy="22" rx="13" ry="20" fill={petal} transform={`rotate(${a} 50 42)`} />
         ))}
         <circle cx="50" cy="42" r="15" fill="#fff9db" stroke="#f2c46d" strokeWidth="2" />
-        <text x="50" y="49" textAnchor="middle" fontSize="20" lang="zh-Hans" className="han" fill="#2b2b2b">
+        <text x="50" y={char.length > 1 ? 47 : 49} textAnchor="middle" fontSize={char.length > 1 ? 13 : 20} lang="zh-Hans" className="han" fill="#2b2b2b">
           {char}
         </text>
       </motion.g>

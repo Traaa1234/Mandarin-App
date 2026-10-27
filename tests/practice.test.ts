@@ -77,3 +77,13 @@ describe('buildSession', () => {
     expect(currentStage(index, new Set(index.stages[0].chars))).toBe(3);
   });
 });
+
+describe('Word Village', () => {
+  const now = new Date('2026-10-26T09:00:00Z');
+  it('plants words only after every character on the path has started', () => {
+    const chars = Object.entries(index.chars).filter(([, e]) => e.role !== 'festival' && index.stages.find((s) => s.id === e.stage)?.ready);
+    const started = chars.map(([char]) => ({ char, kind: 'hear' as const, due: new Date(now.getTime() + 86400000) }));
+    expect(buildSession(index, started.slice(1), now)[0]).toEqual({ type: 'new', char: chars[0][0] });
+    expect(buildSession(index, started, now)).toEqual(Object.keys(index.words).slice(0, MAX_NEW).map((char) => ({ type: 'new', char })));
+  });
+});

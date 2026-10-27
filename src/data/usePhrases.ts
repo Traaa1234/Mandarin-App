@@ -16,5 +16,6 @@ export function usePhrases(): PhraseData | null {
   return data;
 }
 
-export const allPhrases = (data: PhraseData): (Phrase & { scene: string })[] =>
-  data.scenes.flatMap((s) => s.phrases.map((p) => ({ ...p, scene: s.id })));
+// hidden: Bǎobao's lines and the Word Village words, not everyday phrases.
+export const allPhrases = (data: PhraseData): (Phrase & { scene: string; hidden: boolean })[] =>
+  data.scenes.flatMap((s) => s.phrases.map((p) => ({ ...p, scene: s.id, hidden: !!s.hidden })));

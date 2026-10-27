@@ -37,7 +37,8 @@ export function islands(index: DataIndex, learned: Set<string>): Island[] {
     const got = s.chars.filter((c) => learned.has(c)).length;
     const complete = got === s.chars.length;
     const state: Island['state'] = !s.ready ? 'building' : !previousDone ? 'locked' : complete && s.chars.length ? 'done' : 'open';
-    previousDone = previousDone && s.ready && complete;
+    // An island still being built is sailed past, so it never blocks the next one.
+    if (s.ready) previousDone = previousDone && complete;
     return { id: s.id, island: s.island, total: s.chars.length, learned: got, state };
   });
 }

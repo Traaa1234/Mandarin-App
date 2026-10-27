@@ -25,9 +25,14 @@ describe('garden and islands', () => {
   });
 
   it('opens the islands in order and passes Stroke Valley', () => {
-    expect(islands(index, new Set()).map((i) => i.state)).toEqual(['open', 'locked', 'locked', 'locked', 'locked', 'building', 'building']);
+    expect(islands(index, new Set()).map((i) => i.state)).toEqual(['open', 'locked', 'locked', 'locked', 'locked', 'building', 'locked']);
     const meadow = new Set(index.stages[0].chars);
-    expect(islands(index, meadow).map((i) => i.state)).toEqual(['done', 'open', 'open', 'locked', 'locked', 'building', 'building']);
+    expect(islands(index, meadow).map((i) => i.state)).toEqual(['done', 'open', 'open', 'locked', 'locked', 'building', 'locked']);
+  });
+
+  it('sails past an island still being built', () => {
+    const allChars = new Set(Object.keys(index.chars));
+    expect(islands(index, allChars).map((i) => i.state)).toEqual(['done', 'open', 'done', 'done', 'done', 'building', 'open']);
   });
 });
 

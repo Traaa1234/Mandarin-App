@@ -133,3 +133,15 @@ describe('Store: parent data tools', () => {
     expect((await store.cards(b)).map((c) => c.char)).toEqual(['口']);
   });
 });
+
+describe('Word Village words', () => {
+  it('start at See it, unlock Hear it, and then count as learned', async () => {
+    const id = await store.addProfile('🐼', now);
+    expect(await store.startChar(id, '火山', index, now)).toBe('see');
+    expect(await store.learned(id)).not.toContain('火山');
+    await store.answer(id, '火山', 'see', { retries: 0, helped: false, ms: 2000 }, index, now);
+    expect((await store.cards(id)).map((c) => c.kind).sort()).toEqual(['hear', 'see']);
+    expect(await store.learned(id)).toContain('火山');
+    expect((await store.garden(id, now)).map((f) => f.char)).toEqual(['火山']);
+  });
+});

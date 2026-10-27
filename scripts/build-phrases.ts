@@ -9,6 +9,8 @@
 //    everything else uses the syllable recordings with the tones as spoken
 //    (你好 → ní + hǎo). A neutral tone with no recording borrows a nearby tone
 //    and the phrase is marked approximate.
+// The Word Village words in content/stages.json are built the same way, as a
+// hidden scene whose phrase ids are word-<id>.
 // Writes public/audio/phrases/<id>.mp3 and public/data/phrases.json.
 
 import { execFileSync } from 'node:child_process';
@@ -76,6 +78,19 @@ async function main() {
   const content = JSON.parse(readFileSync(join(ROOT, 'content', 'phrases.json'), 'utf8')) as {
     scenes: { id: string; title: string; icon: string; hidden?: boolean; phrases: ContentPhrase[] }[];
   };
+  const stages = JSON.parse(readFileSync(join(ROOT, 'content', 'stages.json'), 'utf8')) as {
+    stages: { ready: boolean; words?: { id: string; word: string; pinyin: string; gloss: string; icon: string }[] }[];
+  };
+  content.scenes.push({
+    id: 'words',
+    title: 'Word Village',
+    icon: '🏘️',
+    hidden: true,
+    phrases: stages.stages
+      .filter((s) => s.ready)
+      .flatMap((s) => s.words ?? [])
+      .map((w) => ({ id: `word-${w.id}`, chars: w.word, words: [w.word], pinyin: w.pinyin, english: w.gloss, icon: w.icon })),
+  });
   const syllables = new Set<string>(JSON.parse(readFileSync(join(ROOT, 'public', 'data', 'syllables.json'), 'utf8')));
   const bases = new Set([...syllables].map((k) => k.slice(0, -1)));
   const words = recordedWords();

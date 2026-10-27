@@ -119,7 +119,7 @@ export default function MapScreen({
                                 type="button"
                                 onClick={() => onChar(c)}
                                 aria-label={`${c}${learned.has(c) ? ', learned' : ''}`}
-                                className={`flex size-14 items-center justify-center rounded-2xl text-3xl shadow-sm active:scale-95 ${
+                                className={`flex h-14 min-w-14 items-center justify-center rounded-2xl px-2 text-3xl shadow-sm active:scale-95 ${
                                   learned.has(c) ? 'bg-[#c3e6b4]' : 'bg-[#f1f3f5] text-ink/60'
                                 }`}
                               >
@@ -130,7 +130,7 @@ export default function MapScreen({
                         </ul>
                         {island.state === 'open' && (
                           <div className="mt-3">
-                            <TodayButton hint="Green characters are flowers in the garden. The grey ones are planted one by one in today's adventure; tap any to explore it." />
+                            <TodayButton hint="Green ones are flowers in the garden. The grey ones are planted one by one in today's adventure; tap any to explore it." />
                           </div>
                         )}
                       </>

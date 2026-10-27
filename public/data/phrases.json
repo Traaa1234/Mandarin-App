@@ -201,6 +201,52 @@
      ]
     },
     {
+     "id": "how-old",
+     "chars": "你几岁？",
+     "english": "How old are you?",
+     "icon": "🎂",
+     "syllables": [
+      {
+       "char": "你",
+       "written": "nǐ",
+       "key": "ni2",
+       "tone": 3,
+       "spokenTone": 2
+      },
+      {
+       "char": "几",
+       "written": "jǐ",
+       "key": "ji3",
+       "tone": 3,
+       "spokenTone": 3
+      },
+      {
+       "char": "岁",
+       "written": "suì",
+       "key": "sui4",
+       "tone": 4,
+       "spokenTone": 4
+      }
+     ],
+     "audio": "audio/phrases/how-old.mp3",
+     "source": "syllables",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.428
+      ],
+      [
+       0.548,
+       1.432
+      ],
+      [
+       1.552,
+       2.118
+      ]
+     ]
+    },
+    {
      "id": "goodbye",
      "chars": "再见！",
      "english": "Goodbye!",
@@ -414,6 +460,41 @@
        0.789
       ]
      ]
+    },
+    {
+     "id": "come-in",
+     "chars": "请进！",
+     "english": "Come in, please!",
+     "icon": "🚪",
+     "syllables": [
+      {
+       "char": "请",
+       "written": "qǐng",
+       "key": "qing3",
+       "tone": 3,
+       "spokenTone": 3
+      },
+      {
+       "char": "进",
+       "written": "jìn",
+       "key": "jin4",
+       "tone": 4,
+       "spokenTone": 4
+      }
+     ],
+     "audio": "audio/phrases/come-in.mp3",
+     "source": "syllables",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.848
+      ],
+      [
+       0.968,
+       1.342
+      ]
+     ]
     }
    ]
   },
@@ -559,6 +640,63 @@
        0.731
       ]
      ]
+    },
+    {
+     "id": "full",
+     "chars": "我吃饱了。",
+     "english": "I'm full.",
+     "icon": "😌",
+     "syllables": [
+      {
+       "char": "我",
+       "written": "wǒ",
+       "key": "wo3",
+       "tone": 3,
+       "spokenTone": 3
+      },
+      {
+       "char": "吃",
+       "written": "chī",
+       "key": "chi1",
+       "tone": 1,
+       "spokenTone": 1
+      },
+      {
+       "char": "饱",
+       "written": "bǎo",
+       "key": "bao3",
+       "tone": 3,
+       "spokenTone": 3
+      },
+      {
+       "char": "了",
+       "written": "le",
+       "key": "le1",
+       "tone": 5,
+       "spokenTone": 5
+      }
+     ],
+     "audio": "audio/phrases/full.mp3",
+     "source": "syllables",
+     "approximate": true,
+     "times": [
+      [
+       0,
+       0.604
+      ],
+      [
+       0.724,
+       1.481
+      ],
+      [
+       1.601,
+       2.176
+      ],
+      [
+       2.296,
+       2.64
+      ]
+     ]
     }
    ]
   },
@@ -621,6 +759,177 @@
       [
        0.905,
        1.148
+      ]
+     ]
+    },
+    {
+     "id": "brother-sister",
+     "chars": "哥哥，姐姐",
+     "english": "Big brother, big sister",
+     "icon": "👫",
+     "syllables": [
+      {
+       "char": "哥",
+       "written": "gē",
+       "key": "ge1",
+       "tone": 1,
+       "spokenTone": 1
+      },
+      {
+       "char": "哥",
+       "written": "ge",
+       "key": "ge4",
+       "tone": 5,
+       "spokenTone": 5
+      },
+      {
+       "char": "姐",
+       "written": "jiě",
+       "key": "jie3",
+       "tone": 3,
+       "spokenTone": 3
+      },
+      {
+       "char": "姐",
+       "written": "jie",
+       "key": "jie1",
+       "tone": 5,
+       "spokenTone": 5
+      }
+     ],
+     "audio": "audio/phrases/brother-sister.mp3",
+     "source": "words",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.269
+      ],
+      [
+       0.269,
+       0.537
+      ],
+      [
+       0.657,
+       0.957
+      ],
+      [
+       0.957,
+       1.257
+      ]
+     ]
+    },
+    {
+     "id": "little-ones",
+     "chars": "弟弟，妹妹",
+     "english": "Little brother, little sister",
+     "icon": "🧒",
+     "syllables": [
+      {
+       "char": "弟",
+       "written": "dì",
+       "key": "di4",
+       "tone": 4,
+       "spokenTone": 4
+      },
+      {
+       "char": "弟",
+       "written": "di",
+       "key": "di4",
+       "tone": 5,
+       "spokenTone": 5
+      },
+      {
+       "char": "妹",
+       "written": "mèi",
+       "key": "mei4",
+       "tone": 4,
+       "spokenTone": 4
+      },
+      {
+       "char": "妹",
+       "written": "mei",
+       "key": "mei4",
+       "tone": 5,
+       "spokenTone": 5
+      }
+     ],
+     "audio": "audio/phrases/little-ones.mp3",
+     "source": "words",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.508
+      ],
+      [
+       0.508,
+       1.015
+      ],
+      [
+       1.135,
+       1.409
+      ],
+      [
+       1.409,
+       1.682
+      ]
+     ]
+    },
+    {
+     "id": "grandparents",
+     "chars": "爷爷，奶奶",
+     "english": "Grandpa, Grandma",
+     "icon": "👴",
+     "syllables": [
+      {
+       "char": "爷",
+       "written": "yé",
+       "key": "ye2",
+       "tone": 2,
+       "spokenTone": 2
+      },
+      {
+       "char": "爷",
+       "written": "ye",
+       "key": "ye4",
+       "tone": 5,
+       "spokenTone": 5
+      },
+      {
+       "char": "奶",
+       "written": "nǎi",
+       "key": "nai3",
+       "tone": 3,
+       "spokenTone": 3
+      },
+      {
+       "char": "奶",
+       "written": "nai",
+       "key": "nai1",
+       "tone": 5,
+       "spokenTone": 5
+      }
+     ],
+     "audio": "audio/phrases/grandparents.mp3",
+     "source": "words",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.296
+      ],
+      [
+       0.296,
+       0.592
+      ],
+      [
+       0.712,
+       1.047
+      ],
+      [
+       1.047,
+       1.383
       ]
      ]
     },
@@ -825,6 +1134,970 @@
    ]
   },
   {
+   "id": "colours",
+   "title": "Colours",
+   "icon": "🎨",
+   "phrases": [
+    {
+     "id": "red",
+     "chars": "红色",
+     "english": "Red",
+     "icon": "🔴",
+     "syllables": [
+      {
+       "char": "红",
+       "written": "hóng",
+       "key": "hong2",
+       "tone": 2,
+       "spokenTone": 2
+      },
+      {
+       "char": "色",
+       "written": "sè",
+       "key": "se4",
+       "tone": 4,
+       "spokenTone": 4
+      }
+     ],
+     "audio": "audio/phrases/red.mp3",
+     "source": "syllables",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.487
+      ],
+      [
+       0.517,
+       0.891
+      ]
+     ]
+    },
+    {
+     "id": "yellow",
+     "chars": "黄色",
+     "english": "Yellow",
+     "icon": "🟡",
+     "syllables": [
+      {
+       "char": "黄",
+       "written": "huáng",
+       "key": "huang2",
+       "tone": 2,
+       "spokenTone": 2
+      },
+      {
+       "char": "色",
+       "written": "sè",
+       "key": "se4",
+       "tone": 4,
+       "spokenTone": 4
+      }
+     ],
+     "audio": "audio/phrases/yellow.mp3",
+     "source": "words",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.441
+      ],
+      [
+       0.441,
+       0.882
+      ]
+     ]
+    },
+    {
+     "id": "blue",
+     "chars": "蓝色",
+     "english": "Blue",
+     "icon": "🔵",
+     "syllables": [
+      {
+       "char": "蓝",
+       "written": "lán",
+       "key": "lan2",
+       "tone": 2,
+       "spokenTone": 2
+      },
+      {
+       "char": "色",
+       "written": "sè",
+       "key": "se4",
+       "tone": 4,
+       "spokenTone": 4
+      }
+     ],
+     "audio": "audio/phrases/blue.mp3",
+     "source": "syllables",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.768
+      ],
+      [
+       0.798,
+       1.172
+      ]
+     ]
+    },
+    {
+     "id": "green",
+     "chars": "绿色",
+     "english": "Green",
+     "icon": "🟢",
+     "syllables": [
+      {
+       "char": "绿",
+       "written": "lǜ",
+       "key": "lv4",
+       "tone": 4,
+       "spokenTone": 4
+      },
+      {
+       "char": "色",
+       "written": "sè",
+       "key": "se4",
+       "tone": 4,
+       "spokenTone": 4
+      }
+     ],
+     "audio": "audio/phrases/green.mp3",
+     "source": "syllables",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.4
+      ],
+      [
+       0.43,
+       0.804
+      ]
+     ]
+    },
+    {
+     "id": "like-red",
+     "chars": "我喜欢红色。",
+     "english": "I like red.",
+     "icon": "❤️",
+     "syllables": [
+      {
+       "char": "我",
+       "written": "wǒ",
+       "key": "wo2",
+       "tone": 3,
+       "spokenTone": 2
+      },
+      {
+       "char": "喜",
+       "written": "xǐ",
+       "key": "xi3",
+       "tone": 3,
+       "spokenTone": 3
+      },
+      {
+       "char": "欢",
+       "written": "huan",
+       "key": "huan1",
+       "tone": 5,
+       "spokenTone": 5
+      },
+      {
+       "char": "红",
+       "written": "hóng",
+       "key": "hong2",
+       "tone": 2,
+       "spokenTone": 2
+      },
+      {
+       "char": "色",
+       "written": "sè",
+       "key": "se4",
+       "tone": 4,
+       "spokenTone": 4
+      }
+     ],
+     "audio": "audio/phrases/like-red.mp3",
+     "source": "mixed",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.401
+      ],
+      [
+       0.521,
+       0.941
+      ],
+      [
+       0.941,
+       1.361
+      ],
+      [
+       1.481,
+       1.968
+      ],
+      [
+       1.998,
+       2.372
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "counting",
+   "title": "Counting",
+   "icon": "🔢",
+   "phrases": [
+    {
+     "id": "one-two-three",
+     "chars": "一、二、三",
+     "english": "One, two, three",
+     "icon": "1️⃣",
+     "syllables": [
+      {
+       "char": "一",
+       "written": "yī",
+       "key": "yi1",
+       "tone": 1,
+       "spokenTone": 1
+      },
+      {
+       "char": "二",
+       "written": "èr",
+       "key": "er4",
+       "tone": 4,
+       "spokenTone": 4
+      },
+      {
+       "char": "三",
+       "written": "sān",
+       "key": "san1",
+       "tone": 1,
+       "spokenTone": 1
+      }
+     ],
+     "audio": "audio/phrases/one-two-three.mp3",
+     "source": "syllables",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.617
+      ],
+      [
+       0.737,
+       0.977
+      ],
+      [
+       1.097,
+       1.535
+      ]
+     ]
+    },
+    {
+     "id": "four-five-six",
+     "chars": "四、五、六",
+     "english": "Four, five, six",
+     "icon": "4️⃣",
+     "syllables": [
+      {
+       "char": "四",
+       "written": "sì",
+       "key": "si4",
+       "tone": 4,
+       "spokenTone": 4
+      },
+      {
+       "char": "五",
+       "written": "wǔ",
+       "key": "wu3",
+       "tone": 3,
+       "spokenTone": 3
+      },
+      {
+       "char": "六",
+       "written": "liù",
+       "key": "liu4",
+       "tone": 4,
+       "spokenTone": 4
+      }
+     ],
+     "audio": "audio/phrases/four-five-six.mp3",
+     "source": "syllables",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.552
+      ],
+      [
+       0.672,
+       1.535
+      ],
+      [
+       1.655,
+       2.085
+      ]
+     ]
+    },
+    {
+     "id": "seven-to-ten",
+     "chars": "七、八、九、十",
+     "english": "Seven, eight, nine, ten",
+     "icon": "🔟",
+     "syllables": [
+      {
+       "char": "七",
+       "written": "qī",
+       "key": "qi1",
+       "tone": 1,
+       "spokenTone": 1
+      },
+      {
+       "char": "八",
+       "written": "bā",
+       "key": "ba1",
+       "tone": 1,
+       "spokenTone": 1
+      },
+      {
+       "char": "九",
+       "written": "jiǔ",
+       "key": "jiu3",
+       "tone": 3,
+       "spokenTone": 3
+      },
+      {
+       "char": "十",
+       "written": "shí",
+       "key": "shi2",
+       "tone": 2,
+       "spokenTone": 2
+      }
+     ],
+     "audio": "audio/phrases/seven-to-ten.mp3",
+     "source": "syllables",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.66
+      ],
+      [
+       0.78,
+       1.151
+      ],
+      [
+       1.271,
+       1.874
+      ],
+      [
+       1.994,
+       2.917
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "animals",
+   "title": "Animals",
+   "icon": "🐾",
+   "phrases": [
+    {
+     "id": "panda",
+     "chars": "熊猫",
+     "english": "Panda",
+     "icon": "🐼",
+     "syllables": [
+      {
+       "char": "熊",
+       "written": "xióng",
+       "key": "xiong2",
+       "tone": 2,
+       "spokenTone": 2
+      },
+      {
+       "char": "猫",
+       "written": "māo",
+       "key": "mao1",
+       "tone": 1,
+       "spokenTone": 1
+      }
+     ],
+     "audio": "audio/phrases/panda.mp3",
+     "source": "words",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.425
+      ],
+      [
+       0.425,
+       0.851
+      ]
+     ]
+    },
+    {
+     "id": "puppy",
+     "chars": "小狗",
+     "english": "Puppy",
+     "icon": "🐶",
+     "syllables": [
+      {
+       "char": "小",
+       "written": "xiǎo",
+       "key": "xiao2",
+       "tone": 3,
+       "spokenTone": 2
+      },
+      {
+       "char": "狗",
+       "written": "gǒu",
+       "key": "gou3",
+       "tone": 3,
+       "spokenTone": 3
+      }
+     ],
+     "audio": "audio/phrases/puppy.mp3",
+     "source": "syllables",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.761
+      ],
+      [
+       0.791,
+       1.325
+      ]
+     ]
+    },
+    {
+     "id": "kitten",
+     "chars": "小猫",
+     "english": "Kitten",
+     "icon": "🐱",
+     "syllables": [
+      {
+       "char": "小",
+       "written": "xiǎo",
+       "key": "xiao3",
+       "tone": 3,
+       "spokenTone": 3
+      },
+      {
+       "char": "猫",
+       "written": "māo",
+       "key": "mao1",
+       "tone": 1,
+       "spokenTone": 1
+      }
+     ],
+     "audio": "audio/phrases/kitten.mp3",
+     "source": "syllables",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.893
+      ],
+      [
+       0.923,
+       1.356
+      ]
+     ]
+    },
+    {
+     "id": "like-pandas",
+     "chars": "我喜欢熊猫！",
+     "english": "I like pandas!",
+     "icon": "💛",
+     "syllables": [
+      {
+       "char": "我",
+       "written": "wǒ",
+       "key": "wo2",
+       "tone": 3,
+       "spokenTone": 2
+      },
+      {
+       "char": "喜",
+       "written": "xǐ",
+       "key": "xi3",
+       "tone": 3,
+       "spokenTone": 3
+      },
+      {
+       "char": "欢",
+       "written": "huan",
+       "key": "huan1",
+       "tone": 5,
+       "spokenTone": 5
+      },
+      {
+       "char": "熊",
+       "written": "xióng",
+       "key": "xiong2",
+       "tone": 2,
+       "spokenTone": 2
+      },
+      {
+       "char": "猫",
+       "written": "māo",
+       "key": "mao1",
+       "tone": 1,
+       "spokenTone": 1
+      }
+     ],
+     "audio": "audio/phrases/like-pandas.mp3",
+     "source": "mixed",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.401
+      ],
+      [
+       0.521,
+       0.941
+      ],
+      [
+       0.941,
+       1.361
+      ],
+      [
+       1.481,
+       1.907
+      ],
+      [
+       1.907,
+       2.332
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "feelings",
+   "title": "How I feel",
+   "icon": "😊",
+   "phrases": [
+    {
+     "id": "happy",
+     "chars": "我很高兴！",
+     "english": "I'm very happy!",
+     "icon": "😄",
+     "syllables": [
+      {
+       "char": "我",
+       "written": "wǒ",
+       "key": "wo2",
+       "tone": 3,
+       "spokenTone": 2
+      },
+      {
+       "char": "很",
+       "written": "hěn",
+       "key": "hen3",
+       "tone": 3,
+       "spokenTone": 3
+      },
+      {
+       "char": "高",
+       "written": "gāo",
+       "key": "gao1",
+       "tone": 1,
+       "spokenTone": 1
+      },
+      {
+       "char": "兴",
+       "written": "xìng",
+       "key": "xing4",
+       "tone": 4,
+       "spokenTone": 4
+      }
+     ],
+     "audio": "audio/phrases/happy.mp3",
+     "source": "mixed",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.401
+      ],
+      [
+       0.521,
+       1.112
+      ],
+      [
+       1.232,
+       1.61
+      ],
+      [
+       1.61,
+       1.989
+      ]
+     ]
+    },
+    {
+     "id": "tired",
+     "chars": "我累了。",
+     "english": "I'm tired.",
+     "icon": "😴",
+     "syllables": [
+      {
+       "char": "我",
+       "written": "wǒ",
+       "key": "wo3",
+       "tone": 3,
+       "spokenTone": 3
+      },
+      {
+       "char": "累",
+       "written": "lèi",
+       "key": "lei4",
+       "tone": 4,
+       "spokenTone": 4
+      },
+      {
+       "char": "了",
+       "written": "le",
+       "key": "le4",
+       "tone": 5,
+       "spokenTone": 5
+      }
+     ],
+     "audio": "audio/phrases/tired.mp3",
+     "source": "syllables",
+     "approximate": true,
+     "times": [
+      [
+       0,
+       0.604
+      ],
+      [
+       0.724,
+       1.119
+      ],
+      [
+       1.239,
+       1.587
+      ]
+     ]
+    },
+    {
+     "id": "thirsty",
+     "chars": "我渴了。",
+     "english": "I'm thirsty.",
+     "icon": "🥤",
+     "syllables": [
+      {
+       "char": "我",
+       "written": "wǒ",
+       "key": "wo2",
+       "tone": 3,
+       "spokenTone": 2
+      },
+      {
+       "char": "渴",
+       "written": "kě",
+       "key": "ke3",
+       "tone": 3,
+       "spokenTone": 3
+      },
+      {
+       "char": "了",
+       "written": "le",
+       "key": "le1",
+       "tone": 5,
+       "spokenTone": 5
+      }
+     ],
+     "audio": "audio/phrases/thirsty.mp3",
+     "source": "syllables",
+     "approximate": true,
+     "times": [
+      [
+       0,
+       0.401
+      ],
+      [
+       0.521,
+       1.217
+      ],
+      [
+       1.337,
+       1.681
+      ]
+     ]
+    },
+    {
+     "id": "unwell",
+     "chars": "我不舒服。",
+     "english": "I don't feel well.",
+     "icon": "🤒",
+     "syllables": [
+      {
+       "char": "我",
+       "written": "wǒ",
+       "key": "wo3",
+       "tone": 3,
+       "spokenTone": 3
+      },
+      {
+       "char": "不",
+       "written": "bù",
+       "key": "bu4",
+       "tone": 4,
+       "spokenTone": 4
+      },
+      {
+       "char": "舒",
+       "written": "shū",
+       "key": "shu1",
+       "tone": 1,
+       "spokenTone": 1
+      },
+      {
+       "char": "服",
+       "written": "fu",
+       "key": "fu4",
+       "tone": 5,
+       "spokenTone": 5
+      }
+     ],
+     "audio": "audio/phrases/unwell.mp3",
+     "source": "mixed",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.604
+      ],
+      [
+       0.724,
+       0.931
+      ],
+      [
+       1.051,
+       1.423
+      ],
+      [
+       1.423,
+       1.796
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "where",
+   "title": "Where is it?",
+   "icon": "📍",
+   "phrases": [
+    {
+     "id": "toilet",
+     "chars": "厕所在哪里？",
+     "english": "Where is the toilet?",
+     "icon": "🚻",
+     "syllables": [
+      {
+       "char": "厕",
+       "written": "cè",
+       "key": "ce4",
+       "tone": 4,
+       "spokenTone": 4
+      },
+      {
+       "char": "所",
+       "written": "suǒ",
+       "key": "suo3",
+       "tone": 3,
+       "spokenTone": 3
+      },
+      {
+       "char": "在",
+       "written": "zài",
+       "key": "zai4",
+       "tone": 4,
+       "spokenTone": 4
+      },
+      {
+       "char": "哪",
+       "written": "nǎ",
+       "key": "na2",
+       "tone": 3,
+       "spokenTone": 2
+      },
+      {
+       "char": "里",
+       "written": "lǐ",
+       "key": "li3",
+       "tone": 3,
+       "spokenTone": 3
+      }
+     ],
+     "audio": "audio/phrases/toilet.mp3",
+     "source": "mixed",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.469
+      ],
+      [
+       0.469,
+       0.937
+      ],
+      [
+       1.057,
+       1.429
+      ],
+      [
+       1.549,
+       2.089
+      ],
+      [
+       2.119,
+       2.686
+      ]
+     ]
+    },
+    {
+     "id": "where-mom",
+     "chars": "妈妈在哪里？",
+     "english": "Where is Mom?",
+     "icon": "👩",
+     "syllables": [
+      {
+       "char": "妈",
+       "written": "mā",
+       "key": "ma1",
+       "tone": 1,
+       "spokenTone": 1
+      },
+      {
+       "char": "妈",
+       "written": "ma",
+       "key": "ma4",
+       "tone": 5,
+       "spokenTone": 5
+      },
+      {
+       "char": "在",
+       "written": "zài",
+       "key": "zai4",
+       "tone": 4,
+       "spokenTone": 4
+      },
+      {
+       "char": "哪",
+       "written": "nǎ",
+       "key": "na2",
+       "tone": 3,
+       "spokenTone": 2
+      },
+      {
+       "char": "里",
+       "written": "lǐ",
+       "key": "li3",
+       "tone": 3,
+       "spokenTone": 3
+      }
+     ],
+     "audio": "audio/phrases/where-mom.mp3",
+     "source": "mixed",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.27
+      ],
+      [
+       0.27,
+       0.541
+      ],
+      [
+       0.661,
+       1.032
+      ],
+      [
+       1.152,
+       1.692
+      ],
+      [
+       1.722,
+       2.289
+      ]
+     ]
+    },
+    {
+     "id": "here",
+     "chars": "我在这里！",
+     "english": "I'm here!",
+     "icon": "🙋",
+     "syllables": [
+      {
+       "char": "我",
+       "written": "wǒ",
+       "key": "wo3",
+       "tone": 3,
+       "spokenTone": 3
+      },
+      {
+       "char": "在",
+       "written": "zài",
+       "key": "zai4",
+       "tone": 4,
+       "spokenTone": 4
+      },
+      {
+       "char": "这",
+       "written": "zhè",
+       "key": "zhe4",
+       "tone": 4,
+       "spokenTone": 4
+      },
+      {
+       "char": "里",
+       "written": "lǐ",
+       "key": "li3",
+       "tone": 3,
+       "spokenTone": 3
+      }
+     ],
+     "audio": "audio/phrases/here.mp3",
+     "source": "mixed",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.604
+      ],
+      [
+       0.724,
+       1.096
+      ],
+      [
+       1.216,
+       1.462
+      ],
+      [
+       1.462,
+       1.708
+      ]
+     ]
+    }
+   ]
+  },
+  {
    "id": "baobao",
    "title": "Bǎobao says",
    "icon": "🐼",
@@ -954,6 +2227,749 @@
       [
        0.934,
        1.33
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "words",
+   "title": "Word Village",
+   "icon": "🏘️",
+   "hidden": true,
+   "phrases": [
+    {
+     "id": "word-da-ren",
+     "chars": "大人",
+     "english": "grown-up",
+     "icon": "🧑",
+     "syllables": [
+      {
+       "char": "大",
+       "written": "dà",
+       "key": "da4",
+       "tone": 4,
+       "spokenTone": 4
+      },
+      {
+       "char": "人",
+       "written": "rén",
+       "key": "ren2",
+       "tone": 2,
+       "spokenTone": 2
+      }
+     ],
+     "audio": "audio/phrases/word-da-ren.mp3",
+     "source": "words",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.313
+      ],
+      [
+       0.313,
+       0.626
+      ]
+     ]
+    },
+    {
+     "id": "word-ren-ren",
+     "chars": "人人",
+     "english": "everyone",
+     "icon": "👨‍👩‍👧‍👦",
+     "syllables": [
+      {
+       "char": "人",
+       "written": "rén",
+       "key": "ren2",
+       "tone": 2,
+       "spokenTone": 2
+      },
+      {
+       "char": "人",
+       "written": "rén",
+       "key": "ren2",
+       "tone": 2,
+       "spokenTone": 2
+      }
+     ],
+     "audio": "audio/phrases/word-ren-ren.mp3",
+     "source": "syllables",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.595
+      ],
+      [
+       0.625,
+       1.22
+      ]
+     ]
+    },
+    {
+     "id": "word-nan-ren",
+     "chars": "男人",
+     "english": "man",
+     "icon": "👨",
+     "syllables": [
+      {
+       "char": "男",
+       "written": "nán",
+       "key": "nan2",
+       "tone": 2,
+       "spokenTone": 2
+      },
+      {
+       "char": "人",
+       "written": "rén",
+       "key": "ren2",
+       "tone": 2,
+       "spokenTone": 2
+      }
+     ],
+     "audio": "audio/phrases/word-nan-ren.mp3",
+     "source": "words",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.454
+      ],
+      [
+       0.454,
+       0.908
+      ]
+     ]
+    },
+    {
+     "id": "word-nv-ren",
+     "chars": "女人",
+     "english": "woman",
+     "icon": "👩",
+     "syllables": [
+      {
+       "char": "女",
+       "written": "nǚ",
+       "key": "nv3",
+       "tone": 3,
+       "spokenTone": 3
+      },
+      {
+       "char": "人",
+       "written": "rén",
+       "key": "ren2",
+       "tone": 2,
+       "spokenTone": 2
+      }
+     ],
+     "audio": "audio/phrases/word-nv-ren.mp3",
+     "source": "words",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.46
+      ],
+      [
+       0.46,
+       0.919
+      ]
+     ]
+    },
+    {
+     "id": "word-hao-ren",
+     "chars": "好人",
+     "english": "good person",
+     "icon": "😇",
+     "syllables": [
+      {
+       "char": "好",
+       "written": "hǎo",
+       "key": "hao3",
+       "tone": 3,
+       "spokenTone": 3
+      },
+      {
+       "char": "人",
+       "written": "rén",
+       "key": "ren2",
+       "tone": 2,
+       "spokenTone": 2
+      }
+     ],
+     "audio": "audio/phrases/word-hao-ren.mp3",
+     "source": "syllables",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.776
+      ],
+      [
+       0.806,
+       1.402
+      ]
+     ]
+    },
+    {
+     "id": "word-da-xiao",
+     "chars": "大小",
+     "english": "size",
+     "icon": "📏",
+     "syllables": [
+      {
+       "char": "大",
+       "written": "dà",
+       "key": "da4",
+       "tone": 4,
+       "spokenTone": 4
+      },
+      {
+       "char": "小",
+       "written": "xiǎo",
+       "key": "xiao3",
+       "tone": 3,
+       "spokenTone": 3
+      }
+     ],
+     "audio": "audio/phrases/word-da-xiao.mp3",
+     "source": "words",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.37
+      ],
+      [
+       0.37,
+       0.74
+      ]
+     ]
+    },
+    {
+     "id": "word-xiao-xin",
+     "chars": "小心",
+     "english": "be careful!",
+     "icon": "⚠️",
+     "syllables": [
+      {
+       "char": "小",
+       "written": "xiǎo",
+       "key": "xiao3",
+       "tone": 3,
+       "spokenTone": 3
+      },
+      {
+       "char": "心",
+       "written": "xīn",
+       "key": "xin1",
+       "tone": 1,
+       "spokenTone": 1
+      }
+     ],
+     "audio": "audio/phrases/word-xiao-xin.mp3",
+     "source": "words",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.394
+      ],
+      [
+       0.394,
+       0.788
+      ]
+     ]
+    },
+    {
+     "id": "word-an-xin",
+     "chars": "安心",
+     "english": "calm, not worried",
+     "icon": "😌",
+     "syllables": [
+      {
+       "char": "安",
+       "written": "ān",
+       "key": "an1",
+       "tone": 1,
+       "spokenTone": 1
+      },
+      {
+       "char": "心",
+       "written": "xīn",
+       "key": "xin1",
+       "tone": 1,
+       "spokenTone": 1
+      }
+     ],
+     "audio": "audio/phrases/word-an-xin.mp3",
+     "source": "words",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.341
+      ],
+      [
+       0.341,
+       0.683
+      ]
+     ]
+    },
+    {
+     "id": "word-huo-shan",
+     "chars": "火山",
+     "english": "volcano",
+     "icon": "🌋",
+     "syllables": [
+      {
+       "char": "火",
+       "written": "huǒ",
+       "key": "huo3",
+       "tone": 3,
+       "spokenTone": 3
+      },
+      {
+       "char": "山",
+       "written": "shān",
+       "key": "shan1",
+       "tone": 1,
+       "spokenTone": 1
+      }
+     ],
+     "audio": "audio/phrases/word-huo-shan.mp3",
+     "source": "words",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.397
+      ],
+      [
+       0.397,
+       0.794
+      ]
+     ]
+    },
+    {
+     "id": "word-shan-shui",
+     "chars": "山水",
+     "english": "mountains and rivers",
+     "icon": "🏞️",
+     "syllables": [
+      {
+       "char": "山",
+       "written": "shān",
+       "key": "shan1",
+       "tone": 1,
+       "spokenTone": 1
+      },
+      {
+       "char": "水",
+       "written": "shuǐ",
+       "key": "shui3",
+       "tone": 3,
+       "spokenTone": 3
+      }
+     ],
+     "audio": "audio/phrases/word-shan-shui.mp3",
+     "source": "words",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.415
+      ],
+      [
+       0.415,
+       0.831
+      ]
+     ]
+    },
+    {
+     "id": "word-sen-lin",
+     "chars": "森林",
+     "english": "forest",
+     "icon": "🌲",
+     "syllables": [
+      {
+       "char": "森",
+       "written": "sēn",
+       "key": "sen1",
+       "tone": 1,
+       "spokenTone": 1
+      },
+      {
+       "char": "林",
+       "written": "lín",
+       "key": "lin2",
+       "tone": 2,
+       "spokenTone": 2
+      }
+     ],
+     "audio": "audio/phrases/word-sen-lin.mp3",
+     "source": "words",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.447
+      ],
+      [
+       0.447,
+       0.894
+      ]
+     ]
+    },
+    {
+     "id": "word-da-yu",
+     "chars": "大雨",
+     "english": "heavy rain",
+     "icon": "⛈️",
+     "syllables": [
+      {
+       "char": "大",
+       "written": "dà",
+       "key": "da4",
+       "tone": 4,
+       "spokenTone": 4
+      },
+      {
+       "char": "雨",
+       "written": "yǔ",
+       "key": "yu3",
+       "tone": 3,
+       "spokenTone": 3
+      }
+     ],
+     "audio": "audio/phrases/word-da-yu.mp3",
+     "source": "syllables",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.247
+      ],
+      [
+       0.277,
+       0.821
+      ]
+     ]
+    },
+    {
+     "id": "word-xiao-yu",
+     "chars": "小雨",
+     "english": "light rain",
+     "icon": "🌦️",
+     "syllables": [
+      {
+       "char": "小",
+       "written": "xiǎo",
+       "key": "xiao2",
+       "tone": 3,
+       "spokenTone": 2
+      },
+      {
+       "char": "雨",
+       "written": "yǔ",
+       "key": "yu3",
+       "tone": 3,
+       "spokenTone": 3
+      }
+     ],
+     "audio": "audio/phrases/word-xiao-yu.mp3",
+     "source": "syllables",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.761
+      ],
+      [
+       0.791,
+       1.335
+      ]
+     ]
+    },
+    {
+     "id": "word-yu-shui",
+     "chars": "雨水",
+     "english": "rainwater",
+     "icon": "💧",
+     "syllables": [
+      {
+       "char": "雨",
+       "written": "yǔ",
+       "key": "yu2",
+       "tone": 3,
+       "spokenTone": 2
+      },
+      {
+       "char": "水",
+       "written": "shuǐ",
+       "key": "shui3",
+       "tone": 3,
+       "spokenTone": 3
+      }
+     ],
+     "audio": "audio/phrases/word-yu-shui.mp3",
+     "source": "syllables",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.503
+      ],
+      [
+       0.533,
+       1.343
+      ]
+     ]
+    },
+    {
+     "id": "word-ri-yue",
+     "chars": "日月",
+     "english": "sun and moon",
+     "icon": "🌗",
+     "syllables": [
+      {
+       "char": "日",
+       "written": "rì",
+       "key": "ri4",
+       "tone": 4,
+       "spokenTone": 4
+      },
+      {
+       "char": "月",
+       "written": "yuè",
+       "key": "yue4",
+       "tone": 4,
+       "spokenTone": 4
+      }
+     ],
+     "audio": "audio/phrases/word-ri-yue.mp3",
+     "source": "syllables",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.438
+      ],
+      [
+       0.468,
+       0.887
+      ]
+     ]
+    },
+    {
+     "id": "word-ming-yue",
+     "chars": "明月",
+     "english": "bright moon",
+     "icon": "🌕",
+     "syllables": [
+      {
+       "char": "明",
+       "written": "míng",
+       "key": "ming2",
+       "tone": 2,
+       "spokenTone": 2
+      },
+      {
+       "char": "月",
+       "written": "yuè",
+       "key": "yue4",
+       "tone": 4,
+       "spokenTone": 4
+      }
+     ],
+     "audio": "audio/phrases/word-ming-yue.mp3",
+     "source": "syllables",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.353
+      ],
+      [
+       0.383,
+       0.802
+      ]
+     ]
+    },
+    {
+     "id": "word-xiao-niao",
+     "chars": "小鸟",
+     "english": "little bird",
+     "icon": "🐦",
+     "syllables": [
+      {
+       "char": "小",
+       "written": "xiǎo",
+       "key": "xiao2",
+       "tone": 3,
+       "spokenTone": 2
+      },
+      {
+       "char": "鸟",
+       "written": "niǎo",
+       "key": "niao3",
+       "tone": 3,
+       "spokenTone": 3
+      }
+     ],
+     "audio": "audio/phrases/word-xiao-niao.mp3",
+     "source": "syllables",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.761
+      ],
+      [
+       0.791,
+       1.444
+      ]
+     ]
+    },
+    {
+     "id": "word-xiao-ma",
+     "chars": "小马",
+     "english": "pony",
+     "icon": "🐴",
+     "syllables": [
+      {
+       "char": "小",
+       "written": "xiǎo",
+       "key": "xiao2",
+       "tone": 3,
+       "spokenTone": 2
+      },
+      {
+       "char": "马",
+       "written": "mǎ",
+       "key": "ma3",
+       "tone": 3,
+       "spokenTone": 3
+      }
+     ],
+     "audio": "audio/phrases/word-xiao-ma.mp3",
+     "source": "syllables",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.761
+      ],
+      [
+       0.791,
+       1.564
+      ]
+     ]
+    },
+    {
+     "id": "word-mu-ma",
+     "chars": "木马",
+     "english": "rocking horse",
+     "icon": "🎠",
+     "syllables": [
+      {
+       "char": "木",
+       "written": "mù",
+       "key": "mu4",
+       "tone": 4,
+       "spokenTone": 4
+      },
+      {
+       "char": "马",
+       "written": "mǎ",
+       "key": "ma3",
+       "tone": 3,
+       "spokenTone": 3
+      }
+     ],
+     "audio": "audio/phrases/word-mu-ma.mp3",
+     "source": "syllables",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.427
+      ],
+      [
+       0.457,
+       1.23
+      ]
+     ]
+    },
+    {
+     "id": "word-bu-hao",
+     "chars": "不好",
+     "english": "not good",
+     "icon": "👎",
+     "syllables": [
+      {
+       "char": "不",
+       "written": "bù",
+       "key": "bu4",
+       "tone": 4,
+       "spokenTone": 4
+      },
+      {
+       "char": "好",
+       "written": "hǎo",
+       "key": "hao3",
+       "tone": 3,
+       "spokenTone": 3
+      }
+     ],
+     "audio": "audio/phrases/word-bu-hao.mp3",
+     "source": "syllables",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.206
+      ],
+      [
+       0.236,
+       1.012
+      ]
+     ]
+    },
+    {
+     "id": "word-zheng-hao",
+     "chars": "正好",
+     "english": "just right",
+     "icon": "👌",
+     "syllables": [
+      {
+       "char": "正",
+       "written": "zhèng",
+       "key": "zheng4",
+       "tone": 4,
+       "spokenTone": 4
+      },
+      {
+       "char": "好",
+       "written": "hǎo",
+       "key": "hao3",
+       "tone": 3,
+       "spokenTone": 3
+      }
+     ],
+     "audio": "audio/phrases/word-zheng-hao.mp3",
+     "source": "words",
+     "approximate": false,
+     "times": [
+      [
+       0,
+       0.439
+      ],
+      [
+       0.439,
+       0.878
       ]
      ]
     }

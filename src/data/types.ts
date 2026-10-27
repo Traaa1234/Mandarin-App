@@ -59,6 +59,7 @@ export interface StageSummary {
   title: string;
   island: string;
   ready: boolean;
+  // The characters taught in this stage, or for Word Village its words.
   chars: string[];
 }
 
@@ -72,12 +73,26 @@ export interface IndexEntry {
   picture: string | null;
 }
 
+// A word of two or more characters taught earlier (Word Village). Practised
+// like a character, with its own See it and Hear it cards.
+export interface WordEntry {
+  id: string;
+  stage: number;
+  order: number;
+  pinyin: string;
+  gloss: string;
+  // An interim picture until word pictures are drawn.
+  icon: string;
+  audio: string;
+}
+
 // public/data/index.json
 export interface DataIndex {
   stages: StageSummary[];
   chars: Record<string, IndexEntry>;
   // Root or part → the built characters that contain it, in learning order.
   families: Record<string, string[]>;
+  words: Record<string, WordEntry>;
 }
 
 const codepoint = (char: string) => char.codePointAt(0)!.toString(16);

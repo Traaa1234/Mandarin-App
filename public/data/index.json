@@ -106,8 +106,30 @@
    "key": "words",
    "title": "Words",
    "island": "Word Village",
-   "ready": false,
-   "chars": []
+   "ready": true,
+   "chars": [
+    "大人",
+    "人人",
+    "男人",
+    "女人",
+    "好人",
+    "大小",
+    "小心",
+    "安心",
+    "火山",
+    "山水",
+    "森林",
+    "大雨",
+    "小雨",
+    "雨水",
+    "日月",
+    "明月",
+    "小鸟",
+    "小马",
+    "木马",
+    "不好",
+    "正好"
+   ]
   },
   {
    "id": 8,
@@ -569,7 +591,7 @@
   },
   "红": {
    "stage": 8,
-   "order": 49,
+   "order": 70,
    "role": "festival",
    "pinyin": "hóng",
    "gloss": "red",
@@ -578,7 +600,7 @@
   },
   "福": {
    "stage": 8,
-   "order": 50,
+   "order": 71,
    "role": "festival",
    "pinyin": "fú",
    "gloss": "good fortune",
@@ -587,7 +609,7 @@
   },
   "春": {
    "stage": 8,
-   "order": 51,
+   "order": 72,
    "role": "festival",
    "pinyin": "chūn",
    "gloss": "spring",
@@ -596,7 +618,7 @@
   },
   "龙": {
    "stage": 8,
-   "order": 52,
+   "order": 73,
    "role": "festival",
    "pinyin": "lóng",
    "gloss": "dragon",
@@ -605,7 +627,7 @@
   },
   "船": {
    "stage": 8,
-   "order": 53,
+   "order": 74,
    "role": "festival",
    "pinyin": "chuán",
    "gloss": "boat",
@@ -614,7 +636,7 @@
   },
   "饼": {
    "stage": 8,
-   "order": 54,
+   "order": 75,
    "role": "festival",
    "pinyin": "bǐng",
    "gloss": "cake",
@@ -681,5 +703,196 @@
   "宀": [
    "安"
   ]
+ },
+ "words": {
+  "大人": {
+   "id": "da-ren",
+   "stage": 7,
+   "order": 49,
+   "pinyin": "dàrén",
+   "gloss": "grown-up",
+   "icon": "🧑",
+   "audio": "audio/phrases/word-da-ren.mp3"
+  },
+  "人人": {
+   "id": "ren-ren",
+   "stage": 7,
+   "order": 50,
+   "pinyin": "rénrén",
+   "gloss": "everyone",
+   "icon": "👨‍👩‍👧‍👦",
+   "audio": "audio/phrases/word-ren-ren.mp3"
+  },
+  "男人": {
+   "id": "nan-ren",
+   "stage": 7,
+   "order": 51,
+   "pinyin": "nánrén",
+   "gloss": "man",
+   "icon": "👨",
+   "audio": "audio/phrases/word-nan-ren.mp3"
+  },
+  "女人": {
+   "id": "nv-ren",
+   "stage": 7,
+   "order": 52,
+   "pinyin": "nǚrén",
+   "gloss": "woman",
+   "icon": "👩",
+   "audio": "audio/phrases/word-nv-ren.mp3"
+  },
+  "好人": {
+   "id": "hao-ren",
+   "stage": 7,
+   "order": 53,
+   "pinyin": "hǎorén",
+   "gloss": "good person",
+   "icon": "😇",
+   "audio": "audio/phrases/word-hao-ren.mp3"
+  },
+  "大小": {
+   "id": "da-xiao",
+   "stage": 7,
+   "order": 54,
+   "pinyin": "dàxiǎo",
+   "gloss": "size",
+   "icon": "📏",
+   "audio": "audio/phrases/word-da-xiao.mp3"
+  },
+  "小心": {
+   "id": "xiao-xin",
+   "stage": 7,
+   "order": 55,
+   "pinyin": "xiǎoxīn",
+   "gloss": "be careful!",
+   "icon": "⚠️",
+   "audio": "audio/phrases/word-xiao-xin.mp3"
+  },
+  "安心": {
+   "id": "an-xin",
+   "stage": 7,
+   "order": 56,
+   "pinyin": "ānxīn",
+   "gloss": "calm, not worried",
+   "icon": "😌",
+   "audio": "audio/phrases/word-an-xin.mp3"
+  },
+  "火山": {
+   "id": "huo-shan",
+   "stage": 7,
+   "order": 57,
+   "pinyin": "huǒshān",
+   "gloss": "volcano",
+   "icon": "🌋",
+   "audio": "audio/phrases/word-huo-shan.mp3"
+  },
+  "山水": {
+   "id": "shan-shui",
+   "stage": 7,
+   "order": 58,
+   "pinyin": "shānshuǐ",
+   "gloss": "mountains and rivers",
+   "icon": "🏞️",
+   "audio": "audio/phrases/word-shan-shui.mp3"
+  },
+  "森林": {
+   "id": "sen-lin",
+   "stage": 7,
+   "order": 59,
+   "pinyin": "sēnlín",
+   "gloss": "forest",
+   "icon": "🌲",
+   "audio": "audio/phrases/word-sen-lin.mp3"
+  },
+  "大雨": {
+   "id": "da-yu",
+   "stage": 7,
+   "order": 60,
+   "pinyin": "dàyǔ",
+   "gloss": "heavy rain",
+   "icon": "⛈️",
+   "audio": "audio/phrases/word-da-yu.mp3"
+  },
+  "小雨": {
+   "id": "xiao-yu",
+   "stage": 7,
+   "order": 61,
+   "pinyin": "xiǎoyǔ",
+   "gloss": "light rain",
+   "icon": "🌦️",
+   "audio": "audio/phrases/word-xiao-yu.mp3"
+  },
+  "雨水": {
+   "id": "yu-shui",
+   "stage": 7,
+   "order": 62,
+   "pinyin": "yǔshuǐ",
+   "gloss": "rainwater",
+   "icon": "💧",
+   "audio": "audio/phrases/word-yu-shui.mp3"
+  },
+  "日月": {
+   "id": "ri-yue",
+   "stage": 7,
+   "order": 63,
+   "pinyin": "rìyuè",
+   "gloss": "sun and moon",
+   "icon": "🌗",
+   "audio": "audio/phrases/word-ri-yue.mp3"
+  },
+  "明月": {
+   "id": "ming-yue",
+   "stage": 7,
+   "order": 64,
+   "pinyin": "míngyuè",
+   "gloss": "bright moon",
+   "icon": "🌕",
+   "audio": "audio/phrases/word-ming-yue.mp3"
+  },
+  "小鸟": {
+   "id": "xiao-niao",
+   "stage": 7,
+   "order": 65,
+   "pinyin": "xiǎoniǎo",
+   "gloss": "little bird",
+   "icon": "🐦",
+   "audio": "audio/phrases/word-xiao-niao.mp3"
+  },
+  "小马": {
+   "id": "xiao-ma",
+   "stage": 7,
+   "order": 66,
+   "pinyin": "xiǎomǎ",
+   "gloss": "pony",
+   "icon": "🐴",
+   "audio": "audio/phrases/word-xiao-ma.mp3"
+  },
+  "木马": {
+   "id": "mu-ma",
+   "stage": 7,
+   "order": 67,
+   "pinyin": "mùmǎ",
+   "gloss": "rocking horse",
+   "icon": "🎠",
+   "audio": "audio/phrases/word-mu-ma.mp3"
+  },
+  "不好": {
+   "id": "bu-hao",
+   "stage": 7,
+   "order": 68,
+   "pinyin": "bù hǎo",
+   "gloss": "not good",
+   "icon": "👎",
+   "audio": "audio/phrases/word-bu-hao.mp3"
+  },
+  "正好": {
+   "id": "zheng-hao",
+   "stage": 7,
+   "order": 69,
+   "pinyin": "zhènghǎo",
+   "gloss": "just right",
+   "icon": "👌",
+   "audio": "audio/phrases/word-zheng-hao.mp3"
+  }
  }
 }

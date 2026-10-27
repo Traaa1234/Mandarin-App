@@ -5,7 +5,9 @@
 // Reads content/stages.json (the learning path), Make Me a Hanzi's dictionary.txt
 // (decomposition, etymology, stroke-to-part matches), hanzi-writer-data (stroke paths)
 // and HanziJS (frequency). Writes one compact JSON file per character to
-// public/data/chars/ plus public/data/index.json. Fails on any content error.
+// public/data/chars/ plus public/data/index.json. Words (the Word Village stage)
+// go into the index only; their audio is built by build-phrases. Fails on any
+// content error.
 
 import { createRequire } from 'node:module';
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync, copyFileSync } from 'node:fs';
@@ -13,7 +15,8 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { leaves, stripTones } from '../src/lib/ids.ts';
 import { charFile, pictureFile } from '../src/data/types.ts';
-import type { CharData, DataIndex, Etymology, Mnemonic, Role } from '../src/data/types.ts';
+import type { CharData, DataIndex, Etymology, Mnemonic, Role, WordEntry } from '../src/data/types.ts';
+import { splitSyllables } from '../src/lib/pinyin.ts';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'public', 'data');
@@ -38,6 +41,16 @@ interface ContentStage {
   island: string;
   ready: boolean;
   items?: ContentItem[];
+  words?: ContentWord[];
+}
+
+// A word built only from characters taught earlier.
+interface ContentWord {
+  id: string;
+  word: string;
+  pinyin: string;
+  gloss: string;
+  icon: string;
 }
 
 interface MmahEntry {
@@ -102,8 +115,29 @@ async function main() {
   const built: CharData[] = [];
   const seen = new Map<string, CharData>();
   let order = 0;
+  const words: Record<string, WordEntry> = {};
+  const syllables = new Set<string>(JSON.parse(readFileSync(join(OUT, 'syllables.json'), 'utf8')));
+  const bases = new Set([...syllables].map((k) => k.slice(0, -1)));
 
   for (const stage of content.stages) {
+    if (stage.ready && stage.words) {
+      for (const w of stage.words) {
+        const where = `stage ${stage.id} ${w.word}`;
+        const chars = Array.from(w.word);
+        const written = splitSyllables(w.pinyin, bases);
+        if (words[w.word] || Object.values(words).some((x) => x.id === w.id)) errors.push(`${where}: listed twice`);
+        if (chars.length < 2) errors.push(`${where}: a word needs two or more characters`);
+        if (written.length !== chars.length) errors.push(`${where}: ${chars.length} characters but pinyin ${w.pinyin}`);
+        chars.forEach((c, i) => {
+          const taught = seen.get(c);
+          if (!taught || taught.role === 'festival') errors.push(`${where}: ${c} is not taught before this word`);
+          else if (written[i] && stripTones(written[i]) !== stripTones(taught.pinyin)) {
+            errors.push(`${where}: ${written[i]} doesn't match ${c} ${taught.pinyin}`);
+          }
+        });
+        words[w.word] = { id: w.id, stage: stage.id, order: order++, pinyin: w.pinyin, gloss: w.gloss, icon: w.icon, audio: `audio/phrases/word-${w.id}.mp3` };
+      }
+    }
     if (!stage.ready || !stage.items) continue;
     for (const item of stage.items) {
       const c = item.char;
@@ -239,7 +273,7 @@ async function main() {
       title,
       island,
       ready,
-      chars: built.filter((d) => d.stage === id).map((d) => d.character),
+      chars: [...built.filter((d) => d.stage === id).map((d) => d.character), ...Object.keys(words).filter((w) => words[w].stage === id)],
     })),
     chars: Object.fromEntries(
       built.map((d) => [
@@ -256,6 +290,7 @@ async function main() {
       ]),
     ),
     families,
+    words,
   };
 
   rmSync(join(OUT, 'chars'), { recursive: true, force: true });
@@ -278,7 +313,7 @@ async function main() {
   copyFileSync(lgpl, join(OUT, 'licenses', 'LGPL.txt'));
 
   console.log(
-    `Wrote ${built.length} characters across ${index.stages.filter((s) => s.chars.length).length} stages to public/data/.`,
+    `Wrote ${built.length} characters and ${Object.keys(words).length} words across ${index.stages.filter((s) => s.chars.length).length} stages to public/data/.`,
   );
 }
 

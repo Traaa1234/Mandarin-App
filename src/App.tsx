@@ -4,6 +4,8 @@ import Home from './screens/Home';
 import PictureCardScreen from './screens/PictureCardScreen';
 import PhraseScreen from './screens/speak/PhraseScreen';
 import SectionScreen from './screens/SectionScreen';
+import { useIndex } from './data/useData';
+import { isWord } from './practice/items';
 import { SECTIONS, type SectionId } from './sections';
 
 // The playground carries pinyin-pro, and the game layer the scheduler and the
@@ -56,6 +58,9 @@ export default function App() {
   };
   const home = () => go(null);
   const roots = (c: string) => go('roots', c);
+  // A flower or island tile may be a word: its page is its recording in Speak Mandarin.
+  const index = useIndex();
+  const openItem = (c: string) => (isWord(c) && index?.words[c] ? go('speak', `word-${index.words[c].id}`) : roots(c));
   const lazyScreen = (screen: ReactNode) => <Suspense fallback={null}>{screen}</Suspense>;
 
   switch (route.section) {
@@ -64,9 +69,9 @@ export default function App() {
     case 'today':
       return lazyScreen(<AdventureScreen onHome={home} onTeach={() => go('teach')} />);
     case 'garden':
-      return lazyScreen(<GardenScreen onHome={home} onChar={roots} />);
+      return lazyScreen(<GardenScreen onHome={home} onChar={openItem} />);
     case 'map':
-      return lazyScreen(<MapScreen onHome={home} onCertificate={(id) => go('certificate', String(id))} onChar={roots} />);
+      return lazyScreen(<MapScreen onHome={home} onCertificate={(id) => go('certificate', String(id))} onChar={openItem} />);
     case 'games':
       return lazyScreen(<GamesScreen onHome={home} />);
     case 'album':
@@ -93,7 +98,9 @@ export default function App() {
     return <CharacterScreen key={route.char} char={route.char} onBack={() => go('roots')} onOpen={roots} />;
   }
   if (route.section === 'speak' && route.char) {
-    return <PhraseScreen key={route.char} id={route.char} onBack={() => go('speak')} onOpen={(id) => go('speak', id)} onChar={roots} />;
+    // A word page goes back to wherever it was opened from (the garden or the map).
+    const back = route.char.startsWith('word-') ? () => window.history.back() : () => go('speak');
+    return <PhraseScreen key={route.char} id={route.char} onBack={back} onOpen={(id) => go('speak', id)} onChar={roots} />;
   }
   if (route.section === 'pictures' && route.char) {
     return (

@@ -1,4 +1,5 @@
 import type { DataIndex } from '../data/types';
+import { pathItems } from './items';
 import type { Kind } from './kinds';
 
 export const MAX_REVIEWS = 10;
@@ -14,7 +15,7 @@ export interface CardState {
 export type Step = { type: 'review'; char: string; kind: Kind } | { type: 'new'; char: string };
 
 // Today's session: up to 10 due reviews, most overdue first, then up to 3 new
-// characters in learning order. A character is new until it has a card. Empty
+// characters or words in learning order. An item is new until it has a card. Empty
 // means nothing is due and nothing is left to learn: offer free play instead.
 export function buildSession(index: DataIndex, cards: CardState[], now: Date): Step[] {
   const reviews = cards
@@ -24,8 +25,8 @@ export function buildSession(index: DataIndex, cards: CardState[], now: Date): S
     .map((c): Step => ({ type: 'review', char: c.char, kind: c.kind }));
 
   const started = new Set(cards.map((c) => c.char));
-  const fresh = Object.entries(index.chars)
-    .filter(([c, e]) => !started.has(c) && e.role !== 'festival' && index.stages.find((s) => s.id === e.stage)?.ready)
+  const fresh = pathItems(index)
+    .filter(([c, e]) => !started.has(c) && index.stages.find((s) => s.id === e.stage)?.ready)
     .sort(([, a], [, b]) => a.order - b.order)
     .slice(0, MAX_NEW)
     .map(([char]): Step => ({ type: 'new', char }));
@@ -33,10 +34,10 @@ export function buildSession(index: DataIndex, cards: CardState[], now: Date): S
   return [...reviews, ...fresh];
 }
 
-// The stage the child is working on: the first one with a character not yet started.
+// The stage the child is working on: the first one with an item not yet started.
 export function currentStage(index: DataIndex, startedChars: Set<string>): number {
-  const next = Object.entries(index.chars)
-    .filter(([c, e]) => !startedChars.has(c) && e.role !== 'festival')
+  const next = pathItems(index)
+    .filter(([c, e]) => !startedChars.has(c) && index.stages.find((s) => s.id === e.stage)?.ready)
     .sort(([, a], [, b]) => a.order - b.order)[0];
   return next ? next[1].stage : Math.max(...index.stages.filter((s) => s.chars.length && s.key !== 'festivals').map((s) => s.id));
 }

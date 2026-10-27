@@ -441,37 +441,154 @@
       "key": "words",
       "title": "Words",
       "island": "Word Village",
-      "ready": false,
+      "ready": true,
       "words": [
         {
+          "id": "da-ren",
           "word": "大人",
           "pinyin": "dàrén",
-          "gloss": "grown-up"
+          "gloss": "grown-up",
+          "icon": "🧑"
         },
         {
+          "id": "ren-ren",
+          "word": "人人",
+          "pinyin": "rénrén",
+          "gloss": "everyone",
+          "icon": "👨‍👩‍👧‍👦"
+        },
+        {
+          "id": "nan-ren",
+          "word": "男人",
+          "pinyin": "nánrén",
+          "gloss": "man",
+          "icon": "👨"
+        },
+        {
+          "id": "nv-ren",
+          "word": "女人",
+          "pinyin": "nǚrén",
+          "gloss": "woman",
+          "icon": "👩"
+        },
+        {
+          "id": "hao-ren",
+          "word": "好人",
+          "pinyin": "hǎorén",
+          "gloss": "good person",
+          "icon": "😇"
+        },
+        {
+          "id": "da-xiao",
+          "word": "大小",
+          "pinyin": "dàxiǎo",
+          "gloss": "size",
+          "icon": "📏"
+        },
+        {
+          "id": "xiao-xin",
+          "word": "小心",
+          "pinyin": "xiǎoxīn",
+          "gloss": "be careful!",
+          "icon": "⚠️"
+        },
+        {
+          "id": "an-xin",
+          "word": "安心",
+          "pinyin": "ānxīn",
+          "gloss": "calm, not worried",
+          "icon": "😌"
+        },
+        {
+          "id": "huo-shan",
           "word": "火山",
           "pinyin": "huǒshān",
-          "gloss": "volcano"
+          "gloss": "volcano",
+          "icon": "🌋"
         },
         {
+          "id": "shan-shui",
           "word": "山水",
           "pinyin": "shānshuǐ",
-          "gloss": "landscape"
+          "gloss": "mountains and rivers",
+          "icon": "🏞️"
         },
         {
-          "word": "人口",
-          "pinyin": "rénkǒu",
-          "gloss": "population"
-        },
-        {
-          "word": "明天",
-          "pinyin": "míngtiān",
-          "gloss": "tomorrow"
-        },
-        {
+          "id": "sen-lin",
           "word": "森林",
           "pinyin": "sēnlín",
-          "gloss": "forest"
+          "gloss": "forest",
+          "icon": "🌲"
+        },
+        {
+          "id": "da-yu",
+          "word": "大雨",
+          "pinyin": "dàyǔ",
+          "gloss": "heavy rain",
+          "icon": "⛈️"
+        },
+        {
+          "id": "xiao-yu",
+          "word": "小雨",
+          "pinyin": "xiǎoyǔ",
+          "gloss": "light rain",
+          "icon": "🌦️"
+        },
+        {
+          "id": "yu-shui",
+          "word": "雨水",
+          "pinyin": "yǔshuǐ",
+          "gloss": "rainwater",
+          "icon": "💧"
+        },
+        {
+          "id": "ri-yue",
+          "word": "日月",
+          "pinyin": "rìyuè",
+          "gloss": "sun and moon",
+          "icon": "🌗"
+        },
+        {
+          "id": "ming-yue",
+          "word": "明月",
+          "pinyin": "míngyuè",
+          "gloss": "bright moon",
+          "icon": "🌕"
+        },
+        {
+          "id": "xiao-niao",
+          "word": "小鸟",
+          "pinyin": "xiǎoniǎo",
+          "gloss": "little bird",
+          "icon": "🐦"
+        },
+        {
+          "id": "xiao-ma",
+          "word": "小马",
+          "pinyin": "xiǎomǎ",
+          "gloss": "pony",
+          "icon": "🐴"
+        },
+        {
+          "id": "mu-ma",
+          "word": "木马",
+          "pinyin": "mùmǎ",
+          "gloss": "rocking horse",
+          "icon": "🎠"
+        },
+        {
+          "id": "bu-hao",
+          "word": "不好",
+          "pinyin": "bù hǎo",
+          "gloss": "not good",
+          "icon": "👎"
+        },
+        {
+          "id": "zheng-hao",
+          "word": "正好",
+          "pinyin": "zhènghǎo",
+          "gloss": "just right",
+          "icon": "👌"
         }
       ]
     },

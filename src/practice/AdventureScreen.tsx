@@ -70,7 +70,7 @@ function Adventure({
 }: {
   profileId: number;
   index: DataIndex;
-  phrases: Phrase[];
+  phrases: (Phrase & { hidden: boolean })[];
   onHome: () => void;
   onTeach: () => void;
 }) {
@@ -113,7 +113,7 @@ function Adventure({
   const at = PARTS.findIndex((p) => p.id === part);
 
   // One phrase a day, in turn.
-  const everyday = phrases.filter((p) => !['great', 'keep-going', 'see-you-tomorrow'].includes(p.id));
+  const everyday = phrases.filter((p) => !p.hidden);
   const today = everyday[Math.floor(Date.now() / 86400000) % everyday.length];
 
   return (

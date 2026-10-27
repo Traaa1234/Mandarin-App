@@ -3,6 +3,7 @@ import { useIndex } from '../data/useData';
 import type { DataIndex } from '../data/types';
 import { toneClass } from '../lib/tones';
 import { addDays, localDate, weekId } from './calendar';
+import { itemPinyin } from './items';
 import { reminderIcs } from './ics';
 import ParentGate from './ParentGate';
 import { useProfile } from './ProfileContext';
@@ -141,7 +142,7 @@ function ChildReport({ profileId, index }: { profileId: number; index: DataIndex
           <ol className="flex flex-wrap gap-3">
             {report.tricky.map((t) => (
               <li key={t.char} className="flex flex-col items-center rounded-2xl bg-[#fdf6e3] px-3 py-2">
-                <span className={`text-sm ${toneClass(index.chars[t.char]?.pinyin ?? '')}`}>{index.chars[t.char]?.pinyin}</span>
+                <span className={`text-sm ${toneClass(itemPinyin(index, t.char))}`}>{itemPinyin(index, t.char)}</span>
                 <span lang="zh-Hans" className="han text-4xl">{t.char}</span>
                 <span className="text-xs text-ink/70">needed help {t.misses}×</span>
               </li>

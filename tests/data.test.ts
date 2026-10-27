@@ -127,6 +127,20 @@ describe('generated data', () => {
     }
   });
 
+  it('builds every word from characters taught before it', () => {
+    const words = Object.entries(index.words);
+    expect(words.length).toBeGreaterThan(0);
+    for (const [word, entry] of words) {
+      for (const c of Array.from(word)) {
+        expect(index.chars[c], `${word}: ${c}`).toBeDefined();
+        expect(index.chars[c].order, `${word}: ${c}`).toBeLessThan(entry.order);
+        expect(index.chars[c].role, `${word}: ${c}`).not.toBe('festival');
+      }
+    }
+    const village = index.stages.find((s) => s.key === 'words')!;
+    expect(village.chars).toEqual(Object.keys(index.words));
+  });
+
   it('builds the family index from the compounds', () => {
     expect(index.families['木']).toEqual(['林', '森', '休']);
     // 休 contains 亻, the costume of 人, so it joins both families.

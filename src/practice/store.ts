@@ -3,7 +3,8 @@ import type { DataIndex } from '../data/types';
 import { db as defaultDb, MAX_PROFILES, type CardRow, type GardenDb, type Profile } from './db';
 import { localDate } from './calendar';
 import { flowerState, type Bloom } from './garden';
-import { kindsFor, type Kind } from './kinds';
+import { itemKinds } from './items';
+import type { Kind } from './kinds';
 import { rateOutcome, type FsrsRating, type Outcome } from './rating';
 
 const DAY = 86400000;
@@ -30,9 +31,9 @@ export class Store {
     return this.db.cards.where('profileId').equals(profileId).toArray();
   }
 
-  // A new character starts with its first card, due now.
+  // A new character or word starts with its first card, due now.
   async startChar(profileId: number, char: string, index: DataIndex, now = new Date()) {
-    const first = kindsFor(index.chars[char])[0];
+    const first = itemKinds(index, char)[0];
     await this.db.cards.put({ profileId, char, kind: first, card: createEmptyCard(now) });
     return first;
   }
@@ -55,7 +56,7 @@ export class Store {
       await this.db.cards.put({ profileId, char, kind, card: next });
       await this.db.reviews.add({ profileId, char, kind, rating, at: now, ms: outcome.ms, writeMistakes: outcome.writeMistakes });
       if (rating !== Rating.Again) {
-        const kinds = kindsFor(index.chars[char]);
+        const kinds = itemKinds(index, char);
         const following = kinds[kinds.indexOf(kind) + 1];
         if (following && !(await this.db.cards.get([profileId, char, following]))) {
           await this.db.cards.put({ profileId, char, kind: following, card: createEmptyCard(new Date(now.getTime() + DAY)) });
@@ -65,8 +66,8 @@ export class Store {
     return rating;
   }
 
-  // Characters the child has learned: passing the first card unlocks the
-  // second, and every character has at least three, so learned = two or more cards.
+  // Characters and words the child has learned: passing the first card unlocks
+  // the second, and every item has at least two, so learned = two or more cards.
   async learned(profileId: number): Promise<Set<string>> {
     const count = new Map<string, number>();
     for (const r of await this.cards(profileId)) count.set(r.char, (count.get(r.char) ?? 0) + 1);

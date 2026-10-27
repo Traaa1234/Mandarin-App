@@ -53,6 +53,18 @@
           "icon": "🎂"
         },
         {
+          "id": "how-old",
+          "chars": "你几岁？",
+          "words": [
+            "你",
+            "几",
+            "岁"
+          ],
+          "pinyin": "nǐ jǐ suì",
+          "english": "How old are you?",
+          "icon": "🎂"
+        },
+        {
           "id": "goodbye",
           "chars": "再见！",
           "words": [
@@ -109,6 +121,17 @@
           "pinyin": "méi guānxi",
           "english": "That's okay.",
           "icon": "🤗"
+        },
+        {
+          "id": "come-in",
+          "chars": "请进！",
+          "words": [
+            "请",
+            "进"
+          ],
+          "pinyin": "qǐng jìn",
+          "english": "Come in, please!",
+          "icon": "🚪"
         }
       ]
     },
@@ -151,6 +174,19 @@
           "pinyin": "hǎochī",
           "english": "Yummy!",
           "icon": "😋"
+        },
+        {
+          "id": "full",
+          "chars": "我吃饱了。",
+          "words": [
+            "我",
+            "吃",
+            "饱",
+            "了"
+          ],
+          "pinyin": "wǒ chī bǎo le",
+          "english": "I'm full.",
+          "icon": "😌"
         }
       ]
     },
@@ -169,6 +205,39 @@
           "pinyin": "māma bàba",
           "english": "Mom, Dad",
           "icon": "👪"
+        },
+        {
+          "id": "brother-sister",
+          "chars": "哥哥，姐姐",
+          "words": [
+            "哥哥",
+            "姐姐"
+          ],
+          "pinyin": "gēge jiějie",
+          "english": "Big brother, big sister",
+          "icon": "👫"
+        },
+        {
+          "id": "little-ones",
+          "chars": "弟弟，妹妹",
+          "words": [
+            "弟弟",
+            "妹妹"
+          ],
+          "pinyin": "dìdi mèimei",
+          "english": "Little brother, little sister",
+          "icon": "🧒"
+        },
+        {
+          "id": "grandparents",
+          "chars": "爷爷，奶奶",
+          "words": [
+            "爷爷",
+            "奶奶"
+          ],
+          "pinyin": "yéye nǎinai",
+          "english": "Grandpa, Grandma",
+          "icon": "👴"
         },
         {
           "id": "love-you",
@@ -228,6 +297,256 @@
           "pinyin": "wǎn'ān",
           "english": "Good night!",
           "icon": "🌙"
+        }
+      ]
+    },
+    {
+      "id": "colours",
+      "title": "Colours",
+      "icon": "🎨",
+      "phrases": [
+        {
+          "id": "red",
+          "chars": "红色",
+          "words": [
+            "红色"
+          ],
+          "pinyin": "hóngsè",
+          "english": "Red",
+          "icon": "🔴"
+        },
+        {
+          "id": "yellow",
+          "chars": "黄色",
+          "words": [
+            "黄色"
+          ],
+          "pinyin": "huángsè",
+          "english": "Yellow",
+          "icon": "🟡"
+        },
+        {
+          "id": "blue",
+          "chars": "蓝色",
+          "words": [
+            "蓝色"
+          ],
+          "pinyin": "lánsè",
+          "english": "Blue",
+          "icon": "🔵"
+        },
+        {
+          "id": "green",
+          "chars": "绿色",
+          "words": [
+            "绿色"
+          ],
+          "pinyin": "lǜsè",
+          "english": "Green",
+          "icon": "🟢"
+        },
+        {
+          "id": "like-red",
+          "chars": "我喜欢红色。",
+          "words": [
+            "我",
+            "喜欢",
+            "红色"
+          ],
+          "pinyin": "wǒ xǐhuan hóngsè",
+          "english": "I like red.",
+          "icon": "❤️"
+        }
+      ]
+    },
+    {
+      "id": "counting",
+      "title": "Counting",
+      "icon": "🔢",
+      "phrases": [
+        {
+          "id": "one-two-three",
+          "chars": "一、二、三",
+          "words": [
+            "一",
+            "二",
+            "三"
+          ],
+          "pinyin": "yī èr sān",
+          "english": "One, two, three",
+          "icon": "1️⃣"
+        },
+        {
+          "id": "four-five-six",
+          "chars": "四、五、六",
+          "words": [
+            "四",
+            "五",
+            "六"
+          ],
+          "pinyin": "sì wǔ liù",
+          "english": "Four, five, six",
+          "icon": "4️⃣"
+        },
+        {
+          "id": "seven-to-ten",
+          "chars": "七、八、九、十",
+          "words": [
+            "七",
+            "八",
+            "九",
+            "十"
+          ],
+          "pinyin": "qī bā jiǔ shí",
+          "english": "Seven, eight, nine, ten",
+          "icon": "🔟"
+        }
+      ]
+    },
+    {
+      "id": "animals",
+      "title": "Animals",
+      "icon": "🐾",
+      "phrases": [
+        {
+          "id": "panda",
+          "chars": "熊猫",
+          "words": [
+            "熊猫"
+          ],
+          "pinyin": "xióngmāo",
+          "english": "Panda",
+          "icon": "🐼"
+        },
+        {
+          "id": "puppy",
+          "chars": "小狗",
+          "words": [
+            "小狗"
+          ],
+          "pinyin": "xiǎogǒu",
+          "english": "Puppy",
+          "icon": "🐶"
+        },
+        {
+          "id": "kitten",
+          "chars": "小猫",
+          "words": [
+            "小猫"
+          ],
+          "pinyin": "xiǎomāo",
+          "english": "Kitten",
+          "icon": "🐱"
+        },
+        {
+          "id": "like-pandas",
+          "chars": "我喜欢熊猫！",
+          "words": [
+            "我",
+            "喜欢",
+            "熊猫"
+          ],
+          "pinyin": "wǒ xǐhuan xióngmāo",
+          "english": "I like pandas!",
+          "icon": "💛"
+        }
+      ]
+    },
+    {
+      "id": "feelings",
+      "title": "How I feel",
+      "icon": "😊",
+      "phrases": [
+        {
+          "id": "happy",
+          "chars": "我很高兴！",
+          "words": [
+            "我",
+            "很",
+            "高兴"
+          ],
+          "pinyin": "wǒ hěn gāoxìng",
+          "english": "I'm very happy!",
+          "icon": "😄"
+        },
+        {
+          "id": "tired",
+          "chars": "我累了。",
+          "words": [
+            "我",
+            "累",
+            "了"
+          ],
+          "pinyin": "wǒ lèi le",
+          "english": "I'm tired.",
+          "icon": "😴"
+        },
+        {
+          "id": "thirsty",
+          "chars": "我渴了。",
+          "words": [
+            "我",
+            "渴",
+            "了"
+          ],
+          "pinyin": "wǒ kě le",
+          "english": "I'm thirsty.",
+          "icon": "🥤"
+        },
+        {
+          "id": "unwell",
+          "chars": "我不舒服。",
+          "words": [
+            "我",
+            "不",
+            "舒服"
+          ],
+          "pinyin": "wǒ bù shūfu",
+          "english": "I don't feel well.",
+          "icon": "🤒"
+        }
+      ]
+    },
+    {
+      "id": "where",
+      "title": "Where is it?",
+      "icon": "📍",
+      "phrases": [
+        {
+          "id": "toilet",
+          "chars": "厕所在哪里？",
+          "words": [
+            "厕所",
+            "在",
+            "哪里"
+          ],
+          "pinyin": "cèsuǒ zài nǎlǐ",
+          "english": "Where is the toilet?",
+          "icon": "🚻"
+        },
+        {
+          "id": "where-mom",
+          "chars": "妈妈在哪里？",
+          "words": [
+            "妈妈",
+            "在",
+            "哪里"
+          ],
+          "pinyin": "māma zài nǎlǐ",
+          "english": "Where is Mom?",
+          "icon": "👩"
+        },
+        {
+          "id": "here",
+          "chars": "我在这里！",
+          "words": [
+            "我",
+            "在",
+            "这里"
+          ],
+          "pinyin": "wǒ zài zhèlǐ",
+          "english": "I'm here!",
+          "icon": "🙋"
         }
       ]
     },

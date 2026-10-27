@@ -13,3 +13,7 @@ export function kindsFor(entry: IndexEntry): Kind[] {
   const canSee = !!entry.picture || entry.role === 'compound' || entry.role === 'costume';
   return canSee ? [...KINDS] : KINDS.filter((k) => k !== 'see');
 }
+
+// A word is seen (tap its picture) and heard (tap the word); writing and tones
+// are practised on its characters.
+export const WORD_KINDS: Kind[] = ['see', 'hear'];

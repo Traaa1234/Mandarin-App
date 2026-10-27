@@ -10,7 +10,9 @@ import { toneClass } from '../lib/tones';
 import HearCard from './cards/HearCard';
 import SeeCard from './cards/SeeCard';
 import ToneCard from './cards/ToneCard';
+import { NewWord, WordHearCard, WordSeeCard } from './cards/WordCards';
 import WriteCard from './cards/WriteCard';
+import { isWord } from './items';
 import { KIND_ICON, type Kind } from './kinds';
 import type { Outcome } from './rating';
 import { adapt, CHOICES, START, type AdaptState } from './adaptive';
@@ -18,10 +20,16 @@ import type { Step } from './session';
 import { leniencyFor, useSettings } from './settings';
 import { store } from './store';
 
-type Phase = { type: 'loading' } | { type: 'intro'; data: CharData } | { type: 'card'; data: CharData; kind: Kind };
+type Phase =
+  | { type: 'loading' }
+  | { type: 'intro'; data: CharData }
+  | { type: 'card'; data: CharData; kind: Kind }
+  | { type: 'word-intro'; word: string }
+  | { type: 'word-card'; word: string; kind: Kind };
 
 // Runs a list of steps: reviews show their card; a new character first hatches
-// from a seed and shows its picture card, then its first card. Stops early once
+// from a seed and shows its picture card, then its first card. Words work the
+// same way with their own cards. Stops early once
 // `deadline` (a performance.now() time) has passed.
 export default function CardRunner({
   profileId,
@@ -56,6 +64,10 @@ export default function CardRunner({
     const step = steps[at];
     // Clear the old card first, so it is never re-rendered with the next step's key.
     setPhase({ type: 'loading' });
+    if (isWord(step.char)) {
+      setPhase(step.type === 'new' ? { type: 'word-intro', word: step.char } : { type: 'word-card', word: step.char, kind: step.kind });
+      return;
+    }
     loadChar(step.char).then((data) =>
       setPhase(step.type === 'new' ? { type: 'intro', data } : { type: 'card', data, kind: step.kind }),
     );
@@ -67,15 +79,21 @@ export default function CardRunner({
     setPhase({ type: 'card', data, kind });
   };
 
-  const answered = (data: CharData, kind: Kind) => async (o: Outcome) => {
+  const startWord = async (word: string) => {
+    const kind = await store.startChar(profileId, word, index);
+    setKnown((m) => new Set(m).add(word));
+    setPhase({ type: 'word-card', word, kind });
+  };
+
+  const answered = (item: string, kind: Kind) => async (o: Outcome) => {
     setLevel((s) => adapt(s, o));
-    const rating = await store.answer(profileId, data.character, kind, o, index);
+    const rating = await store.answer(profileId, item, kind, o, index);
     if (rating > 1) passed.current++;
     setAt((n) => n + 1);
   };
 
   if (phase.type === 'loading') return null;
-  const key = `${at}-${phase.data.character}`;
+  const key = `${at}-${'data' in phase ? phase.data.character : phase.word}`;
 
   return (
     <div className="flex flex-col gap-6">
@@ -86,16 +104,29 @@ export default function CardRunner({
       </ol>
       {phase.type === 'intro' ? (
         <NewChar key={key} data={phase.data} onGo={() => startNew(phase.data)} />
+      ) : phase.type === 'word-intro' ? (
+        <NewWord key={key} index={index} word={phase.word} onGo={() => startWord(phase.word)} />
+      ) : phase.type === 'word-card' ? (
+        <>
+          <p className="text-center text-3xl" aria-hidden="true">
+            {KIND_ICON[phase.kind]}
+          </p>
+          {phase.kind === 'see' ? (
+            <WordSeeCard key={key} index={index} word={phase.word} met={known} choices={CHOICES[level.level]} onDone={answered(phase.word, 'see')} />
+          ) : (
+            <WordHearCard key={key} index={index} word={phase.word} met={known} choices={CHOICES[level.level]} onDone={answered(phase.word, 'hear')} />
+          )}
+        </>
       ) : (
         <>
           <p className="text-center text-3xl" aria-hidden="true">
             {KIND_ICON[phase.kind]}
           </p>
           {phase.kind === 'see' && (
-            <SeeCard key={key} data={phase.data} index={index} met={known} choices={CHOICES[level.level]} onDone={answered(phase.data, 'see')} />
+            <SeeCard key={key} data={phase.data} index={index} met={known} choices={CHOICES[level.level]} onDone={answered(phase.data.character, 'see')} />
           )}
           {phase.kind === 'hear' && (
-            <HearCard key={key} char={phase.data.character} index={index} met={known} choices={CHOICES[level.level]} onDone={answered(phase.data, 'hear')} />
+            <HearCard key={key} char={phase.data.character} index={index} met={known} choices={CHOICES[level.level]} onDone={answered(phase.data.character, 'hear')} />
           )}
           {phase.kind === 'write' && (
             <WriteCard
@@ -104,11 +135,11 @@ export default function CardRunner({
               index={index}
               leniency={leniencyFor(settings) + (level.level === 'easier' ? 0.5 : 0)}
               outline={level.level !== 'harder'}
-              onDone={answered(phase.data, 'write')}
+              onDone={answered(phase.data.character, 'write')}
             />
           )}
           {phase.kind === 'tone' && (
-            <ToneCard key={key} char={phase.data.character} index={index} few={level.level === 'easier'} onDone={answered(phase.data, 'tone')} />
+            <ToneCard key={key} char={phase.data.character} index={index} few={level.level === 'easier'} onDone={answered(phase.data.character, 'tone')} />
           )}
         </>
       )}
