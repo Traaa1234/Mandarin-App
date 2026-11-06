@@ -6,7 +6,7 @@ import type { DataIndex, Phrase } from '../data/types';
 import { useIndex } from '../data/useData';
 import { allPhrases, usePhrases } from '../data/usePhrases';
 import GameHost from '../games/GameHost';
-import { gameOfTheDay, GAMES } from '../games/registry';
+import { gameOfTheDay, GAMES, playChars } from '../games/registry';
 import { playFile } from '../lib/audio';
 import { celebrate, chime } from '../lib/sfx';
 import { weekId } from './calendar';
@@ -140,8 +140,8 @@ function Adventure({
         // Its own key: a reused runner would keep the warm-up's finished position.
         <CardRunner key="discover" profileId={profileId} index={index} steps={plan.fresh} met={plan.met} deadline={deadline} onDone={finishCards} />
       ) : part === 'play' ? (
-        !learned ? null : gameOfTheDay(learned, index) ? (
-          <GameHost game={gameOfTheDay(learned, index)!} index={index} learned={learned} profileId={profileId} onFinish={next} />
+        !learned ? null : gameOfTheDay(playChars(learned, index), index) ? (
+          <GameHost game={gameOfTheDay(playChars(learned, index), index)!} index={index} learned={playChars(learned, index)} profileId={profileId} onFinish={next} />
         ) : (
           <SkipPlay onNext={next} />
         )
@@ -265,7 +265,7 @@ function Goodbye({
   }, [profileId, learned.length]);
 
   const bonusGame = useMemo(() => {
-    const playable = GAMES.filter((g) => g.ready(learned, index));
+    const playable = GAMES.filter((g) => g.ready(playChars(learned, index), index));
     return playable[Math.floor(Math.random() * playable.length)];
   }, [learned, index]);
 
@@ -309,7 +309,7 @@ function Goodbye({
   }
 
   if (bonus === 'playing' && bonusGame) {
-    return <GameHost game={bonusGame} index={index} learned={learned} profileId={profileId} onFinish={() => setBonus('done')} />;
+    return <GameHost game={bonusGame} index={index} learned={playChars(learned, index)} profileId={profileId} onFinish={() => setBonus('done')} />;
   }
 
   return (

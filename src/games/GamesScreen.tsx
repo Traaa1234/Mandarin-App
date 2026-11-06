@@ -3,12 +3,11 @@ import { useIndex } from '../data/useData';
 import { dragonAvailable } from '../practice/calendar';
 import { useProfile } from '../practice/ProfileContext';
 import ProfilePicker from '../practice/ProfilePicker';
-import TodayButton from '../practice/TodayButton';
 import { store } from '../practice/store';
 import GameHost from './GameHost';
-import { DRAGON, GAMES, type GameInfo } from './registry';
+import { DRAGON, GAMES, playChars, type GameInfo } from './registry';
 
-// All the mini-games. Locked ones show how many flowers they need.
+// All the mini-games, open from the first day (see playChars).
 export default function GamesScreen({ onHome }: { onHome: () => void }) {
   const index = useIndex();
   const { current } = useProfile();
@@ -46,23 +45,12 @@ export default function GamesScreen({ onHome }: { onHome: () => void }) {
       {!current ? (
         <ProfilePicker onDone={() => {}} />
       ) : !index || !learned ? null : playing ? (
-        <GameHost game={playing} index={index} learned={learned} profileId={current.id!} onFinish={() => setPlaying(null)} />
+        <GameHost game={playing} index={index} learned={playChars(learned, index)} profileId={current.id!} onFinish={() => setPlaying(null)} />
       ) : (
         <>
-        {games.some((g) => !g.ready(learned, index)) && (
-          <div className="mb-4">
-            <TodayButton
-              hint={
-                learned.length
-                  ? `${learned.length} characters learned. Games use only characters the child knows, so 🔒 games open as more are learned in today's adventure.`
-                  : "Games use only characters the child knows. Play today's adventure first to learn some; the games open as they are learned."
-              }
-            />
-          </div>
-        )}
         <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           {games.map((g) => {
-            const ready = g.ready(learned, index);
+            const ready = g.ready(playChars(learned, index), index);
             return (
               <li key={g.id}>
                 <button
@@ -83,6 +71,11 @@ export default function GamesScreen({ onHome }: { onHome: () => void }) {
             );
           })}
         </ul>
+        {playChars(learned, index) !== learned && (
+          <p className="en mt-4 text-center text-sm text-ink/70">
+            Until enough characters are learned in today's adventure (今天), the games also use the first characters on the learning path.
+          </p>
+        )}
         </>
       )}
     </main>

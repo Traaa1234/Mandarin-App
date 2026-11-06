@@ -87,3 +87,23 @@ describe('Word Village', () => {
     expect(buildSession(index, started, now)).toEqual(Object.keys(index.words).slice(0, MAX_NEW).map((char) => ({ type: 'new', char })));
   });
 });
+
+describe('playChars', async () => {
+  const { DRAGON, GAMES, playChars } = await import('../src/games/registry');
+  const every = (chars: string[]) => [...GAMES, DRAGON].every((g) => g.ready(chars, index));
+  it('opens every game for a brand-new child with a small starter set', () => {
+    const chars = playChars([], index);
+    expect(every(chars)).toBe(true);
+    expect(chars.length).toBeLessThanOrEqual(17);
+    // Each starter compound is built only from starter roots.
+    for (const c of chars.filter((x) => index.chars[x].role === 'compound')) {
+      const parts = Object.keys(index.families).filter((p) => index.families[p].includes(c));
+      expect(parts.every((p) => chars.includes(p)), c).toBe(true);
+    }
+  });
+  it('keeps what the child has learned, and uses only that once it is enough', () => {
+    expect(playChars(['鱼'], index)).toContain('鱼');
+    const all = Object.keys(index.chars).filter((c) => index.chars[c].role !== 'festival');
+    expect(playChars(all, index)).toBe(all);
+  });
+});

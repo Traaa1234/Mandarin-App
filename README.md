@@ -103,13 +103,16 @@ like the phrases. Every learned character is a flower in the garden: it blooms
 after a review, looks sleepy when overdue, and never dies. The map shows the
 seven stages as islands, opened in order.
 
-The nine mini-games (🎮 on the home screen) use only learned characters and
+The nine mini-games (🎮 on the home screen) are all open from the first day and
 take 60–90 seconds: Character Catch, Root Rescue, Mixing Bowl (drag roots
 together; a real character is cooked and planted), Tone Surfer, Memory Match,
 Stroke Race (against your own best time, shown as a ghost), Pinyin Train,
 Hidden Hanzi, and the Weekly Dragon Riddle on Sundays. The adventure's play
 part takes a different game each day; after the goodbye there is one bonus
-game a day, then Bǎobao goes to sleep. Games earn seeds.
+game a day, then Bǎobao goes to sleep. Games earn seeds. They play with the
+child's learned characters; until those are enough for every game, they also
+use a starter set (`playChars` in `src/games/registry.ts`): the first 12 roots
+on the path and the first compounds built only from them.
 
 Rewards are earned, never bought: seeds buy garden decorations, Bǎobao
 outfits and backgrounds in the shop; the album has a sticker slot per
@@ -218,7 +221,7 @@ credit to its speakers, Chen Wang and Yue Tan, on the credits screen.
 | 好, 明, 休, 林, 森 show the correct parts, coloured by `matches`, and animate together | Tested |
 | A 5-year-old can finish a session with taps and audio only | Yes; English is for parents and can be hidden |
 | Tracing accepts a finger-drawn 人 and 口 on a phone | Tested at 390 px |
-| All 9 mini-games run with learned characters in under 90 seconds | Tested in a browser |
+| All 9 mini-games run with learned characters (or the starter set) in under 90 seconds | Tested in a browser |
 | Missing 1 or 2 days doesn't reset the Sunshine streak; nothing in the garden dies | Unit tested |
 | The adventure ends with a goodbye, and the parent's daily limit stops play | Tested |
 | Every correct answer, game and session has a sound and an animation | Chime and confetti |

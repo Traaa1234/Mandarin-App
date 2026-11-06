@@ -41,6 +41,27 @@ export const DRAGON: GameInfo = {
   component: lazy(() => import('./DragonRiddle')),
 };
 
+const STARTER_ROOTS = 12;
+const STARTER_COMPOUNDS = 5;
+
+// The characters the games play with. Every game is open from the first day:
+// until the child's own characters are enough for all of them, the games also
+// use a starter set, the first roots on the learning path and the first
+// compounds built only from those roots.
+export function playChars(learned: string[], index: DataIndex): string[] {
+  if ([...GAMES, DRAGON].every((g) => g.ready(learned, index))) return learned;
+  const path = Object.entries(index.chars)
+    .filter(([, e]) => e.role !== 'festival' && index.stages.find((s) => s.id === e.stage)?.ready)
+    .sort(([, a], [, b]) => a.order - b.order)
+    .map(([c]) => c);
+  const roots = path.filter((c) => index.chars[c].role === 'root').slice(0, STARTER_ROOTS);
+  const partsOf = (c: string) => Object.keys(index.families).filter((p) => index.families[p].includes(c));
+  const compounds = path
+    .filter((c) => index.chars[c].role === 'compound' && partsOf(c).every((p) => roots.includes(p)))
+    .slice(0, STARTER_COMPOUNDS);
+  return [...new Set([...learned, ...roots, ...compounds])];
+}
+
 // One game a day for the adventure, taking turns among the playable ones.
 export function gameOfTheDay(learned: string[], index: DataIndex, day = Math.floor(Date.now() / 86400000)): GameInfo | null {
   const playable = GAMES.filter((g) => g.ready(learned, index));
