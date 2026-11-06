@@ -90,12 +90,18 @@ export default function Home({ onOpen }: { onOpen: (id: HomeTarget) => void }) {
       <button
         type="button"
         onClick={() => onOpen('today')}
-        aria-label="Today's adventure"
-        className="mb-3 flex min-h-28 items-center justify-center gap-3 rounded-3xl bg-[#f59f00] px-3 text-ink shadow-md transition active:scale-95"
+        className="mb-3 flex min-h-28 items-center justify-center gap-3 rounded-3xl bg-[#f59f00] px-3 py-2 text-left text-ink shadow-md transition active:scale-95"
       >
-        <Baobao size={80} mood="happy" />
-        <span lang="zh-Hans" className="han text-4xl font-bold">
-          <span className="py block text-base font-normal">jīntiān</span>今天
+        <span className="shrink-0" aria-hidden="true">
+          <Baobao size={80} mood="happy" />
+        </span>
+        <span className="flex flex-col">
+          <span lang="zh-Hans" className="han text-4xl font-bold">
+            <span className="py block text-base font-normal">jīntiān</span>今天
+          </span>
+          {/* What it is and where to begin, for grown-ups; hidden with the English setting. */}
+          <span className="en text-base font-bold">Today's lesson: start here!</span>
+          <span className="en max-w-72 text-sm">Every day: learn new characters, play a game and say a phrase to Bǎobao. About 5–8 minutes.</span>
         </span>
       </button>
       <div className="mb-4 grid grid-cols-2 gap-2 sm:grid-cols-5">
