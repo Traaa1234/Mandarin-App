@@ -121,7 +121,7 @@ export default function HelpScreen({ onHome }: { onHome: () => void }) {
       <Part title="Top of the home screen">
         <List items={TOP} />
       </Part>
-      <Part title="The five small buttons">
+      <Part title="The five buttons under 今天">
         <List items={SHORTCUTS} />
         <p className="mt-3 text-sm text-ink/70">Each asks 你是谁？ (who are you?) first if no child is chosen. For a new child they start mostly empty or locked; one adventure fills them.</p>
       </Part>

@@ -8,12 +8,14 @@ import { SECTIONS, type SectionId } from '../sections';
 
 export type HomeTarget = SectionId | 'today' | 'garden' | 'map' | 'games' | 'album' | 'shop' | 'parents' | 'festival' | 'credits' | 'help';
 
-const SHORTCUTS: { id: HomeTarget; icon: string; label: string }[] = [
-  { id: 'garden', icon: '🌷', label: 'My garden' },
-  { id: 'games', icon: '🎮', label: 'Games' },
-  { id: 'map', icon: '🗺️', label: 'Map' },
-  { id: 'album', icon: '📒', label: 'Album' },
-  { id: 'shop', icon: '🏪', label: 'Shop' },
+// Each shortcut says what it is in Chinese and, for grown-ups, in English with a
+// short description (hidden with the English setting).
+const SHORTCUTS: { id: HomeTarget; icon: string; han: string; pinyin: string; label: string; about: string }[] = [
+  { id: 'garden', icon: '🌷', han: '花园', pinyin: 'huāyuán', label: 'My garden', about: 'A flower for every character learned' },
+  { id: 'games', icon: '🎮', han: '游戏', pinyin: 'yóuxì', label: 'Games', about: 'Nine quick games' },
+  { id: 'map', icon: '🗺️', han: '地图', pinyin: 'dìtú', label: 'Map', about: 'The islands to explore, one by one' },
+  { id: 'album', icon: '📒', han: '相册', pinyin: 'xiàngcè', label: 'Album', about: 'Stickers, stars and badges' },
+  { id: 'shop', icon: '🏪', han: '商店', pinyin: 'shāngdiàn', label: 'Shop', about: 'Spend seeds on prizes for the garden' },
 ];
 
 export default function Home({ onOpen }: { onOpen: (id: HomeTarget) => void }) {
@@ -96,16 +98,27 @@ export default function Home({ onOpen }: { onOpen: (id: HomeTarget) => void }) {
           <span className="py block text-base font-normal">jīntiān</span>今天
         </span>
       </button>
-      <div className="mb-4 grid grid-cols-5 gap-2">
-        {SHORTCUTS.map((s) => (
+      <div className="mb-4 grid grid-cols-2 gap-2 sm:grid-cols-5">
+        {SHORTCUTS.map((s, i) => (
           <button
             key={s.id}
             type="button"
             onClick={() => onOpen(s.id)}
-            aria-label={s.label}
-            className="flex h-16 items-center justify-center rounded-2xl bg-white text-3xl shadow-md active:scale-95"
+            className={`flex min-h-20 items-center gap-2 rounded-2xl bg-white p-2 text-left shadow-md active:scale-95 sm:flex-col sm:text-center ${
+              i === SHORTCUTS.length - 1 ? 'col-span-2 sm:col-span-1' : ''
+            }`}
           >
-            {s.icon}
+            <span className="text-4xl" aria-hidden="true">
+              {s.icon}
+            </span>
+            <span className="flex flex-col leading-tight">
+              <span>
+                <span lang="zh-Hans" className="han text-xl font-bold">{s.han}</span>{' '}
+                <span className="py text-xs text-ink/70">{s.pinyin}</span>
+              </span>
+              <span className="en text-sm font-bold">{s.label}</span>
+              <span className="en text-xs text-ink/70">{s.about}</span>
+            </span>
           </button>
         ))}
       </div>
